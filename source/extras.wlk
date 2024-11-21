@@ -13,31 +13,7 @@ class Drop {
     var property image
 }
 
-object managerCuras {
-    const vida = [20, 40, 80]
 
-    method cura(numero, position) {
-        return new Cura(image = juego.jugador().visualHealth(numero)
-                , vidaDada = self.vida(numero), position = position)
-    }
-
-    method vida(numero) {
-        return vida.get(numero - 1)
-    }
-}
-
-object managerMonedas {
-    const oro = [10, 30, 50]
-    
-    method monedas(numero, position) {
-        return new Oro(image = "oro" + numero + ".png",
-                valor = self.oro(numero), position = position)
-    }
-
-    method oro(numero) {
-        return oro.get(numero - 1)
-    }
-}
 
 //---------------------------------Curas---------------------------------------
 class Cura inherits Drop {
