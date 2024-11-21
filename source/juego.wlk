@@ -27,6 +27,8 @@ object juego {
         keyboard.right().onPressDo({personaje.ataque(derecha)})
         keyboard.up().onPressDo({personaje.ataque(arriba)})
         keyboard.down().onPressDo({personaje.ataque(abajo)})
+        // Espacial
+        keyboard.space().onPressDo({personaje.especial()})
     }
 
     method movimiento() {

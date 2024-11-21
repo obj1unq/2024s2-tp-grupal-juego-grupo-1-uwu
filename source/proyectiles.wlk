@@ -159,3 +159,25 @@ class Acido {
         return true
     }
 }
+
+class Especial inherits Proyectil(danio = 100) {
+
+    method nuevoViaje(dir) { 
+        game.onTick(150, self.nombreEvento() , {self.disparoHacia(dir)})
+    }
+
+    override method disparoHacia(direccion) {
+        self.validarViajeProyectil(direccion)
+        self.avanzarEspecial(direccion)
+    }
+
+    method avanzarEspecial(direccion) {
+        game.schedule(80,{self.mover(direccion)})
+    }
+
+    override method impacto(dir) {
+        // cambiar por un impacto de rayo
+        self.image("bola-impacto-" + dir.toString() + ".png")
+        super(dir)
+    } 
+}

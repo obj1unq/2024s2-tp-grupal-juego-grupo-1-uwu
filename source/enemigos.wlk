@@ -190,6 +190,7 @@ class Zombie {
         game.removeVisual(self)
         game.removeTickEvent(self.nombreEvento())
         managerZombie.quitarZ(self)
+        personaje.zombieDerrotado()
         managerItems.spawnearMunicionEn(self.position())
     }
 

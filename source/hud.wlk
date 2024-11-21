@@ -109,6 +109,8 @@ object cargador {
     method traspasable() {
         return false
     }
+
+
 }
 
 
@@ -169,4 +171,15 @@ object barraDeEnergia {
     
     method colisionPj() {}
 
+}
+
+//----------------------------------------------energia-----------------------------
+object especial {
+  const duenio = personaje
+
+  method validarEspecial(direccion) = if (not self.especialListo(direccion)) self.error("")
+
+  method especialListo(direccion) {
+      return 0 == duenio.necesariosParaEspecial() % duenio.derrotados()
+    }
 }

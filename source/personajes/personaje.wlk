@@ -7,15 +7,15 @@ import dangalf.*
 
 object personaje { 
     //Imagen y posicion
-    var property pj = noel
+    var property pj = dangalf
     var property image = pj.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
     var property vida = 100 //que sea un manager de vida aparte
     var property visualAmmo = pj.municionImagen()
     var property oro = 0
-
-    //var property zombiesAsesinados = 0   - A implementar
+    var property derrotados = 0
+    const property necesariosParaEspecial = 2 // 2 Para probar
 
     method resetearVisual() {
         game.removeVisual(self)
@@ -98,6 +98,34 @@ object personaje {
     method obtenerOro(valor) {
         game.sound("oro-sonido.mp3").play()
         oro += valor
+    }
+
+    // -------------especial-------------------------------
+    
+    method zombieDerrotado() {
+      derrotados += 1
+    }
+
+    method especial() {
+      self.especial(derecha)
+      self.especial(abajo)
+      self.especial(izquierda)
+      self.especial(arriba)
+    }
+
+    method especial(direccion) {
+        self.image(pj.imagenNormal(direccion))
+        especial.validarEspecial(direccion)
+        self.animacionEspecial(direccion)
+        self.derrotados(0)
+        pj.dispararEspecial(direccion, position)
+    }
+    
+    method animacionEspecial(direccion) {       
+        //Falta agregar una imagenenes y sonidos del especial                                               
+        self.image(pj.imagenAtaque(direccion))
+        game.schedule(200,{self.image(pj.imagenNormal(direccion))})
+        pj.sonidoAtaque()
     }
 
 // -------------energia-------------------------------

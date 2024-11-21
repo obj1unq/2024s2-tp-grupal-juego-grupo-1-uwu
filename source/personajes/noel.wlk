@@ -12,6 +12,10 @@ object noel {
         balaNueva.nuevoViaje(direccion)
     }
 
+    method especial() {
+      //nada aún
+    }
+
     method imagenInicial(){
         return "noelnuevo-normal-arriba.png"
     }
@@ -23,8 +27,6 @@ object noel {
     method imagenNormal(direccion) {
         return "noelnuevo-normal-" + direccion.toString() + ".png"
     }
-
-    method especial(){}
 
     method sonidoAtaque(){
         game.sound("tiro1.mp3").play()

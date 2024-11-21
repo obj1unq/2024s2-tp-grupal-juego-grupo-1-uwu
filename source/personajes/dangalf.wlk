@@ -12,6 +12,12 @@ object dangalf {
         bolaNueva.nuevoViaje(direccion)
     }
 
+    method dispararEspecial(direccion, posDada) {
+        const rayo = new Especial(image="rayoGrande.png", position=direccion.siguientePosicion(posDada))
+        game.addVisual(rayo)
+        rayo.nuevoViaje(direccion)
+    }
+
     method imagenInicial(){
         return "dangalf-normal-arriba.png"
     }
