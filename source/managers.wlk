@@ -1,10 +1,10 @@
-// acá es para poner todos los managers y que no estén sueltos por ahí
+import wollok.game.*
 import proyectiles.*
 import posiciones.*
 import juego.*
 import extras.*
-import personajes.personaje.*
 import enemigos.*
+import hud.*
 
 object managerAcido {
     
@@ -167,17 +167,17 @@ object managerZombie {
         game.addVisual(zombie)
     }
 
+      method posTieneZombie(pos) {
+        return (zombies.any({zom => zom.position() == pos}))
+    }
+
+/*   REVISAR
     method generarZombieAleatorio(posicion) {
         const zombieNuevo = randomizadorZombies.randomizarZombie(posicion)
         zombies.add(zombieNuevo)
         game.addVisual(zombieNuevo)
         zombieNuevo.persecucion()
     }
-
-    method posTieneZombie(pos) {
-        return (zombies.any({zom => zom.position() == pos}))
-    }
-}
 
     method activarODesactivarGeneracionAleatoria() {
         if(contador.even()) {
@@ -188,4 +188,30 @@ object managerZombie {
             game.removeTickEvent("generarZombiesRandom")
         }
     }
+*/
 }
+
+object generadorZombie {
+
+    method zombieComun(posicion) {
+        return new ZombieComun(position = posicion)
+    }
+
+    method zombiePerro(posicion) {
+        return new ZombiePerro(position = posicion)
+    }
+    
+    method zombieThrower(posicion) {
+        return new ZombieThrower(position = posicion)
+    }
+        
+    method zombieTanque(posicion) {
+        return new ZombieTanque(position = posicion)
+    }
+
+    method posicionInicial() {
+        return game.at(game.width() -3, game.height() -3)
+    }
+}
+
+// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)

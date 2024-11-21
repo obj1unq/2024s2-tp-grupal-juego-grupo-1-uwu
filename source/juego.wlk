@@ -7,6 +7,7 @@ import extras.*
 import posiciones.*
 import sonidos.*
 import hud.*
+import managers.*
 
 object menu {
     /*
@@ -17,7 +18,7 @@ object menu {
 
 object juego {
 
-    var property jugador = dangalf
+    var property jugador = noel
 
     method hud() {
 

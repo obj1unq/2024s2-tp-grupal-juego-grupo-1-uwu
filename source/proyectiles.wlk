@@ -1,8 +1,7 @@
-import personajes.personaje.*
 import wollok.game.*
 import juego.*
 import posiciones.*
-import enemigos.*
+import managers.*
 
 class Proyectil {
 
@@ -59,7 +58,7 @@ class Proyectil {
 class Bala inherits Proyectil(danio=25, velocidadViaje=120) {
 
     override method impacto(dir) {
-        self.image("bala-impacto-" + dir.toString() + ".png")
+        self.image("balaP-impacto-" + dir.toString() + ".png")
         super(dir)
     }
 }

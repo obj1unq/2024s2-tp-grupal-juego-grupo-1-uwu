@@ -1,6 +1,8 @@
 import wollok.game.*
 import enemigos.*
 import juego.*
+import managers.*
+
 import personajes.personaje.*
 
 object nivelManager {

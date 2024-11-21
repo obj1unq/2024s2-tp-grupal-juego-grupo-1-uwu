@@ -1,39 +1,10 @@
-import extras.*
 import wollok.game.*
 import juego.*
 import posiciones.*
-import personajes.personaje.*
 import sonidos.*
-import proyectiles.*
 import niveles.*
-import hud.*
+import managers.*
 
-
-
-object generadorZombie {
-
-    method zombieComun(posicion) {
-        return new ZombieComun(position = posicion)
-    }
-
-    method zombiePerro(posicion) {
-        return new ZombiePerro(position = posicion)
-    }
-    
-    method zombieThrower(posicion) {
-        return new ZombieThrower(position = posicion)
-    }
-        
-    method zombieTanque(posicion) {
-        return new ZombieTanque(position = posicion)
-    }
-
-    method posicionInicial() {
-        return game.at(game.width() -3, game.height() -3)
-    }
-}
-
-// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)
 
 object randomizadorZombies {
     var property posicionSpawn = game.at(0, 0)
@@ -218,7 +189,7 @@ class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.p
     }
 }
 
-class ZombieTanque inherits Zombie(vida = 300, dmg = 50, image = "tanqueN-1-abajo.png", velocidad=3) {
+class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo.png", velocidad=3) {
     
     var estado = 1
     var ultimaDir = abajo
@@ -268,7 +239,7 @@ class ZombieTanque inherits Zombie(vida = 300, dmg = 50, image = "tanqueN-1-abaj
     // imagen -----------------------------------------
 
     override method imagenMovimiento() {
-        return "tanqueN-" + estado.toString() + "-"
+        return "tanque-" + estado.toString() + "-"
     }
 }
 

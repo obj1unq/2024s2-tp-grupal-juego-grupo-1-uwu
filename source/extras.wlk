@@ -1,8 +1,7 @@
 import hud.*
 import wollok.game.*
-import personajes.personaje.*
 import juego.*
-import posiciones.*
+import managers.*
 
 
 

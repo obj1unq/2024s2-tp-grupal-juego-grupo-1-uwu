@@ -1,10 +1,7 @@
 import wollok.game.*
-import personaje.*
-import posiciones.*
 import juego.*
-import extras.*
-import hud.*
 import proyectiles.*
+import managers.*
 
 class Arma {
 
@@ -54,10 +51,9 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
-        const balaNueva = new Bala(image="bala-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
+        const balaNueva = new Bala(image="balaP-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
         game.addVisual(balaNueva)
         balaNueva.nuevoViaje(dir)
-
     }
 
     override method hudMunicion(){

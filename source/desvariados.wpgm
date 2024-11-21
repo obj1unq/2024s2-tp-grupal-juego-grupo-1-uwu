@@ -7,6 +7,8 @@ import sonidos.*
 import juego.*
 import proyectiles.*
 import hud.*
+import managers.*
+import niveles.*
 
 
 program desvariados {

@@ -1,10 +1,8 @@
 import proyectiles.*
 import wollok.game.*
 import posiciones.*
-import extras.*
 import armas.*
-import hud.*
-import personajes.personaje.*
+import personaje.*
 
 object dangalf inherits Personaje(arma=manosMagicas) {
 
@@ -23,15 +21,15 @@ object dangalf inherits Personaje(arma=manosMagicas) {
     
 
     override method imagenInicial(){
-        return "dangalfnuevo-normal-arriba.png"
+        return "dangalf-normal-arriba.png"
     }
 
     override method imagenAtaque(dir) {
-        return "dangalfnuevo-ataque-" + dir.toString() + ".png"
+        return "dangalf-ataque-" + dir.toString() + ".png"
     }
 
     override method imagenNormal(dir) {
-        return "dangalfnuevo-normal-" + dir.toString() + ".png"
+        return "dangalf-normal-" + dir.toString() + ".png"
     }
 
     method especial(){}

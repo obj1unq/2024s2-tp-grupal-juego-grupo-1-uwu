@@ -1,6 +1,5 @@
 import extras.*
 import wollok.game.*
-import personajes.personaje.*
 import juego.*
 
 //---------------------------------Timer---------------------------------------

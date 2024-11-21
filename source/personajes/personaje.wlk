@@ -1,10 +1,7 @@
-import enemigos.*
 import wollok.game.*
 import posiciones.*
-import extras.*
 import hud.*
-import noel.*
-import dangalf.*
+import managers.*
 
 class Personaje { 
     //Imagen y posicion
