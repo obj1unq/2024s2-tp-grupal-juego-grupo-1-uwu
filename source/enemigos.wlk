@@ -8,34 +8,7 @@ import proyectiles.*
 import niveles.*
 import hud.*
 
-object managerZombie {
-    const property zombies = #{}
 
-    method agregarZ(zombie) {
-        zombies.add(zombie)
-    }
-
-    method quitarZ(zombie) {
-        zombies.remove(zombie)
-        especial.murioZombie()
-    }
-
-    method spawnearZ(zombie) {
-        zombies.add(zombie)
-        game.addVisual(zombie)
-    }
-
-    method generarZombieAleatorio(posicion) {
-        const zombieNuevo = randomizadorZombies.randomizarZombie(posicion)
-        zombies.add(zombieNuevo)
-        game.addVisual(zombieNuevo)
-        zombieNuevo.persecucion()
-    }
-
-    method posTieneZombie(pos) {
-        return (zombies.any({zom => zom.position() == pos}))
-    }
-}
 
 object generadorZombie {
 
