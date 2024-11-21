@@ -48,34 +48,80 @@ object managerVisual {
 }
 
 object managerItems {
-    //const property drops = #{}
+    
+    const property drops = #{}  
+    var balasEnTablero = 0
 
-    method posicionRandom() {
-        return (game.at(0.randomUpTo(game.width() - 1), 0.randomUpTo(game.height() - 2)))
+    method restarBalasDeTablero() {
+        balasEnTablero -= 1
     }
 
-    method spawnearCura(numero) {
-        const nuevaCura = managerCuras.cura(numero, self.posicionRandom())
-        managerVisual.agregarVisual(nuevaCura)
-        //drops.add(nuevaCura)
+    // Oro = 25% / Municion = 40% / Vida = 20% / Nada = 15% 
+    method generarDrop(posicion) {
+        const numero = 0.randomUpTo(100).round()
+
+        self.validarDropsEnPantalla()
+        if (numero <= 25) { 
+            self.spawnearOro(0.randomUpTo(3).round().max(1), posicion)
+        } else if (numero > 25 and numero <= 65) {
+            self.spawnearMunicion(posicion)
+        } else if (numero > 65 and numero <= 85) {
+            self.spawnearCura(0.randomUpTo(3).round().max(1) , posicion)
+        } 
     }
 
-    method spawnearOro(numero) {
-        const oroNuevo = managerMonedas.monedas(numero, self.posicionRandom())
-        managerVisual.agregarVisual(oroNuevo)
-        //drops.add(oroNuevo)
+    method validarDropsEnPantalla(){
+        if (drops.size() > 2){self.error("")}
+    }
+
+    method generarDropRandom(){
+        self.generarDrop(tablero.posicionRandom())
+    }
+
+    method quitarItem(item) {
+        drops.remove(item)
+    }
+
+    method revisarPorItems(pos) {
+        const itemAhi = drops.filter({d => d.position() == pos})
+        itemAhi.forEach({d => d.colisionPj()})
+    }
+
+    method spawnearCura(numero, posicion) {
+        const nuevaCura = managerCuras.cura(numero, posicion)
+        game.addVisual(nuevaCura)
+        drops.add(nuevaCura)
+    }
+
+    method spawnearOro(numero, posicion) {
+        const oroNuevo = managerMonedas.monedas(numero, posicion)
+        game.addVisual(oroNuevo)
+        drops.add(oroNuevo)
     }
 
     method spawnearMunicionRandom() {
-        const nuevaMunicion = new Balas(position = self.posicionRandom())
-        managerVisual.agregarVisual(nuevaMunicion)
-        //drops.add(nuevaMunicion)
+        const nuevaMunicion = new Balas(position = tablero.posicionRandom())
+        game.addVisual(nuevaMunicion)
+        drops.add(nuevaMunicion)
     }
 
-    method spawnearMunicionEn(posicion) {
+    method spawnearMunicion(posicion) {
+        balasEnTablero += 1
         const nuevaMunicion = new Balas(position = posicion)
-        managerVisual.agregarVisual(nuevaMunicion)
-        //drops.add(nuevaMunicion)
+        game.addVisual(nuevaMunicion)
+        drops.add(nuevaMunicion)
+    }
+
+    method posiblesBalas(municion) {
+        if(municion==0) {
+            game.schedule(6000,{self.siNoHayBalasSoltarle()})
+        }
+    }
+
+    method siNoHayBalasSoltarle() {
+        if (balasEnTablero == 0) {
+            self.spawnearMunicionRandom()
+        }
     }
 }
 
