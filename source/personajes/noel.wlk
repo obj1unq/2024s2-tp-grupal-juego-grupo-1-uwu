@@ -1,34 +1,52 @@
+import personaje.*
 import wollok.game.*
 import posiciones.*
 import extras.*
 import hud.*
+import armas.*
 import proyectiles.*
 
-object noel {
+object noel inherits Personaje(arma=pistola) {
 
-    method disparar(direccion,posDada) {
-        const balaNueva = new Bala(image="bala-1-" + direccion.toString() + ".png", position=direccion.siguientePosicion(posDada))
-        game.addVisual(balaNueva)
-        balaNueva.nuevoViaje(direccion)
+    var property ultimaDir = derecha
+
+    override method mover(dir) {
+        super(dir)
+        ultimaDir = dir
     }
 
-    method especial() {
-      //nada aún
+    override method ataque(dir) {
+        super(dir)
+        ultimaDir = dir
     }
 
-    method imagenInicial(){
-        return "noelnuevo-normal-arriba.png"
+//-------------items------------------------------------------
+
+    override method cura(numero){
+        return "cura" + numero + "-noel.png"
     }
 
-    method imagenAtaque(direccion) {
-        return "noelnuevo-ataque-" + direccion.toString() + ".png"
+     override method municionImagen(){
+        return "balas.png"
     }
 
-    method imagenNormal(direccion) {
-        return "noelnuevo-normal-" + direccion.toString() + ".png"
+//-----------ataque-movimiento--------------------------------
+
+    override method imagenInicial(){
+        return "noel-normal-arriba.png"
+    }
+   
+    override method imagenAtaque(direccion) {
+        return "noel-ataque-" + direccion.toString() + ".png"
     }
 
-    method sonidoAtaque(){
+    override method imagenNormal(direccion) {
+        return "noel-normal-" + direccion.toString() + ".png"
+    }
+
+    method especial(){}
+
+    override method sonidoAtaque(){
         game.sound("tiro1.mp3").play()
     }
 
@@ -36,22 +54,37 @@ object noel {
         game.sound("noel-muerte-sonido.mp3").play()
     }
 
-    method hudMunicion(){
-        return "balas-"
-    }
+//------------hud-------------------------------------------
 
-    method municionImagen(){
-        return "balas.png"
-    }
-    method sinMunicion(dir){
+        override method sinMunicion(){
         game.sound("sin-balas.mp3").play()
     }
 
     method sonidoRecarga(){
-        game.sound("pistola-recarga.mp3").play()
+        arma.sonidoRecarga()
     }
 
-    method cura(numero){
-        return "cura" + numero + "-noel.png"
+//---------------------arma--------------------------
+
+    method cambiarAEscopeta() {
+        arma = escopeta
     }
+
+    method cambiarAPistola() {
+        arma = pistola
+    }
+
+//-------------------especial------------------------
+
+
+    override method lanzarEspecial() {
+        const baston = new Baston(position=self.ultimaDir().siguientePosicion(position))
+        game.addVisual(baston)
+        baston.nuevoViaje(ultimaDir)
+    }
+
 }
+
+
+
+

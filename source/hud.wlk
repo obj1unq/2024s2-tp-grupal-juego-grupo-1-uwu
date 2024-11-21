@@ -1,7 +1,10 @@
+import extras.*
 import wollok.game.*
 import personajes.personaje.*
+import juego.*
 
 //---------------------------------Timer---------------------------------------
+
 
 object timer {
 
@@ -9,7 +12,7 @@ object timer {
     var minutos  = 0
 
     method position() {
-        return game.at(8, game.height() - 1 )
+        return game.at(11, game.height() - 1 )
     }
 
     method text() {
@@ -28,89 +31,66 @@ object timer {
             segundos = 0
             segundos += 1
         }
-
-    }
-
-    method colisionPj() {}
-
-    method impactoProyectil(danio) {}
-
-    method traspasable() {
-        return true
     }
 
 }
 //----------------------------------------------HUD-----------------------------
 object barra{
     var property image =  "blacklong.png"
-    var property position = game.at(0, 16)
+    var property position = game.at(0, 14)
 
-    method impactoProyectil(danio) {}
-    method colisionPj() {}
-    //game.addVisual("black.png")
-
-    method traspasable() {
-        return false
-    }
 }
 //----------------------------------BARRA DE VIDA-----------------------------
 
 object puntosDeVida {
-
+    var vida = 100
     var property image =  "barravida-100.png"
-    var property position = game.at(0, 16)
+    var property position = game.at(0, 14)
 
-    method actualizar(){
-        self.image("barravida-" + personaje.vida() + ".png")
+    method curarse(cura){
+        game.sound("cura-sonido.mp3").play()
+        vida = 100.min(vida + cura) 
+        self.actualizar()
     }
 
-    method colisionPj() {}
+    method herir(cant) {
+        vida = 0.max(vida - cant)
+        self.actualizar()
+        self.revisarMorir()
+    }
 
-    method impactoProyectil(danio) {}
+    method revisarMorir() {
+        if (vida == 0) {
+            self.muerte()
+        }
+    }
 
-    method traspasable() {
-        return false
+    method muerte() {
+        juego.jugador().sonidoMuerte()
+        game.clear()
+        // pantalla muerte
+        game.schedule(1000, {game.stop()})
+    }
+
+    method actualizar(){
+        self.image("barravida-" + vida.toString() + ".png")
     }
 }
 
 //----------------------------------------------MUNICION-----------------------------
 
-object cargador {
-    var property  municion = 12 
-    const property duenio = personaje.pj()
-    var property position = game.at(4, 16)
+object hudBalas {
+    var property position = game.at(4, 14)
+
+    method balas() {
+        return juego.jugador().arma().municion()
+    }
 
     method image(){
-        return duenio.hudMunicion() + municion.toString() + ".png"
+        return juego.jugador().arma().hudMunicion() + juego.jugador().arma().cargador() + ".png"
     }
     
-    method recargar(balas){
-        duenio.sonidoRecarga()
-        municion += balas
-        municion = municion.min(12) 
-    }
-
-    method validarAtaque(dir){
-        if (municion == 0){
-            duenio.sinMunicion(dir)
-            self.error("")
-        }
-        else {self.quitarMunicion(1)}
-    }
-
-    method quitarMunicion(cantidad) {
-        municion -= cantidad
-    }
     
-    method colisionPj() {}
-
-    method impactoProyectil(danio) {}
-
-    method traspasable() {
-        return false
-    }
-
-
 }
 
 
@@ -122,10 +102,8 @@ object oroObtenido {
     }
 
     method text() {
-        return personaje.oro().toString()
+        return juego.jugador().oro().toString()
     }
-
-    method colisionPj() {}
 
     method textColor() {
         return "ffff00"
@@ -133,9 +111,6 @@ object oroObtenido {
 
     method impactoProyectil(danio) {}
 
-    method traspasable() {
-        return false
-    }
 }
 
 
@@ -146,10 +121,9 @@ object barraDeEnergia {
 
     var property image =  "energia-"+ energia.toString() + ".png"
     var property energia = 10
-    const property duenio = personaje
 
     method position() {
-            return game.at(12, 16)
+            return game.at(12, 14)
     }
     
     method validarEnergia(){
@@ -165,21 +139,29 @@ object barraDeEnergia {
     }
 
     method recargarEnergia(){
-        energia = 10.min(energia + 1)
+        energia = (energia + 1).min(10)
         self.image("energia-"+ energia.toString() + ".png") 
     }
-    
-    method colisionPj() {}
 
 }
 
-//----------------------------------------------energia-----------------------------
 object especial {
-  const duenio = personaje
 
-  method validarEspecial(direccion) = if (not self.especialListo(direccion)) self.error("")
+    var property zombiesAsesinados = 0 
 
-  method especialListo(direccion) {
-      return 0 == duenio.necesariosParaEspecial() % duenio.derrotados()
+    method tirarEspecial() {
+        self.validarEspecial()
+        self.zombiesAsesinados(0)
+        juego.jugador().lanzarEspecial()
     }
+
+    method murioZombie() {
+        zombiesAsesinados += 1
+    }
+
+    method validarEspecial() {
+        if (zombiesAsesinados < 6) self.error("")
+    } 
+
+  
 }

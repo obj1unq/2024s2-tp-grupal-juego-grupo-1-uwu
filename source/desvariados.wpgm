@@ -8,20 +8,23 @@ import juego.*
 import proyectiles.*
 import hud.*
 
- 
+
 program desvariados {
+
+    //juego.menu()
+    // y todo lo de abajo se ejecutaria despues de accionar en el menu
 
     juego.tablero()
 
-    juego.colisiones()
-
-    juego.visuals()
+    juego.hud()
 
     juego.movimiento()
 
     juego.ataque()
 
     juego.sonido()
+
+    juego.persecucion()
 
     //juego.pausa() (arreglar)
 

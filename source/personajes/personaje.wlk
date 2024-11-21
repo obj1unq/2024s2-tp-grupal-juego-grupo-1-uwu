@@ -1,3 +1,4 @@
+import enemigos.*
 import wollok.game.*
 import posiciones.*
 import extras.*
@@ -5,25 +6,29 @@ import hud.*
 import noel.*
 import dangalf.*
 
-object personaje { 
+class Personaje { 
     //Imagen y posicion
-    var property pj = dangalf
-    var property image = pj.imagenInicial()
+    var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
-    var property vida = 100 //que sea un manager de vida aparte
-    var property visualAmmo = pj.municionImagen()
+    var property visualAmmo = self.municionImagen()
     var property oro = 0
-    var property derrotados = 0
-    const property necesariosParaEspecial = 2 // 2 Para probar
+    //Propiedades   
+    var property arma 
+    
 
-    method resetearVisual() {
-        game.removeVisual(self)
-        game.addVisual(self)
-    }
+    method imagenInicial()
+    method imagenNormal(dir)
+    method imagenAtaque(dir)
+    method sonidoAtaque()
+    method municionImagen()
+    method cura(num)
+    method sinMunicion()
+    method lanzarEspecial() 
+
 
     method visualHealth(numero) {
-        return pj.cura(numero)
+        return self.cura(numero)
     }
     
     // -------------movimiento-------------------------------
@@ -32,67 +37,40 @@ object personaje {
         barraDeEnergia.validarEnergia()
         self.validarMover(direccion)
 	    position = direccion.siguientePosicion(position)
-        self.image(pj.imagenNormal(direccion))
+        self.image(self.imagenNormal(direccion))
+        managerItems.revisarPorItems(position)
 	}
 
     method validarMover(direccion) {
 		const siguiente = direccion.siguientePosicion(position)
 		tablero.validarDentro(siguiente)
-        self.validarTraspasables(siguiente)
+        self.validarNoHayEnemigos(siguiente)
 	}
 
-    method validarTraspasables(posicion) {
-        if(!self.hayTraspasables(posicion)) {
+    method validarNoHayEnemigos(posicion) {
+        if(managerZombie.posTieneZombie(posicion)) {
             self.error("")
         }
-    }
-
-    method hayTraspasables(posicion) {
-        return game.getObjectsIn(posicion).all({o => o.traspasable()})
     }
 
     // -------------ataque-------------------------------
     
     method ataque(direccion) { 
-        self.image(pj.imagenNormal(direccion))
-        cargador.validarAtaque(direccion)
-        self.animacionAtaque(direccion)
-        pj.disparar(direccion,position)                                               
+        self.image(self.imagenNormal(direccion))
+        arma.validarAtaque()
+        arma.gatillar(direccion,position)                                             
     }
+    
     method animacionAtaque(direccion) {                                                       
-        self.image(pj.imagenAtaque(direccion))
-        game.schedule(200,{self.image(pj.imagenNormal(direccion))})
-        pj.sonidoAtaque()
-    }
-    // -------------muerte-------------------------------
-
-    method revisarMorir() {
-        if (vida == 0) {
-            self.muerte()
-        }
+        self.image(self.imagenAtaque(direccion))
+        game.schedule(900,{self.image(self.imagenNormal(direccion))})
+        self.sonidoAtaque()
     }
 
-    method muerte() {
-        pj.sonidoMuerte()
-        // game.sound("muerte-musica.mp3").play()
-        // game.say(self, "morí reyes")
-        game.allVisuals().forEach({visual => game.removeVisual(visual)})
-        // game.boardGround("pantalla-muerte.jpg")
-        game.schedule(1000, {game.stop()})
-    }
-
-    // -------------Prueba de curarse-------------------------------
-
-	method curarse(cura){
-        game.sound("cura-sonido.mp3").play()
-        vida = 100.min(vida + cura) 
-        puntosDeVida.actualizar()
-    }
+    // -------------items-------------------------------
 
     method herir(cantidad) {
-        vida = 0.max(vida - cantidad)
-        puntosDeVida.actualizar()
-        self.revisarMorir()
+        puntosDeVida.herir(cantidad)
     }
 
     method obtenerOro(valor) {
@@ -100,35 +78,7 @@ object personaje {
         oro += valor
     }
 
-    // -------------especial-------------------------------
     
-    method zombieDerrotado() {
-      derrotados += 1
-    }
-
-    method especial() {
-      self.especial(derecha)
-      self.especial(abajo)
-      self.especial(izquierda)
-      self.especial(arriba)
-    }
-
-    method especial(direccion) {
-        self.image(pj.imagenNormal(direccion))
-        especial.validarEspecial(direccion)
-        self.animacionEspecial(direccion)
-        self.derrotados(0)
-        pj.dispararEspecial(direccion, position)
-    }
-    
-    method animacionEspecial(direccion) {       
-        //Falta agregar una imagenenes y sonidos del especial                                               
-        self.image(pj.imagenAtaque(direccion))
-        game.schedule(200,{self.image(pj.imagenNormal(direccion))})
-        pj.sonidoAtaque()
-    }
-
-// -------------energia-------------------------------
 
 }
 
