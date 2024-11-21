@@ -7,10 +7,10 @@ import personajes.personaje.*
 import enemigos.*
 
 object managerAcido {
+    
     method acidoEnCon(pos, dmg) {
         const acidoNuevo = new Acido(position = pos)
         game.addVisual(acidoNuevo)
-        managerVisual.resetearVisuales()
         acidoNuevo.daniar(dmg)
     }
 }
@@ -19,7 +19,6 @@ object managerCrater {
 
     method explosionEnCon(pos,dmg) {
         tablero.alrededoresDe(pos).forEach({pos => self.aparecerCraterEn(pos,dmg)})
-        managerVisual.resetearVisuales()
     }
 
     method aparecerCraterEn(pos,dmg) {
