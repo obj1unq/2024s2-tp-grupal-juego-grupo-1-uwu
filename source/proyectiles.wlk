@@ -83,18 +83,7 @@ class BolaDeFuego inherits Proyectil(danio=40, velocidadViaje=220) {
 }
 
 
-object managerCrater {
 
-    method explosionEnCon(pos,dmg) {
-        tablero.alrededoresDe(pos).forEach({pos => self.aparecerCraterEn(pos,dmg)})
-    }
-
-    method aparecerCraterEn(pos,dmg) {
-        const craterNuevo = new Crater(position=pos)
-        game.addVisual(craterNuevo)
-        craterNuevo.daniar(dmg)
-    }
-}
 
 
 class Crater {
@@ -113,14 +102,7 @@ class Crater {
 }
 
 
-object managerAcido {
-    
-    method acidoEnCon(pos, dmg) {
-        const acidoNuevo = new Acido(position = pos)
-        game.addVisual(acidoNuevo)
-        acidoNuevo.daniar(dmg)
-    }
-}
+
 
 
 class Acido {
