@@ -128,7 +128,7 @@ object managerCuras {
     const vida = [20, 40, 80]
 
     method cura(numero, position) {
-        return new Cura(image = personaje.visualHealth(numero)
+        return new Cura(image = juego.jugador().visualHealth(numero)
                 , vidaDada = self.vida(numero), position = position)
     }
 
