@@ -153,17 +153,32 @@ object managerMonedas {
 
 object managerZombie {
     const property zombies = #{}
-    var contador = 0
+
+    method agregarZ(zombie) {
+        zombies.add(zombie)
+    }
 
     method quitarZ(zombie) {
         zombies.remove(zombie)
+        especial.murioZombie()
     }
 
     method spawnearZ(zombie) {
         zombies.add(zombie)
-        managerVisual.agregarVisual(zombie)
-        zombie.persecucion()
+        game.addVisual(zombie)
     }
+
+    method generarZombieAleatorio(posicion) {
+        const zombieNuevo = randomizadorZombies.randomizarZombie(posicion)
+        zombies.add(zombieNuevo)
+        game.addVisual(zombieNuevo)
+        zombieNuevo.persecucion()
+    }
+
+    method posTieneZombie(pos) {
+        return (zombies.any({zom => zom.position() == pos}))
+    }
+}
 
     method activarODesactivarGeneracionAleatoria() {
         if(contador.even()) {
@@ -173,16 +188,5 @@ object managerZombie {
             contador += 1
             game.removeTickEvent("generarZombiesRandom")
         }
-    }
-
-    method generarZombieAleatorio(posicion) {
-        const zombieNuevo = randomizadorZombies.randomizarZombie(posicion)
-        zombies.add(zombieNuevo)
-        managerVisual.agregarVisual(zombieNuevo)
-        zombieNuevo.persecucion()
-    }
-
-    method posTieneZombie(pos) {
-        return (zombies.any({zom => zom.position() == pos}))
     }
 }
