@@ -1,7 +1,8 @@
 import wollok.game.*
 import juego.*
-import personajes.personaje.*
 import hud.*
+
+
 object tienda{
     
     //var property tienda = "Tienda.png"

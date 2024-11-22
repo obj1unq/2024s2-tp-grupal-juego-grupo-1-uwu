@@ -1,7 +1,6 @@
 import extras.*
 import wollok.game.*
 import juego.*
-import tienda.*
 
 //---------------------------------Timer---------------------------------------
 

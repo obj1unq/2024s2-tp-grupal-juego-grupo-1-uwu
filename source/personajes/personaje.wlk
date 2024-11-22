@@ -2,7 +2,7 @@ import wollok.game.*
 import posiciones.*
 import hud.*
 import managers.*
-import tienda.*
+
 
 class Personaje { 
     //Imagen y posicion
