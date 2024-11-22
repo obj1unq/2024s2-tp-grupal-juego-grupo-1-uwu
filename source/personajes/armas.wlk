@@ -114,7 +114,27 @@ object escopeta inherits Arma(cadencia=900,cargador=6) {
     }
 }
 
+object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
 
+    override method disparar(dir,pos) {
+        super(dir,pos)
+        const balaNueva = new BalaEscopeta(image="balaEscopeta-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
+        game.addVisual(balaNueva)
+        balaNueva.nuevoViaje(dir)
+    }
+
+    override method hudMunicion(){
+        return "cartuchoDoble-"
+    }
+
+    override method sonidoRecarga() {
+        game.sound("pistola-recarga.mp3").play() 
+    }
+
+    override method municionMaxima(){
+        return 12
+    }
+}
 
 object manosMagicas inherits Arma(cadencia=800,cargador=12) {
 
