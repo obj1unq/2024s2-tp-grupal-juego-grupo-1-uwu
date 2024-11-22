@@ -4,7 +4,7 @@ import posiciones.*
 import armas.*
 import proyectiles.*
 
-object noel inherits Personaje(arma=pistola) {
+object noel inherits Personaje(arma=escopeta) {
 
     var property ultimaDir = derecha
 
@@ -76,7 +76,7 @@ object noel inherits Personaje(arma=pistola) {
 
 
     override method lanzarEspecial() {
-        const baston = new Baston(position=self.ultimaDir().siguientePosicion(position))
+        const baston = new Baston(position=self.ultimaDir().siguientePosicion(position), image="baston-"+self.ultimaDir()+".png")
         game.addVisual(baston)
         baston.nuevoViaje(ultimaDir)
     }

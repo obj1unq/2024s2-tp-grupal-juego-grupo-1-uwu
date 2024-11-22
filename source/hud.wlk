@@ -1,7 +1,6 @@
 import extras.*
 import wollok.game.*
 import juego.*
-import tienda.*
 
 //---------------------------------Timer---------------------------------------
 
@@ -32,13 +31,11 @@ object timer {
             segundos += 1
         }
     }
-
 }
 //----------------------------------------------HUD-----------------------------
 object barra{
     var property image =  "blacklong.png"
     var property position = game.at(0, 14)
-
 }
 //----------------------------------BARRA DE VIDA-----------------------------
 
@@ -87,7 +84,6 @@ object puntosDeVida {
     method actualizar(){
         self.image("barravida-" + vida.toString() + ".png")
     }
-
 }
 
 //----------------------------------------------MUNICION-----------------------------
@@ -102,8 +98,6 @@ object hudBalas {
     method image(){
         return juego.jugador().arma().hudMunicion() + juego.jugador().arma().cargador() + ".png"
     }
-    
-    
 }
 
 
@@ -123,7 +117,6 @@ object oroObtenido {
     }
 
     method impactoProyectil(danio) {}
-
 }
 
 
@@ -181,6 +174,4 @@ object especial {
     method validarEspecial() {
         if (zombiesAsesinados < 6) self.error("")
     } 
-
-  
 }

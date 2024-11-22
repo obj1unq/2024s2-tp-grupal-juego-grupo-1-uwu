@@ -120,6 +120,10 @@ object manosMagicas inherits Arma(cadencia=800,cargador=12) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
+        self.hechizo(dir,pos)
+    }
+
+    method hechizo(dir,pos) {
         const bolaNueva = new BolaDeFuego(image="bola-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
         game.addVisual(bolaNueva)
         bolaNueva.nuevoViaje(dir)
@@ -136,6 +140,33 @@ object manosMagicas inherits Arma(cadencia=800,cargador=12) {
     override method municionMaxima(){
         return 12
     }
+}
+
+object tresManos inherits Arma(cadencia=900,cargador=12) {
+
+    override method disparar(dir,pos) {
+        super(dir,pos)
+        self.hechizo(dir,pos)
+    }
+
+    method hechizo(dir,pos) {
+        const plasmaNuevo = new BolaPlasma(image="plasma-" + dir.toString() + ".png", position = dir.siguientePosicion(pos))
+        game.addVisual(plasmaNuevo)
+        plasmaNuevo.nuevoViaje(dir)
+    }
+
+    override method hudMunicion(){
+        return "mana-"
+    }
+
+    override method sonidoRecarga(){
+        game.sound("mana.mp3").play()
+    }
+
+    override method municionMaxima(){
+        return 12
+    }
+
 }
 
 object estadoAtacar {

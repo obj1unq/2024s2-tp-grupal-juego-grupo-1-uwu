@@ -2,7 +2,7 @@ import wollok.game.*
 import posiciones.*
 import hud.*
 import managers.*
-import tienda.*
+
 
 class Personaje { 
     //Imagen y posicion
@@ -59,7 +59,7 @@ class Personaje {
     
     method animacionAtaque(direccion) {                                                       
         self.image(self.imagenAtaque(direccion))
-        game.schedule(900,{self.image(self.imagenNormal(direccion))})
+        game.schedule(300,{self.image(self.imagenNormal(direccion))})
         self.sonidoAtaque()
     }
 
