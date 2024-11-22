@@ -8,17 +8,15 @@ class Personaje {
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
-    var property visualAmmo = self.municionImagen()
     var property oro = 0
     //Propiedades   
     var property arma 
     
-
+    method visualAmmo()
     method imagenInicial()
     method imagenNormal(dir)
     method imagenAtaque(dir)
     method sonidoAtaque()
-    method municionImagen()
     method cura(num)
     method sinMunicion()
     method lanzarEspecial() 

@@ -12,7 +12,7 @@ object dangalf inherits Personaje(arma=manosMagicas) {
         return "cura" + numero + "-mago.png"
     }
 
-    override method municionImagen(){
+    override method visualAmmo(){
         return "potion.png"
     }
 

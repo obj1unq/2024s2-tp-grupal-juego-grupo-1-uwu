@@ -24,8 +24,8 @@ object noel inherits Personaje(arma=pistola) {
         return "cura" + numero + "-noel.png"
     }
 
-     override method municionImagen(){
-        return "balas.png"
+     override method visualAmmo(){
+        return "variasBalas.png"
     }
 
 //-----------ataque-movimiento--------------------------------

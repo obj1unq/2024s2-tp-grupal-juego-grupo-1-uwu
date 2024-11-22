@@ -69,7 +69,7 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
     }
 }
 
-object escopeta inherits Arma(cadencia=800,cargador=6) {
+object escopeta inherits Arma(cadencia=900,cargador=6) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
