@@ -81,8 +81,13 @@ class BolaDeFuego inherits Proyectil(danio=40, velocidadViaje=220) {
     } 
 }
 
-
-
+class BolaPlasma inherits Proyectil(danio = 80, velocidadViaje=260) {
+    
+    override method impacto(dir) {
+        self.image("plasma-impacto-" + dir.toString() + ".png")
+        super(dir)
+    }
+}
 
 
 class Crater {
@@ -99,9 +104,6 @@ class Crater {
     }
 
 }
-
-
-
 
 
 class Acido {
@@ -149,6 +151,5 @@ class BolaEnergia inherits Proyectil(danio = 100, image="rayoGrande.png",velocid
 }
 
 
-class Baston inherits Proyectil(danio = 100, image= "hacerla.png", velocidadViaje=170) {
-
+class Baston inherits Proyectil(danio = 160, velocidadViaje=170) {
 }

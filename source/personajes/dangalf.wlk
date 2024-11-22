@@ -4,7 +4,7 @@ import posiciones.*
 import armas.*
 import personaje.*
 
-object dangalf inherits Personaje(arma=manosMagicas) {
+object dangalf inherits Personaje(arma=dosManos) {
 
 //-------------items------------------------------------------
 
@@ -21,15 +21,15 @@ object dangalf inherits Personaje(arma=manosMagicas) {
     
 
     override method imagenInicial(){
-        return "dangalf-normal-arriba.png"
+        return "dangalf-" + arma.toString() + "-normal-abajo.png"
     }
 
     override method imagenAtaque(dir) {
-        return "dangalf-ataque-" + dir.toString() + ".png"
+        return "dangalf-" + arma.toString() + "-ataque-" + dir.toString() + ".png"
     }
 
     override method imagenNormal(dir) {
-        return "dangalf-normal-" + dir.toString() + ".png"
+        return "dangalf-" + arma.toString() + "-normal-" + dir.toString() + ".png"
     }
 
     method especial(){}
