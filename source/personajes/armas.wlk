@@ -124,7 +124,7 @@ object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
     }
 
     override method hudMunicion(){
-        return "cartuchoDoble-"
+        return "cartuchosDobles-"
     }
 
     override method sonidoRecarga() {
