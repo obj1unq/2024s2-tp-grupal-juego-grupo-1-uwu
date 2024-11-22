@@ -1,6 +1,7 @@
 import extras.*
 import wollok.game.*
 import juego.*
+import tienda.*
 
 //---------------------------------Timer---------------------------------------
 
@@ -42,13 +43,25 @@ object barra{
 //----------------------------------BARRA DE VIDA-----------------------------
 
 object puntosDeVida {
-    var vida = 100
-    var property image =  "barravida-100.png"
+    
+    var vida = 60
+    var property vidaMax = 60 
+    var property image =  "barravida-60.png"
+
     var property position = game.at(0, 14)
+
+    var property precio = 300
 
     method curarse(cura){
         game.sound("cura-sonido.mp3").play()
-        vida = 100.min(vida + cura) 
+        vida = vidaMax.min(vida + cura) 
+        self.actualizar()
+    }
+    
+
+        method subirMaximo(num){
+        vidaMax = 100.min(vidaMax +num)
+        vida += 20 
         self.actualizar()
     }
 
@@ -74,6 +87,7 @@ object puntosDeVida {
     method actualizar(){
         self.image("barravida-" + vida.toString() + ".png")
     }
+
 }
 
 //----------------------------------------------MUNICION-----------------------------
@@ -97,7 +111,7 @@ object hudBalas {
 object oroObtenido {
 
     method position() {
-        return game.at(10, game.height() - 1 )
+        return game.at(12, game.height() - 1 )
     }
 
     method text() {
@@ -120,9 +134,12 @@ object barraDeEnergia {
 
     var property image =  "energia-"+ energia.toString() + ".png"
     var property energia = 10
-
+    var property energiaMaxima = 10
+    
+    var property precio = 300
+    
     method position() {
-            return game.at(12, 14)
+            return game.at(13, 14)
     }
     
     method validarEnergia(){
@@ -138,10 +155,13 @@ object barraDeEnergia {
     }
 
     method recargarEnergia(){
-        energia = (energia + 1).min(10)
+        energia = (energia + 1).min(energiaMaxima)
         self.image("energia-"+ energia.toString() + ".png") 
     }
-
+    
+    method subirMaximo(num){
+        energiaMaxima = 20.min(energiaMaxima +num)
+    }
 }
 
 object especial {

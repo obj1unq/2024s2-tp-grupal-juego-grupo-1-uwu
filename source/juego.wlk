@@ -8,6 +8,7 @@ import posiciones.*
 import sonidos.*
 import hud.*
 import managers.*
+import tienda.*
 
 object menu {
     /*
@@ -72,7 +73,10 @@ object juego {
         // testeo spawneo zombies
         //game.onTick(3000, "generarZombiesRandom", {managerZombie.generarZombieAleatorio(randomizadorZombies.posicionAleatoria())})
 
-        
+        //Tienda
+        keyboard.j().onPressDo({tienda.mejorarVida()})
+        //keyboard.k().onPressDo({tienda.mejorarArma()})
+        keyboard.l().onPressDo({tienda.mejorarEnergia()})
     }
 
     method actualizarHud(){

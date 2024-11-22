@@ -2,13 +2,14 @@ import wollok.game.*
 import posiciones.*
 import hud.*
 import managers.*
+import tienda.*
 
 class Personaje { 
     //Imagen y posicion
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
-    var property oro = 0
+    var property oro = 10000
     //Propiedades   
     var property arma 
     
@@ -73,7 +74,9 @@ class Personaje {
         oro += valor
     }
 
-    
+    method restarOro(valor){
+        oro = (oro-valor).max(0)
+    }
 
 }
 
