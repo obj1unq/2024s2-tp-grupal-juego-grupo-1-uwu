@@ -4,7 +4,7 @@ import posiciones.*
 import armas.*
 import proyectiles.*
 
-object noel inherits Personaje(arma=escopeta) {
+object noel inherits Personaje(arma=doblePistola) {
 
     var property ultimaDir = derecha
 

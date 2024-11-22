@@ -4,7 +4,7 @@ import posiciones.*
 import armas.*
 import personaje.*
 
-object dangalf inherits Personaje(arma=dosManos) {
+object dangalf inherits Personaje(arma=manosMagicas) {
 
 //-------------items------------------------------------------
 
