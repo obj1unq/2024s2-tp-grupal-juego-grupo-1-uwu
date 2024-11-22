@@ -37,7 +37,7 @@ class Arma {
     }
 
     method recargar(cant) {
-        cargador += cant
+        self.cargador((cargador + cant).min(self.municionMaxima()))
     }
 
     method hudMunicion()
