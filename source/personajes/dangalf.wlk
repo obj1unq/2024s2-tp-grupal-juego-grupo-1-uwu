@@ -6,6 +6,7 @@ import personaje.*
 
 object dangalf inherits Personaje(arma=manosMagicas) {
 
+    const armas = [tresManos]
 //-------------items------------------------------------------
 
     override method cura(numero){
@@ -40,6 +41,18 @@ object dangalf inherits Personaje(arma=manosMagicas) {
 
     method sonidoMuerte(){
         game.sound("wizard-death.mp3").play()
+    }
+
+    //Es igual en ambos pj, hay que meterlo en personaje
+    method mejorarArma(){
+        if(not armas.isEmpty()){
+            arma = armas.first()
+            armas.remove(arma)
+        }
+    }
+
+    method precioSiguienteArma(){
+        return armas.first().precio()
     }
 
 //------------hud-------------------------------------------

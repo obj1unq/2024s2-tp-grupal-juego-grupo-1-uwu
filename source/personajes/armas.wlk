@@ -8,6 +8,8 @@ class Arma {
     var property cargador 
     const cadencia
     var estado = estadoAtacar 
+
+    method precio()
     
     method quitarMunicion() {
         cargador -= 1
@@ -48,7 +50,9 @@ class Arma {
 
 object pistola inherits Arma(cadencia=500,cargador=12) {
 
-
+    override method precio(){
+        return 0
+    }
     override method disparar(dir,pos) {
         super(dir,pos)
         const balaNueva = new Bala(image="balaP-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
@@ -71,7 +75,9 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
 
 object doblePistola inherits Arma(cadencia=250,cargador=24) {
 
-
+    override method precio(){
+        return 300
+    }
     override method disparar(dir,pos) {
         super(dir,pos)
         const balaNueva = new Bala(image="balaP-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
@@ -93,6 +99,10 @@ object doblePistola inherits Arma(cadencia=250,cargador=24) {
 }
 
 object escopeta inherits Arma(cadencia=900,cargador=6) {
+
+    override method precio(){
+        return 500
+    }
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -116,6 +126,10 @@ object escopeta inherits Arma(cadencia=900,cargador=6) {
 
 object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
 
+    override method precio(){
+        return 800
+    }
+
     override method disparar(dir,pos) {
         super(dir,pos)
         const balaNueva = new BalaEscopeta(image="balaEscopeta-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
@@ -137,6 +151,10 @@ object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
 }
 
 object manosMagicas inherits Arma(cadencia=800,cargador=12) {
+
+    override method precio(){
+        return 0
+    }
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -163,6 +181,10 @@ object manosMagicas inherits Arma(cadencia=800,cargador=12) {
 }
 
 object tresManos inherits Arma(cadencia=900,cargador=12) {
+
+    override method precio(){
+        return 500
+    }
 
     override method disparar(dir,pos) {
         super(dir,pos)

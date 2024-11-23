@@ -75,7 +75,7 @@ object juego {
 
         //Tienda
         keyboard.j().onPressDo({tienda.mejorarVida()})
-        //keyboard.k().onPressDo({tienda.mejorarArma()})
+        keyboard.k().onPressDo({tienda.mejorarArma()})
         keyboard.l().onPressDo({tienda.mejorarEnergia()})
     }
 
