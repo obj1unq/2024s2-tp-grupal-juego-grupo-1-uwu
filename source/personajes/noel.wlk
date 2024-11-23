@@ -7,6 +7,7 @@ import proyectiles.*
 object noel inherits Personaje(arma=pistola) {
 
     const property armas = [doblePistola, escopeta, dobleEscopeta]
+    
     var property ultimaDir = derecha
 
     override method mover(dir) {

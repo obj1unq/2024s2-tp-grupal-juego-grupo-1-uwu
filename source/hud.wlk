@@ -56,8 +56,8 @@ object puntosDeVida {
     }
     
 
-        method subirMaximo(num){
-        vidaMax = 100.min(vidaMax +num)
+        method subirMaximo(){
+        vidaMax += 20
         vida += 20 
         self.actualizar()
     }
@@ -174,4 +174,13 @@ object especial {
     method validarEspecial() {
         if (zombiesAsesinados < 6) self.error("")
     } 
+}
+
+
+object cadencia {
+    method position() {
+        return game.at(12, game.height() - 1 )
+    }
+
+    method image() = "noel-cadencia-disparar.png"
 }

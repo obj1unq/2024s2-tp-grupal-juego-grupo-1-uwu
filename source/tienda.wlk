@@ -1,7 +1,7 @@
 import wollok.game.*
 import juego.*
 import hud.*
-import armas.*
+import personajes.armas.*
 
 
 object tienda{
@@ -10,24 +10,25 @@ object tienda{
     //var property vidaImagen = "VidaUp.png"
     //var property energiaImagen = "EnergiaUp.png"
     
-    var property oroObtenido = juego.jugador().oro()
+    var property oroObtenido = juego.jugador().oro() //Delegar oro a hud
     
     method position() {
             return game.at(11,7) //TIENE QUE ESTAR EN EL MEDIO (?)
     }
+
     //Letra J
     method mejorarVida(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
-        self.validarSiAlcanzaOro(puntosDeVida.precio())
         self.validarSiVidaEstaAlMax()
-        puntosDeVida.subirMaximo(20)
+        self.validarSiAlcanzaOro(puntosDeVida.precio())
+        puntosDeVida.subirMaximo()
         //Cambiar imgen si llego al maximo
         //sonido compra
         juego.jugador().restarOro(puntosDeVida.precio())  
     }
     //Letra L
     method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
-        self.validarSiAlcanzaOro(barraDeEnergia.precio())
         self.validarSiEnergiaEstaAlMax()
+        self.validarSiAlcanzaOro(barraDeEnergia.precio())
         barraDeEnergia.subirMaximo(3)
         //Cambiar imgen si llego al maximo
         //sonido compra
@@ -36,7 +37,7 @@ object tienda{
 
     //letra K
     method mejorarArma(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
-        //self.validarSiArmaEstaAlMax()
+        self.validarSiArmaEstaAlMax()
         self.validarSiAlcanzaOro(juego.jugador().precioSiguienteArma())
         juego.jugador().mejorarArma()
         //Cambiar imgen si llego al maximo

@@ -4,9 +4,9 @@ import posiciones.*
 import armas.*
 import personaje.*
 
-object dangalf inherits Personaje(arma=manosMagicas) {
+object dangalf inherits Personaje(arma=dosManos) {
 
-    const armas = [tresManos]
+    const property armas = [tresManos]
 //-------------items------------------------------------------
 
     override method cura(numero){

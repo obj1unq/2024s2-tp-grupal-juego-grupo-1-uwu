@@ -150,7 +150,7 @@ object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
     }
 }
 
-object manosMagicas inherits Arma(cadencia=800,cargador=12) {
+object dosManos inherits Arma(cadencia=800,cargador=12) {
 
     override method precio(){
         return 0

@@ -19,7 +19,7 @@ object menu {
 
 object juego {
 
-    var property jugador = noel
+    var property jugador = dangalf
 
     method hud() {
 
@@ -28,9 +28,10 @@ object juego {
         game.addVisual(timer)
         game.addVisual(puntosDeVida)
         game.addVisual(hudBalas)
-        game.addVisual(oroObtenido)
+        //game.addVisual(oroObtenido)
         game.addVisual(barraDeEnergia)
         game.addVisual(jugador)
+        game.addVisual(cadencia)
 
     }
 
