@@ -56,6 +56,7 @@ object infoControles inherits EstadoJuego() {
     override method continuar() {
         juego.estado(cargando)
         pantalla.iniciarCargando()
+        juego.frenarSonidoMenu()
     }
 }
 

@@ -12,15 +12,15 @@ object pantalla {
 
     method iniciarCargando() {
         image = "Cargando-1.png"
-        game.schedule(600, {image = "Cargando-2.png"})
-        game.schedule(1200, {image = "Cargando-3.png"})
-        game.schedule(4500,{self.abandonarCargando()})
+        game.schedule(500, {image = "Cargando-2.png"})
+        game.schedule(1000, {image = "Cargando-3.png"})
+        game.schedule(4000,{self.abandonarCargando()})
     }
 
     method abandonarCargando() {
         image = "Cargando-2.png"
-        game.schedule(600, {image = "Cargando-1.png"})
-        game.schedule(1200, {game.removeVisual(self)})
+        game.schedule(500, {image = "Cargando-1.png"})
+        game.schedule(1000, {game.removeVisual(self)})
     }
 
 }

@@ -23,6 +23,8 @@ object juego {
 
     var property estado = estadoMenu 
     var property jugador = noel
+    var property musicaActual = musicaMenu
+
 
     method elegirNoel() {
         jugador = noel
@@ -33,8 +35,17 @@ object juego {
     }
 
     method inicio() {
+        self.iniciarSonidoMenu()
         estado = estadoMenu
         game.addVisual(pantalla)
+    }
+
+    method iniciarSonidoMenu() {
+        musicaActual.play()
+    }
+
+    method frenarSonidoMenu() {
+        musicaActual.stop()
     }
 
     method teclas() {
