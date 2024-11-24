@@ -19,7 +19,7 @@ object menu {
 
 object juego {
 
-    var property jugador = dangalf
+    var property jugador = noel
 
     method hud() {
 
@@ -41,7 +41,7 @@ object juego {
         keyboard.up().onPressDo({jugador.ataque(arriba)})
         keyboard.down().onPressDo({jugador.ataque(abajo)})
         // Especial
-        keyboard.space().onPressDo({especial.tirarEspecial()})
+        keyboard.q().onPressDo({especial.tirarEspecial()})
     }
 
     method movimiento() {
@@ -92,7 +92,7 @@ object juego {
         keyboard.u().onPressDo({sonidoFondo.volume(0.3)})
         keyboard.i().onPressDo({sonidoFondo.volume(0)})
         sonidoFondo.shouldLoop(true)
-        game.schedule(003, { sonidoFondo.play()} )
+        //game.schedule(003, { sonidoFondo.play()} )
     }
 
     method persecucion() {

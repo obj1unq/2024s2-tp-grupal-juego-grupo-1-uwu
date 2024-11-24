@@ -89,7 +89,7 @@ object puntosDeVida {
 //----------------------------------------------MUNICION-----------------------------
 
 object hudBalas {
-    var property position = game.at(4, 14)
+    var property position = game.at(6, 14)
 
     method balas() {
         return juego.jugador().arma().municion()
@@ -179,7 +179,7 @@ object especial {
 
 object cadencia {
     method position() {
-        return game.at(12, game.height() - 1 )
+        return game.at(5, game.height() - 1 )
     }
 
     method image() = "noel-cadencia-disparar.png"
