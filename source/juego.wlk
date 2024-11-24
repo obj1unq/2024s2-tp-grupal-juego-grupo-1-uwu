@@ -9,6 +9,8 @@ import sonidos.*
 import hud.*
 import managers.*
 import tienda.*
+import estadosJuego.*
+import pantallas.*
 
 object menu {
     /*
@@ -19,7 +21,43 @@ object menu {
 
 object juego {
 
+    var property estado = estadoMenu 
     var property jugador = noel
+
+    method elegirNoel() {
+        jugador = noel
+    }
+
+    method elegirDangalf() {
+        jugador = dangalf
+    }
+
+    method inicio() {
+        estado = estadoMenu
+        game.addVisual(pantalla)
+    }
+
+    method teclas() {
+        //ataque
+        keyboard.left().onPressDo({estado.ataque(izquierda)})
+        keyboard.right().onPressDo({estado.ataque(derecha)})
+        keyboard.up().onPressDo({estado.ataque(arriba)})
+        keyboard.down().onPressDo({estado.ataque(abajo)})
+        keyboard.q().onPressDo({estado.tirarEspecial()})
+        //movimiento
+        keyboard.w().onPressDo({estado.mover(arriba)})
+	    keyboard.a().onPressDo({estado.mover(izquierda)})
+	    keyboard.s().onPressDo({estado.mover(abajo)})
+	    keyboard.d().onPressDo({estado.mover(derecha)})
+        //Tienda
+        keyboard.j().onPressDo({estado.mejorarVida()})
+        keyboard.k().onPressDo({estado.mejorarArma()})
+        keyboard.l().onPressDo({estado.mejorarEnergia()})
+        //menu
+        keyboard.enter().onPressDo({estado.continuar()})
+        keyboard.o().onPressDo({estado.elegirNoel()})
+        keyboard.p().onPressDo({estado.elegirDangalf()})
+    }
 
     method hud() {
 
@@ -35,28 +73,12 @@ object juego {
 
     }
 
-    method ataque() {
-        keyboard.left().onPressDo({jugador.ataque(izquierda)})
-        keyboard.right().onPressDo({jugador.ataque(derecha)})
-        keyboard.up().onPressDo({jugador.ataque(arriba)})
-        keyboard.down().onPressDo({jugador.ataque(abajo)})
-        // Especial
-        keyboard.q().onPressDo({especial.tirarEspecial()})
-    }
-
-    method movimiento() {
-        keyboard.w().onPressDo({jugador.mover(arriba)})
-	    keyboard.a().onPressDo({jugador.mover(izquierda)})
-	    keyboard.s().onPressDo({jugador.mover(abajo)})
-	    keyboard.d().onPressDo({jugador.mover(derecha)})
-    }
-
     method tablero() {
         game.title("desvariados") 
-        game.width(21)
+        game.width(20)
         game.height(15)
         game.cellSize(45)
-        game.ground("pisonuevo-stage1.png")
+        //game.ground("pisonuevo-stage1.png")
 
         
         // para testear las clases vamos a colocar teclas para hacer aparecer cada una
@@ -74,10 +96,6 @@ object juego {
         // testeo spawneo zombies
         //game.onTick(3000, "generarZombiesRandom", {managerZombie.generarZombieAleatorio(randomizadorZombies.posicionAleatoria())})
 
-        //Tienda
-        keyboard.j().onPressDo({tienda.mejorarVida()})
-        keyboard.k().onPressDo({tienda.mejorarArma()})
-        keyboard.l().onPressDo({tienda.mejorarEnergia()})
     }
 
     method actualizarHud(){

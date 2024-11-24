@@ -124,7 +124,7 @@ object escopeta inherits Arma(cadencia=900,cargador=6) {
     }
 }
 
-object dobleEscopeta inherits Arma(cadencia=450,cargador=12) {
+object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
 
     override method precio(){
         return 800

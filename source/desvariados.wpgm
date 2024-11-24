@@ -13,22 +13,13 @@ import niveles.*
 
 program desvariados {
 
-    //juego.menu()
-    // y todo lo de abajo se ejecutaria despues de accionar en el menu
-
     juego.tablero()
 
-    juego.hud()
+    juego.inicio()
 
-    juego.movimiento()
+    juego.teclas()
 
-    juego.ataque()
-
-    juego.sonido()
-
-    juego.persecucion()
-
-    //juego.pausa() (arreglar)
+    //juego.persecucion()
 
     game.start()
 }
