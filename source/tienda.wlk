@@ -74,3 +74,15 @@ object tienda{
             self.error("")} //No quedan armas por mejorar
     }
 }
+
+object mejoraDeVida {
+
+}
+
+object mejoraDeEnergia {
+
+}
+
+object mejoraDeArma {
+    
+}

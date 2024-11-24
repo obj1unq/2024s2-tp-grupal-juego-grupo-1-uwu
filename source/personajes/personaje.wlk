@@ -9,7 +9,7 @@ class Personaje {
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
-    var property oro = 1000
+    var property oro = 0
     //Propiedades   
     var property arma 
     
@@ -71,7 +71,7 @@ class Personaje {
 
     method obtenerOro(valor) {
         game.sound("oro-sonido.mp3").play()
-        oro += valor
+        oro = (oro + valor).min(999)
     }
 
     method restarOro(valor){
