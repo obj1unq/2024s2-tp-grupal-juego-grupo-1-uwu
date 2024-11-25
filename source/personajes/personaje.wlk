@@ -9,7 +9,7 @@ class Personaje {
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Estadisticas
-    var property oro = 0
+    var property oro = 9999
     //Propiedades   
     var property arma 
     

@@ -2,6 +2,7 @@ import wollok.game.*
 import juego.*
 import proyectiles.*
 import managers.*
+import hud.*
 
 class Arma {
 
@@ -35,6 +36,7 @@ class Arma {
 
     method cicloEstado() {
         estado = estadoEsperar
+        cadenciaHud.ciclo(cadencia)
         game.schedule(cadencia, {estado = estadoAtacar})
     }
 
@@ -209,6 +211,36 @@ object tresManos inherits Arma(cadencia=900,cargador=12) {
         return 12
     }
 
+}
+
+object cuatroManos inherits Arma(cadencia=700,cargador=12) {
+    
+    override method precio(){
+        return 900
+    }
+
+    override method disparar(dir,pos) {
+        super(dir,pos)
+        self.hechizo(dir,pos)
+    }
+
+    method hechizo(dir,pos) {
+        const calavera = new Calavera(image="calavera-" + dir.toString() + ".png", position = dir.siguientePosicion(pos))
+        game.addVisual(calavera)
+        calavera.nuevoViaje(dir)
+    }
+
+    override method hudMunicion(){
+        return "mana-"
+    }
+
+    override method sonidoRecarga(){
+        game.sound("mana.mp3").play()
+    }
+
+    override method municionMaxima(){
+        return 12
+    }
 }
 
 object estadoAtacar {

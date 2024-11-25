@@ -153,7 +153,7 @@ class Zombie {
         self.sonidoMuerte()
         game.removeVisual(self)
         managerZombie.quitarZ(self)
-        nivelManager.incrementarEnemigos() //-- niveles
+        //nivelManager.incrementarEnemigos() //-- niveles
         managerItems.generarDrop(position)
         //managerItems.spawnearMunicionEn(self.position())
     }

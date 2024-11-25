@@ -80,8 +80,8 @@ object juego {
         //game.addVisual(oroObtenido)
         game.addVisual(barraDeEnergia)
         game.addVisual(jugador)
-        game.addVisual(cadencia)
-
+        game.addVisual(cadenciaHud)
+        game.onTick(1000, "hud", {self.actualizarHud()})
     }
 
     method tablero() {
@@ -101,7 +101,7 @@ object juego {
         keyboard.b().onPressDo({managerItems.spawnearCura(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
         keyboard.n().onPressDo({managerItems.spawnearOro(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
         keyboard.m().onPressDo({managerItems.spawnearMunicionRandom()})
-        game.onTick(1000, "hud", {self.actualizarHud()})
+        
         //game.onTick(15000, "drops", {managerItems.generarDropRandom()})
 
         // testeo spawneo zombies

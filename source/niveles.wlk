@@ -1,4 +1,5 @@
 import wollok.game.*
+import estadosJuego.*
 import enemigos.*
 import juego.*
 import managers.*
@@ -9,10 +10,21 @@ object nivelManager {
     const property niveles = [niv1,niv2,niv3,niv4,niv5,
                               niv6,niv7,niv8]
 
+    var property obstaculos = #{}
+
+    var property enemigosTotales = 0
+    var property enemigosAsesinados = 0
+
     method iniciarSigNivel() {
+        obstaculos.clear() // mejor en terminar nivel
+        
         const actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
+        
+        juego.hud()
+        juego.estado(jugando)
+        juego.persecucion()
     }
 
 /*
@@ -59,10 +71,13 @@ class Nivel {
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],         
     ].reverse()
 */
-
+    const property position = game.at(0,0)
+    var property image
+    
     method tablero() //devolver un mapa como el de arriba
 
-    method dibujar() {
+    method inicializar() {
+        game.addVisual(self)
         game.height(self.tablero().size())
         game.width(self.tablero().get(0).size())
 
@@ -71,18 +86,19 @@ class Nivel {
                 self.tablero().get(y).get(x).dibujarEn(game.at(x,y))
             })
         })
-
     }
+
+    
 }
 
-object niv1 inherits Nivel() {
+object niv1 inherits Nivel(image="suelo-jardin.png") {
 
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,c,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
      [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
@@ -99,29 +115,7 @@ object niv1 inherits Nivel() {
 
 }
 
-object niv2 inherits Nivel() {
-    override method tablero() {
-    return
-    [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
-     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_]         
-    ].reverse() 
-    }
-}
-
-object niv3 inherits Nivel() {
+object niv2 inherits Nivel(image="suelo-jardin.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -143,7 +137,7 @@ object niv3 inherits Nivel() {
     }
 }
 
-object niv4 inherits Nivel() {
+object niv3 inherits Nivel(image="suelo-casa.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -165,7 +159,7 @@ object niv4 inherits Nivel() {
     }
 }
 
-object niv5 inherits Nivel() {
+object niv4 inherits Nivel(image="suelo-casa.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -187,7 +181,7 @@ object niv5 inherits Nivel() {
     }
 }
 
-object niv6 inherits Nivel() {
+object niv5 inherits Nivel(image="suelo-castillo.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -209,7 +203,7 @@ object niv6 inherits Nivel() {
     }
 }
 
-object niv7 inherits Nivel() {
+object niv6 inherits Nivel(image="suelo-castillo.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -231,7 +225,29 @@ object niv7 inherits Nivel() {
     }
 }
 
-object niv8 inherits Nivel() {
+object niv7 inherits Nivel(image="suelo-laboratorio.png") {
+    override method tablero() {
+    return
+    [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],     
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
+     [_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_]         
+    ].reverse() 
+    }
+}
+
+object niv8 inherits Nivel(image="suelo-laboratorio.png") {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
@@ -263,14 +279,13 @@ object c {
     method dibujarEn(pos) {
         const cajaNueva = new Caja(position=pos)
         game.addVisual(cajaNueva)
+        nivelManager.obstaculos().add(cajaNueva)
     }
 }
 
 class Caja {
-    var property image = "caja2"
+    var property image = "caja2.png"
     var property position
-
-    
 }
 
 

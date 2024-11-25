@@ -2,6 +2,7 @@ import wollok.game.*
 import juego.*
 import pantallas.*
 import hud.*
+import tienda.*
 
 class EstadoJuego {
 
@@ -67,15 +68,18 @@ object cargando inherits EstadoJuego() {
 object jugando inherits EstadoJuego() {
 
     override method ataque(dir) {
-        juego.jugador.ataque(dir)
+        juego.jugador().ataque(dir)
     }
 
     override method mover(dir) {
-        juego.jugador.mover(dir)
+        juego.jugador().mover(dir)
     }
 
     override method especial() {
         especial.tirarEspecial()
     }
 
+    override method mejorarArma() {
+        tienda.mejorarArma()
+    } 
 }

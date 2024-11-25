@@ -177,10 +177,16 @@ object especial {
 }
 
 
-object cadencia {
+object cadenciaHud {
+    
+    var property image = juego.jugador().toString() + "-cadencia-disparar.png"
+
     method position() {
         return game.at(5, game.height() - 1 )
     }
 
-    method image() = "noel-cadencia-disparar.png"
+    method ciclo(tiempo) {
+        image= juego.jugador().toString() + "-cadencia-esperar.png"
+        game.schedule(tiempo, {image = juego.jugador().toString() + "-cadencia-disparar.png"})
+    }
 }
