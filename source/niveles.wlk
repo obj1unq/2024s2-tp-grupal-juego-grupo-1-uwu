@@ -38,17 +38,6 @@ object nivelManager {
 //Luego una pantalla donde este el menu y se seleccione el personaje
 
 
-object _ {
-    method dibujar() {}
-}
-
-//caja
-object c {
-    method dibujar() {
-        
-    }
-}
-
 class Nivel {
 
 /*
@@ -263,3 +252,25 @@ object niv8 inherits Nivel() {
     ].reverse() 
     }
 }
+
+
+object _ {
+    method dibujarEn(pos) {}
+}
+
+//caja
+object c {
+    method dibujarEn(pos) {
+        const cajaNueva = new Caja(position=pos)
+        game.addVisual(cajaNueva)
+    }
+}
+
+class Caja {
+    var property image = "caja2"
+    var property position
+
+    
+}
+
+
