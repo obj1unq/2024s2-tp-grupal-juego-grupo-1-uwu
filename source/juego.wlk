@@ -54,7 +54,7 @@ object juego {
         keyboard.right().onPressDo({estado.ataque(derecha)})
         keyboard.up().onPressDo({estado.ataque(arriba)})
         keyboard.down().onPressDo({estado.ataque(abajo)})
-        keyboard.q().onPressDo({estado.tirarEspecial()})
+        keyboard.q().onPressDo({estado.especial()})
         //movimiento
         keyboard.w().onPressDo({estado.mover(arriba)})
 	    keyboard.a().onPressDo({estado.mover(izquierda)})
