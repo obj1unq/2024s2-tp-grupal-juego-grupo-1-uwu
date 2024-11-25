@@ -125,3 +125,34 @@ object mejoraDeArma {
         }
     }
 }
+
+class Numero {
+    method valor()
+    var property position = game.at(0,0)
+
+    method agregarAlJuego() {
+        game.addVisual(new Unidad(num=self))
+        game.addVisual(new Decena(num=self))
+        game.addVisual(new Centena(num=self))
+    } 
+}
+
+class Digito {
+    var property num 
+    method position() {return num.position()}
+    method image() 
+    method digito() {return self.extraer(num.valor().toString())}
+    method extraer(string) 
+}
+
+class Unidad inherits Digito() {
+    override method image() {}
+}   
+
+class Decena inherits Digito() {
+    override method image() {}
+}
+
+class Centena inherits Digito() { 
+    override method image() {}
+}
