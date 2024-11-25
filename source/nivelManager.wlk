@@ -24,6 +24,10 @@ object nivelManager {
         return obstaculos.map({o => o.position()})
     }
 
+    method hayCajaEn(pos) {
+        return self.posicionesTapadas().any({p => p==pos})
+    }
+
     method iniciarSigNivel() {
         obstaculos.clear() // mejor en terminar nivel
         

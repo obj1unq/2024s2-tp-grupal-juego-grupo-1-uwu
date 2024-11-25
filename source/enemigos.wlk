@@ -115,7 +115,7 @@ class Zombie {
 
     method sigPosFavorable() {
         const disponibles = tablero.verticalesDe(position).filter({pos => not(managerZombie.posTieneZombie(pos))})
-        const dispYSinCajas = disponibles.filter({pos => not(nivelManager.posicionesTapadas().contains(pos))})
+        const dispYSinCajas = disponibles.filter({pos => not(nivelManager.hayCajaEn(pos))})
         return dispYSinCajas.min({pos => pos.distance(self.agro().position())})
     }
 

@@ -1,3 +1,4 @@
+import nivelManager.*
 import wollok.game.*
 import posiciones.*
 import stats.*
@@ -29,8 +30,8 @@ class Personaje {
     // -------------movimiento-------------------------------
     
     method mover(direccion) {
-        barraDeEnergia.validarEnergia()
         self.validarMover(direccion)
+        barraDeEnergia.validarEnergia()
 	    position = direccion.siguientePosicion(position)
         self.image(self.imagenNormal(direccion))
         managerItems.revisarPorItems(position)
@@ -40,10 +41,17 @@ class Personaje {
 		const siguiente = direccion.siguientePosicion(position)
 		tablero.validarDentro(siguiente)
         self.validarNoHayEnemigos(siguiente)
+        self.validarNoHayCaja(siguiente)
 	}
 
     method validarNoHayEnemigos(posicion) {
         if(managerZombie.posTieneZombie(posicion)) {
+            self.error("")
+        }
+    }
+
+    method validarNoHayCaja(pos) {
+        if (nivelManager.hayCajaEn(pos)) {
             self.error("")
         }
     }
