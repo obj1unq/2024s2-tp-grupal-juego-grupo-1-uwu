@@ -19,7 +19,5 @@ program desvariados {
 
     juego.teclas()
 
-    //juego.persecucion()
-
     game.start()
 }

@@ -37,6 +37,10 @@ object managerItems {
         balasEnTablero -= 1
     }
 
+    method darleTodoAlPersonaje() {
+        drops.forEach({d => d.colisionPj()})
+    }
+
     // Oro = 25% / Municion = 40% / Vida = 20% / Nada = 15% 
     method generarDrop(posicion) {
         const numero = 0.randomUpTo(100).round()
@@ -134,6 +138,14 @@ object managerMonedas {
 
 object managerZombie {
     const property zombies = #{}
+
+     method persecucion() {
+        game.onTick(650,"persecucionGame",{zombies.forEach({z => z.perseguirAJugador()})})
+    }
+
+    method terminarPersecucion() {
+        game.removeTickEvent("persecucionGame")
+    }
 
     method agregarZ(zombie) {
         zombies.add(zombie)

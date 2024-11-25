@@ -50,7 +50,7 @@ object hudVisible {
 
 object suelo {
     var property position = game.at(0,0)
-    var property image = "empty"
+    var property image = ""
 
     method visualizarCon(img) {
         image = img 

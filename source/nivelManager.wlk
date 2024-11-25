@@ -37,11 +37,13 @@ object nivelManager {
         
         hudVisible.dibujar()
         juego.estado(jugando)
-        juego.persecucion()
+        managerZombie.persecucion()
     }
 
     method terminarNivel() {
-
+        managerZombie.terminarPersecucion()
+        managerItems.darleTodoAlPersonaje()
+        game.clear()
     }
 
 /*

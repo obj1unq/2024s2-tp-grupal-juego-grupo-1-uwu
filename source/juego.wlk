@@ -78,6 +78,7 @@ object juego {
         //game.ground("pisonuevo-stage1.png")
 
         
+        /*
         // para testear las clases vamos a colocar teclas para hacer aparecer cada una
         // mas adelante sus spawns van a estar decididos por otros eventos y no estas teclas
         keyboard.z().onPressDo({managerZombie.spawnearZ(generadorZombie.zombieComun(generadorZombie.posicionInicial()))})
@@ -87,16 +88,13 @@ object juego {
         keyboard.b().onPressDo({managerItems.spawnearCura(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
         keyboard.n().onPressDo({managerItems.spawnearOro(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
         keyboard.m().onPressDo({managerItems.spawnearMunicionRandom()})
-        
-        //game.onTick(15000, "drops", {managerItems.generarDropRandom()})
+        */
 
         // testeo spawneo zombies
         //game.onTick(3000, "generarZombiesRandom", {managerZombie.generarZombieAleatorio(randomizadorZombies.posicionAleatoria())})
 
     }
 
-    method persecucion() {
-        game.onTick(650,"persecucionGame",{managerZombie.zombies().forEach({z => z.perseguirAJugador()})})
-    }
+   
 
 }
