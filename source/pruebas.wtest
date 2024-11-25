@@ -5,7 +5,7 @@ import extras.*
 import posiciones.*
 import sonidos.*
 import juego.*
-import hud.*
+import stats.*
 import proyectiles.*
 
 

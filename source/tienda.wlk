@@ -1,8 +1,6 @@
 import wollok.game.*
 import juego.*
-import hud.*
-import personajes.armas.*
-
+import stats.*
 
 object tienda{
     

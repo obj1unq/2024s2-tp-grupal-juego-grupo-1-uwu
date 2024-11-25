@@ -2,7 +2,7 @@ import wollok.game.*
 import juego.*
 import posiciones.*
 import sonidos.*
-import niveles.*
+import nivelManager.*
 import managers.*
 
 
@@ -115,7 +115,8 @@ class Zombie {
 
     method sigPosFavorable() {
         const disponibles = tablero.verticalesDe(position).filter({pos => not(managerZombie.posTieneZombie(pos))})
-        return disponibles.min({pos => pos.distance(self.agro().position())})
+        const dispYSinCajas = disponibles.filter({pos => not(nivelManager.posicionesTapadas().contains(pos))})
+        return dispYSinCajas.min({pos => pos.distance(self.agro().position())})
     }
 
     method dirAgroPegado() {

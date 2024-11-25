@@ -2,13 +2,12 @@ import wollok.game.*
 import juego.*
 import proyectiles.*
 import managers.*
-import hud.*
 
 class Arma {
 
     var property cargador 
     const cadencia
-    var estado = estadoAtacar 
+    var property estado = disparar
 
     method precio()
     
@@ -35,9 +34,8 @@ class Arma {
     }
 
     method cicloEstado() {
-        estado = estadoEsperar
-        cadenciaHud.ciclo(cadencia)
-        game.schedule(cadencia, {estado = estadoAtacar})
+        estado = esperar
+        game.schedule(cadencia, {estado = disparar})
     }
 
     method recargar(cant) {
@@ -243,12 +241,12 @@ object cuatroManos inherits Arma(cadencia=700,cargador=12) {
     }
 }
 
-object estadoAtacar {
+object disparar {
     method gatillar(dir,pos,arma) {
         arma.disparar(dir,pos)
     }
 }
 
-object estadoEsperar {
+object esperar {
     method gatillar(dir,pos,arma) {}
 }

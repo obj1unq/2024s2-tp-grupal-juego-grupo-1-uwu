@@ -1,24 +1,22 @@
-import hud.*
+import stats.*
 import wollok.game.*
 import juego.*
 import managers.*
-
-
 
 //---------------------------------Drops---------------------------------------
 
 class Drop {
     var property position
     var property image
+
+    method colisionPj()
 }
-
-
 
 //---------------------------------Curas---------------------------------------
 class Cura inherits Drop {
     const vidaDada
 
-    method colisionPj() {
+    override method colisionPj() {
         puntosDeVida.curarse(vidaDada)
         game.removeVisual(self)
         managerItems.quitarItem(self)
@@ -30,7 +28,7 @@ class Cura inherits Drop {
 class Oro inherits Drop()  {
     const valor
 
-    method colisionPj() {
+    override method colisionPj() {
         juego.jugador().obtenerOro(valor)
         game.removeVisual(self)
         managerItems.quitarItem(self)
@@ -41,32 +39,11 @@ class Oro inherits Drop()  {
 
 class Balas inherits Drop(image = juego.jugador().visualAmmo()){
 
-    method colisionPj() {
+    override method colisionPj() {
         juego.jugador().arma().recargar(6)
         game.removeVisual(self)
         managerItems.quitarItem(self)
         managerItems.restarBalasDeTablero()
     }
-}
-
-
-//---------------------------------Colisiones---------------------------------------
-
-object muro  {
-
-    var property position = game.at(8,8)
-    var property image = "madera.png"
-}
-
-object municionActual {
-
-    method position() {return game.at(6, game.height() - 1 )}
-
-    method text() {return juego.jugador().arma().cargador().toString()}
-
-    method colisionPj() {}
-
-    method textColor() {return "FFFFFF"}
-
 }
 

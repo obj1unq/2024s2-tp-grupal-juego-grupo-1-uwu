@@ -100,26 +100,6 @@ object hudBalas {
     }
 }
 
-
-//----------------------------------------------ORO-----------------------------
-object oroObtenido {
-
-    method position() {
-        return game.at(12, game.height() - 1 )
-    }
-
-    method text() {
-        return juego.jugador().oro().toString()
-    }
-
-    method textColor() {
-        return "ffff00"
-    }
-
-    method impactoProyectil(danio) {}
-}
-
-
 //----------------------------------------------energia-----------------------------
 
 
@@ -176,17 +156,25 @@ object especial {
     } 
 }
 
+object municionActual {
+
+    method position() {return game.at(6, game.height() - 1 )}
+
+    method text() {return juego.jugador().arma().cargador().toString()}
+
+    method colisionPj() {}
+
+    method textColor() {return "FFFFFF"}
+
+}
 
 object cadenciaHud {
     
-    var property image = juego.jugador().toString() + "-cadencia-disparar.png"
+    method image()  {
+        return juego.jugador().toString() + "-cadencia-" + juego.jugador().arma().estado().toString() + ".png"
+    }
 
     method position() {
         return game.at(5, game.height() - 1 )
-    }
-
-    method ciclo(tiempo) {
-        image= juego.jugador().toString() + "-cadencia-esperar.png"
-        game.schedule(tiempo, {image = juego.jugador().toString() + "-cadencia-disparar.png"})
     }
 }

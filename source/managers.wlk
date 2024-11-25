@@ -4,7 +4,7 @@ import posiciones.*
 import juego.*
 import extras.*
 import enemigos.*
-import hud.*
+import stats.*
 
 object managerAcido {
     
@@ -25,24 +25,6 @@ object managerCrater {
         const craterNuevo = new Crater(position=pos)
         game.addVisual(craterNuevo)
         craterNuevo.daniar(dmg)
-    }
-}
-
-object managerVisual {
-    const visuales = #{}
-
-    method agregarVisual(visual) { 
-        game.addVisual(visual)
-        visuales.add(visual)
-    }
-
-    method removerVisual(visual) {
-        game.removeVisual(visual)
-        visuales.remove(visual)
-    }
-
-    method resetearVisuales() {
-        visuales.forEach({v => v.resetearVisual()})
     }
 }
 
@@ -113,7 +95,7 @@ object managerItems {
 
     method posiblesBalas(municion) {
         if(municion==0) {
-            game.schedule(6000,{self.siNoHayBalasSoltarle()})
+            game.schedule(3000,{self.siNoHayBalasSoltarle()})
         }
     }
 

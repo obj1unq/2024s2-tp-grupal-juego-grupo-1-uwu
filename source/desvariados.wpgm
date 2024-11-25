@@ -6,9 +6,9 @@ import posiciones.*
 import sonidos.*
 import juego.*
 import proyectiles.*
-import hud.*
+import stats.*
 import managers.*
-import niveles.*
+import nivelManager.*
 
 
 program desvariados {

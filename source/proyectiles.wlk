@@ -116,7 +116,7 @@ class Crater {
 
 class Acido {
     
-    var property image = "arbusto.png"
+    var property image = "charco.png"
     const property position
 
     method daniar(dmg) {

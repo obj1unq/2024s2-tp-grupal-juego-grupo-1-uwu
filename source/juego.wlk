@@ -6,7 +6,7 @@ import enemigos.*
 import extras.*
 import posiciones.*
 import sonidos.*
-import hud.*
+import stats.*
 import managers.*
 import tienda.*
 import estadosJuego.*
@@ -70,20 +70,6 @@ object juego {
         keyboard.p().onPressDo({estado.elegirDangalf()})
     }
 
-    method hud() {
-
-        game.addVisual(municionActual)
-        game.addVisual(barra)
-        game.addVisual(timer)
-        game.addVisual(puntosDeVida)
-        game.addVisual(hudBalas)
-        //game.addVisual(oroObtenido)
-        game.addVisual(barraDeEnergia)
-        game.addVisual(jugador)
-        game.addVisual(cadenciaHud)
-        game.onTick(1000, "hud", {self.actualizarHud()})
-    }
-
     method tablero() {
         game.title("desvariados") 
         game.width(20)
@@ -109,11 +95,6 @@ object juego {
 
     }
 
-    method actualizarHud(){
-        barraDeEnergia.recargarEnergia()
-        timer.tick()
-    }
-
     method sonido() {
 
         const sonidoFondo = game.sound("echo-in-the-night.mp3")
@@ -134,25 +115,4 @@ object juego {
         
     }
 
-/*
-    method pausa() {
-        keyboard.space().onPressDo({self.pausarTodo()})
-    }
-
-    method pausarTodo() {
-        var presionado = 0
-
-        if (presionado == 0) {
-            presionado = 1
-            personaje.pausarse()
-            game.removeTickEvent("persecucion")
-            game.removeTickEvent("timer")
-        } else {
-            presionado = 0
-            game.onTick(1000, "timer", {timer.tick()})
-            game.onTick(800, "persecucion", {zombie.perseguirAPersonaje()})
-            personaje.vivo()
-        }
-    }
-*/
 }

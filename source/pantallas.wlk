@@ -1,5 +1,7 @@
-import niveles.*
+import nivelManager.*
+import juego.*
 import wollok.game.*
+import stats.*
 
 object pantalla {
     method position() = game.at(0,0)
@@ -25,10 +27,33 @@ object pantalla {
 
 }
 
-object fondo {
+object hudVisible {
+
+    method dibujar() {
+        game.addVisual(municionActual)
+        game.addVisual(barra)
+        game.addVisual(timer)
+        game.addVisual(puntosDeVida)
+        game.addVisual(hudBalas)
+        game.addVisual(barraDeEnergia)
+        game.addVisual(cadenciaHud)
+        game.addVisual(juego.jugador())
+        game.onTick(1000, "hud", {self.actualizarHud()})
+    }
+
+    method actualizarHud() {
+        barraDeEnergia.recargarEnergia()
+        timer.tick()
+    }
 
 }
 
-object hudVisible {
+object suelo {
+    var property position = game.at(0,0)
+    var property image = "empty"
 
+    method visualizarCon(img) {
+        image = img 
+        game.addVisual(self)
+    }
 }

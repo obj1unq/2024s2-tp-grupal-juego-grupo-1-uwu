@@ -1,6 +1,6 @@
 import wollok.game.*
 import posiciones.*
-import hud.*
+import stats.*
 import managers.*
 
 
@@ -21,7 +21,6 @@ class Personaje {
     method cura(num)
     method sinMunicion()
     method lanzarEspecial() 
-
 
     method visualHealth(numero) {
         return self.cura(numero)
