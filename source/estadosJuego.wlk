@@ -10,7 +10,7 @@ class EstadoJuego {
     method ataque(dir) {}
 
     method especial() {}
-
+    
     method mover(dir) {}
 
     method mejorarVida() {}
