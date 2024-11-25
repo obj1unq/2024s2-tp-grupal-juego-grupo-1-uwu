@@ -46,23 +46,15 @@ object managerItems {
     method generarDrop(posicion) {
         const numero = 0.randomUpTo(100).round()
 
-        self.validarDropsEnPantalla()
         if (numero <= 25) { 
             self.spawnearOro(0.randomUpTo(3).round().max(1), posicion)
-        } else if (numero > 25 and numero <= 65) {
+        } else if (numero > 25 and numero <= 50) {
             self.spawnearMunicion(posicion)
-        } else if (numero > 65 and numero <= 85) {
+        } else if (numero > 50 and numero <= 75) {
             self.spawnearCura(0.randomUpTo(3).round().max(1) , posicion)
         } 
     }
 
-    method validarDropsEnPantalla(){
-        if (drops.size() > 2){self.error("")}
-    }
-
-    method generarDropRandom(){
-        self.generarDrop(tablero.posicionRandom())
-    }
 
     method quitarItem(item) {
         drops.remove(item)
@@ -85,12 +77,6 @@ object managerItems {
         drops.add(oroNuevo)
     }
 
-    method spawnearMunicionRandom() {
-        const nuevaMunicion = new Balas(position = tablero.posicionRandom())
-        game.addVisual(nuevaMunicion)
-        drops.add(nuevaMunicion)
-    }
-
     method spawnearMunicion(posicion) {
         balasEnTablero += 1
         const nuevaMunicion = new Balas(position = posicion)
@@ -98,15 +84,9 @@ object managerItems {
         drops.add(nuevaMunicion)
     }
 
-    method posiblesBalas(municion) {
-        if(municion==0) {
-            game.schedule(3000,{self.siNoHayBalasSoltarle()})
-        }
-    }
-
     method siNoHayBalasSoltarle() {
         if (balasEnTablero == 0) {
-            self.spawnearMunicionRandom()
+            self.spawnearMunicion()
         }
     }
 }
@@ -139,8 +119,45 @@ object managerMonedas {
 
 object managerZombie {
     const property zombies = #{}
+    const property spawnPoints = #{game.at(3,0),game.at(15,0),game.at(3,13),game.at(15,13)} 
+    var property zombiesDelNivel = 0
+    var property zombiesSpawneados = 0
 
-     method persecucion() {
+    method spawnCycle(cant) {
+        game.onTick(3000,"spawnCycle",{self.spawneoRandom(cant)})
+        zombiesDelNivel = cant
+    }
+
+    method terminarSpawnCycle() {
+        game.removeTickEvent("spawnCycle")
+        zombiesSpawneados = 0
+    }
+
+    method posicionDeSpawneoRandom() {
+        return spawnPoints.anyOne()
+    }
+
+    method condicionSpawneoRandom(cant) {
+        return (zombies.size() < 4 and (cant > zombiesSpawneados))
+    }
+
+    method spawneoRandom(cant) {
+        if (self.condicionSpawneoRandom(cant)) { 
+        const zombieNuevo = 1.randomUpTo(4).round()
+        if(zombieNuevo == 1) {
+            self.spawnearZ(new ZombieComun(position=self.posicionDeSpawneoRandom()))
+        }
+        else if(zombieNuevo == 2) {
+            self.spawnearZ(new ZombiePerro(position=self.posicionDeSpawneoRandom()))
+        }
+        else if(zombieNuevo == 3) {
+            self.spawnearZ(new ZombieTanque(position=self.posicionDeSpawneoRandom()))
+        }
+        else {self.spawnearZ(new ZombieThrower(position=self.posicionDeSpawneoRandom()))}
+    }
+    }
+
+    method persecucion() {
         game.onTick(650,"persecucionGame",{zombies.forEach({z => z.perseguirAJugador()})})
     }
 
@@ -161,20 +178,15 @@ object managerZombie {
     method spawnearZ(zombie) {
         zombies.add(zombie)
         game.addVisual(zombie)
+        zombiesSpawneados += 1
     }
 
       method posTieneZombie(pos) {
         return (zombies.any({zom => zom.position() == pos}))
     }
 
-/*   REVISAR
-    method generarZombieAleatorio(posicion) {
-        const zombieNuevo = randomizadorZombies.randomizarZombie(posicion)
-        zombies.add(zombieNuevo)
-        game.addVisual(zombieNuevo)
-        zombieNuevo.persecucion()
-    }
 
+/*
     method activarODesactivarGeneracionAleatoria() {
         if(contador.even()) {
             contador += 1
@@ -185,6 +197,7 @@ object managerZombie {
         }
     }
 */
+
 }
 
 object generadorZombie {

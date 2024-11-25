@@ -7,6 +7,11 @@ object pantalla {
     method position() = game.at(0,0)
     var property image = "Menu.png"
 
+    method fin() {
+        game.addVisual(self)
+        image = "pantalla-victoria.png"
+    }
+
     method seleccionPj() {
         image = "Seleccion-de--Personaje.png"
     }
@@ -29,6 +34,7 @@ object pantalla {
 
     method limpiar() {
         game.allVisuals().forEach({v => game.removeVisual(v)})
+        game.addVisual(self)
         image = "Cargando-3.png"
         self.abandonarCargando()
     }

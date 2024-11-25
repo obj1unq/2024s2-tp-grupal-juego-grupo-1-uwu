@@ -6,48 +6,6 @@ import nivelManager.*
 import managers.*
 
 
-object randomizadorZombies {
-    var property posicionSpawn = game.at(0, 0)
-
-    method posicionAleatoria() {
-        const posicion = 1.randomUpTo(4)
-        return self.elegirPosicion(posicion)
-    }
-
-    method posicionesSpawneo() {
-        return [game.at(0, 0), game.at(0, game.width() - 1),
-            game.at(game.height() - 2 , 0), game.at(0, game.height() - 2)]
-    }
-
-    // arreglar pq el expectorador mira hacia abajo al disparar en position.x() = 0
-
-    method zombiesAGenerar(posicion) {
-        return [generadorZombie.zombieComun(posicion), generadorZombie.zombiePerro(posicion),
-                generadorZombie.zombieTanque(posicion), generadorZombie.zombieThrower(posicion)]
-    }
-
-    method elegirZombie(numero, posicion) {
-        return self.zombiesAGenerar(posicion).get(numero - 1)
-    }
-
-    method elegirPosicion(numero) {
-        return self.posicionesSpawneo().get(numero - 1)
-    }
-
-    method randomizarZombie(posicion) {
-        const probabilidad = 0.randomUpTo(100)
-        return self.probabilidadZombies(probabilidad, posicion)
-    }
-
-    method probabilidadZombies(numero, posicion) {
-        return 
-            if(numero < 50) self.elegirZombie(1, posicion)
-            else if(numero >= 50 and numero < 75) self.elegirZombie(2, posicion)
-            else if(numero >= 75 and numero < 87.5) self.elegirZombie(3, posicion)
-            else self.elegirZombie(4, posicion)
-    }
-}
-
 class Zombie {
     var property image
     var property position

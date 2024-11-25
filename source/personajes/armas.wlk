@@ -13,8 +13,11 @@ class Arma {
     
     method quitarMunicion() {
         cargador -= 1
-        managerItems.posiblesBalas(cargador)
+        if (cargador == 0) { 
+        game.schedule(3000,{managerItems.siNoHayBalasSoltarle()})
+        }
     }
+
 
     method disparar(dir,pos) {
         juego.jugador().animacionAtaque(dir)

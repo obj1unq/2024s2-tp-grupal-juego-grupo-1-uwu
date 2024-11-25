@@ -12,8 +12,7 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [niv1,niv2,tienda,niv3,niv4,tienda,niv5,
-                              niv6,tienda,niv7,niv8]
+    const property niveles = [niv1,niv2,tienda,niv3,niv4,tienda,niv5,niv6,tienda,niv7,niv8]
 
     var property obstaculos = #{}
 
@@ -29,14 +28,28 @@ object nivelManager {
     }
 
     method iniciarSigNivel() {
+        self.validarSigNivel()
         const actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
     }
 
+    method validarSigNivel() {
+        if (niveles.isEmpty()) {
+            self.terminarJuego()
+            self.error("")
+        }
+    }
+
+    method terminarJuego() {
+        game.allVisuals().forEach({v => game.removeVisual(v)})
+        pantalla.fin()
+    }
+
     method terminarNivel() {
         obstaculos.clear() 
         managerZombie.terminarPersecucion()
+        managerZombie.terminarSpawnCycle()
         managerItems.darleTodoAlPersonaje()
         pantalla.animacionCargando()
     }
@@ -49,6 +62,7 @@ object nivelManager {
         enemigosAsesinados += 1
         if (enemigosAsesinados == enemigosTotales) {
             self.terminarNivel()
+            enemigosAsesinados = 0
         }
     }
 
@@ -87,6 +101,7 @@ class Nivel {
         juego.estado(jugando)
         managerZombie.persecucion()
         nivelManager.enemigosTotales(enemigos)
+        managerZombie.spawnCycle(enemigos)
 
         (0..game.width() - 1).forEach({ x =>
             (0..game.height() -1).forEach({y =>

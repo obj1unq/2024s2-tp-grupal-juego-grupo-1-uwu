@@ -29,7 +29,7 @@ object tienda{
             return game.at(0,0)
     }
 
-    method inicializarTienda() {
+    method inicializar() {
         
     }
 
