@@ -56,7 +56,7 @@ object hudVisible {
         game.addVisual(hudBalas)
         game.addVisual(barraDeEnergia)
         game.addVisual(cadenciaHud)
-        //game.addVisual(especial)
+        game.addVisual(especial)
         game.addVisual(juego.jugador())
         game.onTick(1000, "hud", {self.actualizarHud()})
     }

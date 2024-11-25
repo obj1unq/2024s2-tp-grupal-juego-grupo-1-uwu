@@ -140,7 +140,7 @@ object barraDeEnergia {
 object especial {
 
     var property zombiesAsesinados = 0
-    var property position = game.at(5, 14)
+    var property position = game.at(0, 0)
     
 
     method tirarEspecial() {
@@ -156,13 +156,18 @@ object especial {
     method validarEspecial() {
         if (zombiesAsesinados < 6) self.error("")
     }
-    /*
+    
     method image() {
-      "Special" + self.especialListo() + "-ready.png"
+      "Special-" + self.especialListo().toString() + ".png"
     }
 
-    method especialListo() = if (zombiesAsesinados >= 6) "" else "-not"
-    */
+    method especialListo() {
+        return if (zombiesAsesinados < 6) {
+            0
+        }
+        else {1}
+    }
+    
 }
 
 object municionActual {

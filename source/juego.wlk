@@ -85,7 +85,6 @@ object juego {
         keyboard.v().onPressDo({managerZombie.spawnearZ(generadorZombie.zombieThrower(generadorZombie.posicionInicial()))})
         keyboard.b().onPressDo({managerItems.spawnearCura(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
         keyboard.n().onPressDo({managerItems.spawnearOro(0.randomUpTo(3).round().max(1),tablero.posicionRandom())})
-
     }
 
    
