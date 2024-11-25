@@ -4,13 +4,10 @@ import stats.*
 
 object tienda{
     
-    //var property tienda = "Tienda.png"
-    //var property vidaImagen = "VidaUp.png"
-    //var property energiaImagen = "EnergiaUp.png"
-    
     var property oro = 0 //Delegar oro a hud
     
     var property image = "Tienda.png" 
+    var property position = game.at(0,0)
 
     method oroActual() {
         return oro.min(999)
@@ -40,7 +37,7 @@ object tienda{
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
         puntosDeVida.subirMaximo()
-        //Cambiar imgen si llego al maximo
+        mejoraDeVida.actualizarSiLlegaAlMax()
         self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
@@ -48,7 +45,7 @@ object tienda{
         self.validarSiEnergiaEstaAlMax()
         self.validarSiAlcanzaOro(barraDeEnergia.precio())
         barraDeEnergia.subirMaximo(3)
-        //Cambiar imgen si llego al maximo
+        mejoraDeEnergia.actualizarSiLlegaAlMax()
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
         self.restarOro(barraDeEnergia.precio())   
@@ -93,12 +90,38 @@ object tienda{
 
 object mejoraDeVida {
 
+    var property image = "VidaUp.png" 
+    var property position = game.at(0,0)
+
+    method actualizarSiLlegaAlMax(){
+        if(puntosDeVida.vidaMax()== 100){
+            image = "VidaUp-agotado.png"
+        }
+    }
 }
 
 object mejoraDeEnergia {
 
+    var property image = "EnergiaUp.png" 
+    var property position = game.at(0,0)
+
+    method actualizarSiLlegaAlMax(){
+        if(barraDeEnergia.energiaMaxima() == 20){
+            image = "EnergiaUp-agotado.png"
+        }
+    }
 }
 
 object mejoraDeArma {
+
     
+    var property position = game.at(0,0)
+
+    method image(){
+        if(juego.jugador().armas().isEmpty()){
+            return juego.jugador().arma() + "-agotado.png"
+        }else {
+            return juego.jugador().armas().first().toString() +".png"
+        }
+    }
 }

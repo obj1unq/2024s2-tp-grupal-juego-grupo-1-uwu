@@ -47,7 +47,7 @@ object eleccionPersonaje inherits EstadoJuego() {
         self.seguirAControles()
     }
 
-     method seguirAControles() {
+    method seguirAControles() {
         pantalla.infoControles()
         juego.estado(infoControles)
     }
