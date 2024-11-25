@@ -86,7 +86,7 @@ object managerItems {
 
     method siNoHayBalasSoltarle() {
         if (balasEnTablero == 0) {
-            self.spawnearMunicion()
+            self.spawnearMunicion(game.at(10,7))
         }
     }
 }
