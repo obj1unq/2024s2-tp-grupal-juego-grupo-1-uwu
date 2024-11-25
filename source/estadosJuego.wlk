@@ -1,3 +1,4 @@
+import nivelManager.*
 import wollok.game.*
 import juego.*
 import pantallas.*
@@ -56,7 +57,7 @@ object infoControles inherits EstadoJuego() {
     
     override method continuar() {
         juego.estado(cargando)
-        pantalla.animacionCargando()
+        pantalla.animacionInicio()
         juego.frenarSonidoMenu()
     }
 }
@@ -77,5 +78,13 @@ object jugando inherits EstadoJuego() {
 
     override method especial() {
         especial.tirarEspecial()
+    }
+}
+
+object enTienda inherits EstadoJuego() {
+
+    override method continuar() {
+        juego.estado(cargando)
+        nivelManager.terminarTienda()
     }
 }

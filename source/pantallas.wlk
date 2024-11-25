@@ -15,9 +15,22 @@ object pantalla {
         image = "Controles.png"
     }
 
-    method animacionCargando() {
+    method animacionInicio() {
         image = "Cargando-3.png"
-        game.schedule(3000,{self.abandonarCargando()})
+        game.schedule(1000,{self.abandonarCargando()})
+    }
+
+    method animacionCargando() {
+        game.addVisual(self)
+        image = "Cargando-1.png"
+        game.schedule(400, {image="Cargando-2.png"})
+        game.schedule(800, {self.limpiar()})
+    }
+
+    method limpiar() {
+        game.allVisuals().forEach({v => game.removeVisual(v)})
+        image = "Cargando-3.png"
+        self.abandonarCargando()
     }
 
     method abandonarCargando() {
@@ -45,7 +58,6 @@ object hudVisible {
         barraDeEnergia.recargarEnergia()
         timer.tick()
     }
-
 }
 
 object suelo {

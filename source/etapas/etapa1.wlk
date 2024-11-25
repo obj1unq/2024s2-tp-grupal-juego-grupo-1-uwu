@@ -2,7 +2,7 @@ import wollok.game.*
 import nivelManager.*
 
 
-object niv1 inherits Nivel(enemigos=4,img="suelo-jardin.png") {
+object niv1 inherits Nivel(enemigos=5,img="suelo-jardin.png") {
 
     override method tablero() {
     return

@@ -5,6 +5,7 @@ import juego.*
 import extras.*
 import enemigos.*
 import stats.*
+import nivelManager.*
 
 object managerAcido {
     
@@ -154,6 +155,7 @@ object managerZombie {
     method quitarZ(zombie) {
         zombies.remove(zombie)
         especial.murioZombie()
+        nivelManager.murioZombie()
     }
 
     method spawnearZ(zombie) {

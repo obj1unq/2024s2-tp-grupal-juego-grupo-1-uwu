@@ -8,10 +8,29 @@ object tienda{
     //var property vidaImagen = "VidaUp.png"
     //var property energiaImagen = "EnergiaUp.png"
     
-    var property oroObtenido = juego.jugador().oro() //Delegar oro a hud
+    var property oro = 0 //Delegar oro a hud
     
+    var property image = "Tienda.png" 
+
+    method oroActual() {
+        return oro.min(999)
+    }
+
+    method obtenerOro(valor) {
+        game.sound("agarrar-oro.mp3").play()
+        oro += valor
+    }
+
+    method restarOro(valor) {
+        oro -= valor
+    }
+
     method position() {
-            return game.at(11,7) //TIENE QUE ESTAR EN EL MEDIO (?)
+            return game.at(0,0)
+    }
+
+    method inicializarTienda() {
+        
     }
 
     //Letra J
@@ -22,8 +41,7 @@ object tienda{
         game.sound("thank-you.mp3").play()
         puntosDeVida.subirMaximo()
         //Cambiar imgen si llego al maximo
-        
-        juego.jugador().restarOro(puntosDeVida.precio())  
+        self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
     method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
@@ -33,7 +51,7 @@ object tienda{
         //Cambiar imgen si llego al maximo
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
-        juego.jugador().restarOro(barraDeEnergia.precio())   
+        self.restarOro(barraDeEnergia.precio())   
     }
 
     //letra K
@@ -44,12 +62,12 @@ object tienda{
         //Cambiar imgen si llego al maximo
         game.sound("mejora.mp3").play()
         game.sound("good-choice.mp3").play()
-        juego.jugador().restarOro(barraDeEnergia.precio())   
+        self.restarOro(barraDeEnergia.precio())   
     }
 
     //Validaciones
     method validarSiAlcanzaOro(precio){
-        if(oroObtenido < precio){
+        if(oro < precio){
             game.sound("not-enough-cash.mp3").play()
             self.error("")} //No alcanza el oro
     }

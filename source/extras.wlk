@@ -2,6 +2,7 @@ import stats.*
 import wollok.game.*
 import juego.*
 import managers.*
+import tienda.*
 
 //---------------------------------Drops---------------------------------------
 
@@ -29,7 +30,7 @@ class Oro inherits Drop()  {
     const valor
 
     override method colisionPj() {
-        juego.jugador().obtenerOro(valor)
+        tienda.obtenerOro(valor)
         game.removeVisual(self)
         managerItems.quitarItem(self)
     }

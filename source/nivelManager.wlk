@@ -1,8 +1,8 @@
 import pantallas.*
 import wollok.game.*
 import estadosJuego.*
-import enemigos.*
 import juego.*
+import tienda.*
 import managers.*
 import etapas.etapa1.*
 import etapas.etapa2.*
@@ -12,8 +12,8 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [niv1,niv2,niv3,niv4,niv5,
-                              niv6,niv7,niv8]
+    const property niveles = [niv1,niv2,tienda,niv3,niv4,tienda,niv5,
+                              niv6,tienda,niv7,niv8]
 
     var property obstaculos = #{}
 
@@ -29,21 +29,27 @@ object nivelManager {
     }
 
     method iniciarSigNivel() {
-        obstaculos.clear() // mejor en terminar nivel
-        
         const actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
-        
-        hudVisible.dibujar()
-        juego.estado(jugando)
-        managerZombie.persecucion()
     }
 
     method terminarNivel() {
+        obstaculos.clear() 
         managerZombie.terminarPersecucion()
         managerItems.darleTodoAlPersonaje()
-        game.clear()
+        pantalla.animacionCargando()
+    }
+
+    method terminarTienda() {
+
+    }
+
+    method murioZombie() {
+        enemigosAsesinados += 1
+        if (enemigosAsesinados == enemigosTotales) {
+            self.terminarNivel()
+        }
     }
 
 /*
@@ -76,7 +82,11 @@ class Nivel {
     method tablero() 
 
     method inicializar() {
-         suelo.visualizarCon(img)
+        suelo.visualizarCon(img)
+        hudVisible.dibujar()
+        juego.estado(jugando)
+        managerZombie.persecucion()
+        nivelManager.enemigosTotales(enemigos)
 
         (0..game.width() - 1).forEach({ x =>
             (0..game.height() -1).forEach({y =>
