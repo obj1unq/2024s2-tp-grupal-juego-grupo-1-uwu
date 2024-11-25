@@ -29,8 +29,8 @@ object tablero {
   }
 
   method verticalesDe(pos) {
-      return #{abajo.siguientePosicion(pos), arriba.siguientePosicion(pos),
-            izquierda.siguientePosicion(pos), derecha.siguientePosicion(pos)}
+      return #{pos.down(1), pos.up(1),
+            pos.left(1), pos.right(1)}
   }
 
   method alrededoresDe(position) {

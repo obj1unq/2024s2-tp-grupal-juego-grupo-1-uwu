@@ -95,24 +95,8 @@ object juego {
 
     }
 
-    method sonido() {
-
-        const sonidoFondo = game.sound("echo-in-the-night.mp3")
-        keyboard.y().onPressDo({sonidoFondo.volume(0.6)})
-        keyboard.u().onPressDo({sonidoFondo.volume(0.3)})
-        keyboard.i().onPressDo({sonidoFondo.volume(0)})
-        sonidoFondo.shouldLoop(true)
-        //game.schedule(003, { sonidoFondo.play()} )
-    }
-
     method persecucion() {
         game.onTick(650,"persecucionGame",{managerZombie.zombies().forEach({z => z.perseguirAJugador()})})
-    }
-
-        // -------------niveles-------------------------------
-
-    method configurarNivel(nivel){
-        
     }
 
 }
