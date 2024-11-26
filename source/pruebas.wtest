@@ -1,35 +1,82 @@
 import wollok.game.*
 import personajes.personaje.*
+import personajes.armas.*
+import personajes.noel.*
+import personajes.dangalf.*
 import enemigos.*
+import estadosJuego.*
 import extras.*
-import posiciones.*
-import sonidos.*
 import juego.*
-import stats.*
+import managers.*
+import nivelManager.*
+import pantallas.*
+import posiciones.*
 import proyectiles.*
+import stats.*
+import tienda.*
+import etapas.etapa1.*
+import etapas.etapa2.*
+import etapas.etapa3.*
+import etapas.etapa4.*
 
+describe "desvariados" {
+  const cura = new Cura(vidaDada=20, image="", position=game.at(0, 1))
+  const municion = new Bala(image="", position=game.at(0,2))
 
-
-/*
-describe "testeo de estados" {
-  test "muerte" {
-
-    zombie.colisiono(personaje)
-    zombie.colisiono(personaje)
-    zombie.colisiono(personaje)   // no funciona pq no testea a traves del tiempo 
-    zombie.colisiono(personaje)
-    zombie.colisiono(personaje)
-    assert.equals(0, personaje.vida())
+  method initialize() {
+    juego.estado(jugando)
+    game.addVisual(noel)
   }
+
+  test "hay cura" {
+    
+  }
+
   test "curación" {
-    cura1.colisiono(personaje)
-    assert.equals(120, personaje.vida())
+    
   }
-  test "obtención de oro" {
-    oro1.colisiono(personaje)
-    oro2.colisiono(personaje)
-    oro3.colisiono(personaje)
-    assert.equals(90, personaje.oro())
+
+  test "sin munición para disparar" {
+    
+  }
+
+  test "hay munición" {
+    
+  }
+
+  test "obtener munición" {
+    
+  }
+
+  test "especial no está listo" {
+    
+  }
+
+  test "especial está listo" {
+    
+  }
+
+  test "hay zombie" {
+    
+  }
+
+  test "zombie ataca" {
+    
+  }
+
+  test "zombie muere" {
+    
+  }
+
+  test "sin oro para comprar" {
+    
+  }
+
+  test "mejora de vida" {
+    
+  }
+
+  test "mejora de arma" {
+    
   }
 }
-*/

@@ -158,7 +158,7 @@ object especial {
     }
     
     method image() {
-      "Special-" + self.especialListo().toString() + ".png"
+    return  "Special-" + self.especialListo().toString() + ".png"
     }
 
     method especialListo() {
