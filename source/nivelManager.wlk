@@ -12,7 +12,7 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [niv1,niv2,tienda,niv3,niv4,tienda,niv5,niv6,tienda,niv7,niv8]
+    const property niveles = [mercado,niv1,niv2,mercado,niv3,niv4,mercado,niv5,niv6,mercado,niv7,niv8]
 
     var property obstaculos = #{}
 
@@ -55,7 +55,8 @@ object nivelManager {
     }
 
     method terminarTienda() {
-
+        pantalla.animacionCargando()
+        self.iniciarSigNivel()
     }
 
     method murioZombie() {
@@ -127,6 +128,15 @@ object c {
 class Caja {
     var property image = "caja2.png"
     var property position
+}
+
+object mercado{
+
+    method inicializar(){
+        mercadoVisible.dibujar()
+        juego.estado(enTienda)
+    }
+
 }
 
 

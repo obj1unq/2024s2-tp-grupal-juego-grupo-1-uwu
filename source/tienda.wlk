@@ -4,7 +4,7 @@ import stats.*
 
 object tienda{
     
-    var property oro = 0 //Delegar oro a hud
+    var property oro = 500 //Delegar oro a hud
     
     var property image = "Tienda.png" 
     var property position = game.at(0,0)

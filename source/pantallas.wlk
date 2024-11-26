@@ -2,6 +2,7 @@ import nivelManager.*
 import juego.*
 import wollok.game.*
 import stats.*
+import tienda.*
 
 object pantalla {
     method position() = game.at(0,0)
@@ -74,5 +75,17 @@ object suelo {
     method visualizarCon(img) {
         image = img 
         game.addVisual(self)
+    }
+}
+
+object mercadoVisible{
+    method dibujar(){
+        game.addVisual(mejoraDeArma)
+        game.addVisual(mejoraDeEnergia)
+        game.addVisual(mejoraDeVida)
+        game.addVisual(tienda)
+        // game.addVisual(self) Numeros
+        // game.addVisual(self) Numeros
+        // game.addVisual(self) Numeros
     }
 }
