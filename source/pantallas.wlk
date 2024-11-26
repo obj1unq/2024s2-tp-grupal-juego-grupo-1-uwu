@@ -84,6 +84,7 @@ object mercadoVisible{
         game.addVisual(mejoraDeEnergia)
         game.addVisual(mejoraDeVida)
         game.addVisual(tienda)
+        game.sound("Welcome!.mp3").play()
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros
