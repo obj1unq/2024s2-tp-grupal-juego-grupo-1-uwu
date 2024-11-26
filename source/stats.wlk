@@ -140,7 +140,7 @@ object barraDeEnergia {
 object especial {
 
     var property zombiesAsesinados = 0
-    var property position = game.at(0, 0)
+    var property position = game.at(4, 14)
     
 
     method tirarEspecial() {
@@ -158,7 +158,7 @@ object especial {
     }
     
     method image() {
-      "Special-" + self.especialListo().toString() + ".png"
+        return "Special-" + self.especialListo().toString() + ".png"
     }
 
     method especialListo() {
