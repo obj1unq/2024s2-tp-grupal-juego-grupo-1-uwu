@@ -29,7 +29,9 @@ describe "desvariados" {
   }
 
   test "hay cura" {
-    
+    //managerItems.spawnearCura(1, noel.position())
+
+    //assert.that(not managerItems.drops.isEmpty())
   }
 
   test "curación" {

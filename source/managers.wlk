@@ -67,21 +67,21 @@ object managerItems {
 
     method spawnearCura(numero, posicion) {
         const nuevaCura = managerCuras.cura(numero, posicion)
-        game.addVisual(nuevaCura)
         drops.add(nuevaCura)
+        game.addVisual(nuevaCura)
     }
 
     method spawnearOro(numero, posicion) {
         const oroNuevo = managerMonedas.monedas(numero, posicion)
-        game.addVisual(oroNuevo)
         drops.add(oroNuevo)
+        game.addVisual(oroNuevo)
     }
 
     method spawnearMunicion(posicion) {
         balasEnTablero += 1
         const nuevaMunicion = new Balas(position = posicion)
-        game.addVisual(nuevaMunicion)
         drops.add(nuevaMunicion)
+        game.addVisual(nuevaMunicion)
     }
 
     method siNoHayBalasSoltarle() {
