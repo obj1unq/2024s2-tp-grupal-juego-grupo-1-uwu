@@ -6,7 +6,7 @@ import personaje.*
 
 object dangalf inherits Personaje(arma=dosManos) {
 
-    const property armas = [tresManos]
+    const property armas = [tresManos,cuatroManos]
 //-------------items------------------------------------------
 
     override method cura(numero){

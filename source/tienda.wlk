@@ -1,19 +1,33 @@
 import wollok.game.*
 import juego.*
-import hud.*
-import personajes.armas.*
-
+import stats.*
 
 object tienda{
     
-    //var property tienda = "Tienda.png"
-    //var property vidaImagen = "VidaUp.png"
-    //var property energiaImagen = "EnergiaUp.png"
+    var property oro = 0 //Delegar oro a hud
     
-    var property oroObtenido = juego.jugador().oro() //Delegar oro a hud
-    
+    var property image = "Tienda.png" 
+    var property position = game.at(0,0)
+
+    method oroActual() {
+        return oro.min(999)
+    }
+
+    method obtenerOro(valor) {
+        game.sound("agarrar-oro.mp3").play()
+        oro += valor
+    }
+
+    method restarOro(valor) {
+        oro -= valor
+    }
+
     method position() {
-            return game.at(11,7) //TIENE QUE ESTAR EN EL MEDIO (?)
+            return game.at(0,0)
+    }
+
+    method inicializar() {
+        
     }
 
     //Letra J
@@ -23,19 +37,18 @@ object tienda{
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
         puntosDeVida.subirMaximo()
-        //Cambiar imgen si llego al maximo
-        
-        juego.jugador().restarOro(puntosDeVida.precio())  
+        mejoraDeVida.actualizarSiLlegaAlMax()
+        self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
     method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiEnergiaEstaAlMax()
         self.validarSiAlcanzaOro(barraDeEnergia.precio())
         barraDeEnergia.subirMaximo(3)
-        //Cambiar imgen si llego al maximo
+        mejoraDeEnergia.actualizarSiLlegaAlMax()
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
-        juego.jugador().restarOro(barraDeEnergia.precio())   
+        self.restarOro(barraDeEnergia.precio())   
     }
 
     //letra K
@@ -46,12 +59,12 @@ object tienda{
         //Cambiar imgen si llego al maximo
         game.sound("mejora.mp3").play()
         game.sound("good-choice.mp3").play()
-        juego.jugador().restarOro(barraDeEnergia.precio())   
+        self.restarOro(barraDeEnergia.precio())   
     }
 
     //Validaciones
     method validarSiAlcanzaOro(precio){
-        if(oroObtenido < precio){
+        if(oro < precio){
             game.sound("not-enough-cash.mp3").play()
             self.error("")} //No alcanza el oro
     }
@@ -77,12 +90,69 @@ object tienda{
 
 object mejoraDeVida {
 
+    var property image = "VidaUp.png" 
+    var property position = game.at(0,0)
+
+    method actualizarSiLlegaAlMax(){
+        if(puntosDeVida.vidaMax()== 100){
+            image = "VidaUp-agotado.png"
+        }
+    }
 }
 
 object mejoraDeEnergia {
 
+    var property image = "EnergiaUp.png" 
+    var property position = game.at(0,0)
+
+    method actualizarSiLlegaAlMax(){
+        if(barraDeEnergia.energiaMaxima() == 20){
+            image = "EnergiaUp-agotado.png"
+        }
+    }
 }
 
 object mejoraDeArma {
+
     
+    var property position = game.at(0,0)
+
+    method image(){
+        if(juego.jugador().armas().isEmpty()){
+            return juego.jugador().arma() + "-agotado.png"
+        }else {
+            return juego.jugador().armas().first().toString() +".png"
+        }
+    }
+}
+
+class Numero {
+    method valor()
+    var property position = game.at(0,0)
+
+    method agregarAlJuego() {
+        game.addVisual(new Unidad(num=self))
+        game.addVisual(new Decena(num=self))
+        game.addVisual(new Centena(num=self))
+    } 
+}
+
+class Digito {
+    var property num 
+    method position() {return num.position()}
+    method image() 
+    method digito() {return self.extraer(num.valor().toString())}
+    method extraer(string) 
+}
+
+class Unidad inherits Digito() {
+    override method image() {}
+}   
+
+class Decena inherits Digito() {
+    override method image() {}
+}
+
+class Centena inherits Digito() { 
+    override method image() {}
 }

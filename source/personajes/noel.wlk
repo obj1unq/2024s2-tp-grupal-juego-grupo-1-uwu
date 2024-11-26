@@ -6,7 +6,7 @@ import proyectiles.*
 
 object noel inherits Personaje(arma=pistola) {
 
-    const property armas = [doblePistola, escopeta, dobleEscopeta]
+    const property armas = [doblePistola, escopeta, escopetaPlateada]
     
     var property ultimaDir = derecha
 
@@ -33,15 +33,15 @@ object noel inherits Personaje(arma=pistola) {
 //-----------ataque-movimiento--------------------------------
 
     override method imagenInicial(){
-        return "noel-normal-arriba.png"
+        return "noel-" + arma.toString() + "-normal-arriba.png"
     }
    
     override method imagenAtaque(direccion) {
-        return "noel-ataque-" + direccion.toString() + ".png"
+        return "noel-" + arma.toString() + "-ataque-" + direccion.toString() + ".png"
     }
 
     override method imagenNormal(direccion) {
-        return "noel-normal-" + direccion.toString() + ".png"
+        return "noel-" + arma.toString() + "-normal-" + direccion.toString() + ".png"
     }
 
     method especial(){}
@@ -78,13 +78,6 @@ object noel inherits Personaje(arma=pistola) {
         return armas.first().precio()
     }
     
-    method cambiarAEscopeta() {
-        arma = escopeta
-    }
-
-    method cambiarAPistola() {
-        arma = pistola
-    }
 
 //-------------------especial------------------------
 

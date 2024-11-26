@@ -29,15 +29,15 @@ object tablero {
   }
 
   method verticalesDe(pos) {
-      return #{abajo.siguientePosicion(pos), arriba.siguientePosicion(pos),
-            izquierda.siguientePosicion(pos), derecha.siguientePosicion(pos)}
+      return #{pos.down(1), pos.up(1),
+            pos.left(1), pos.right(1)}
   }
 
-  method alrededoresDe(position) {
-        return #{abajo.siguientePosicion(position), arriba.siguientePosicion(position),
-            izquierda.siguientePosicion(position), derecha.siguientePosicion(position),
-            abajo.siguientePosicion(izquierda.siguientePosicion(position)), abajo.siguientePosicion(derecha.siguientePosicion(position)),
-            arriba.siguientePosicion(izquierda.siguientePosicion(position)), arriba.siguientePosicion(derecha.siguientePosicion(position))}
+  method alrededoresDe(pos) {
+        return #{pos.down(1), pos.up(1),
+            pos.left(1), pos.right(1),
+            abajo.siguientePosicion(izquierda.siguientePosicion(pos)), abajo.siguientePosicion(derecha.siguientePosicion(pos)),
+            arriba.siguientePosicion(izquierda.siguientePosicion(pos)), arriba.siguientePosicion(derecha.siguientePosicion(pos))}
     }
 
   method posicionRandom() {

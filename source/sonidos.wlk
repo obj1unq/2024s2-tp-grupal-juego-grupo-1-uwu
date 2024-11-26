@@ -23,3 +23,15 @@ object enemigos{
         //game.sound("zombie-2.mp3").play()
     }
 }
+
+object musicaMenu {
+    const property file = game.sound("sonido-menu.mp3")
+
+    method play() {
+        file.play()
+    }
+
+    method stop() {
+        file.stop()
+    }
+}

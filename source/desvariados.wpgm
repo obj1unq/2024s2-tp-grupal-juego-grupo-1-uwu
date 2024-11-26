@@ -6,29 +6,18 @@ import posiciones.*
 import sonidos.*
 import juego.*
 import proyectiles.*
-import hud.*
+import stats.*
 import managers.*
-import niveles.*
+import nivelManager.*
 
 
 program desvariados {
 
-    //juego.menu()
-    // y todo lo de abajo se ejecutaria despues de accionar en el menu
-
     juego.tablero()
 
-    juego.hud()
+    juego.inicio()
 
-    juego.movimiento()
-
-    juego.ataque()
-
-    juego.sonido()
-
-    juego.persecucion()
-
-    //juego.pausa() (arreglar)
+    juego.teclas()
 
     game.start()
 }

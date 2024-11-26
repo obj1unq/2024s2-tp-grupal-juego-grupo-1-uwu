@@ -1,6 +1,7 @@
+import nivelManager.*
 import wollok.game.*
 import posiciones.*
-import hud.*
+import stats.*
 import managers.*
 
 
@@ -8,8 +9,6 @@ class Personaje {
     //Imagen y posicion
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
-    //Estadisticas
-    var property oro = 0
     //Propiedades   
     var property arma 
     
@@ -22,7 +21,6 @@ class Personaje {
     method sinMunicion()
     method lanzarEspecial() 
 
-
     method visualHealth(numero) {
         return self.cura(numero)
     }
@@ -30,8 +28,8 @@ class Personaje {
     // -------------movimiento-------------------------------
     
     method mover(direccion) {
-        barraDeEnergia.validarEnergia()
         self.validarMover(direccion)
+        barraDeEnergia.validarEnergia()
 	    position = direccion.siguientePosicion(position)
         self.image(self.imagenNormal(direccion))
         managerItems.revisarPorItems(position)
@@ -41,10 +39,17 @@ class Personaje {
 		const siguiente = direccion.siguientePosicion(position)
 		tablero.validarDentro(siguiente)
         self.validarNoHayEnemigos(siguiente)
+        self.validarNoHayCaja(siguiente)
 	}
 
     method validarNoHayEnemigos(posicion) {
         if(managerZombie.posTieneZombie(posicion)) {
+            self.error("")
+        }
+    }
+
+    method validarNoHayCaja(pos) {
+        if (nivelManager.hayCajaEn(pos)) {
             self.error("")
         }
     }
@@ -67,15 +72,6 @@ class Personaje {
 
     method herir(cantidad) {
         puntosDeVida.herir(cantidad)
-    }
-
-    method obtenerOro(valor) {
-        game.sound("oro-sonido.mp3").play()
-        oro = (oro + valor).min(999)
-    }
-
-    method restarOro(valor){
-        oro = (oro-valor).max(0)
     }
 
 }

@@ -100,26 +100,6 @@ object hudBalas {
     }
 }
 
-
-//----------------------------------------------ORO-----------------------------
-object oroObtenido {
-
-    method position() {
-        return game.at(12, game.height() - 1 )
-    }
-
-    method text() {
-        return juego.jugador().oro().toString()
-    }
-
-    method textColor() {
-        return "ffff00"
-    }
-
-    method impactoProyectil(danio) {}
-}
-
-
 //----------------------------------------------energia-----------------------------
 
 
@@ -159,7 +139,9 @@ object barraDeEnergia {
 
 object especial {
 
-    var property zombiesAsesinados = 0 
+    var property zombiesAsesinados = 0
+    var property position = game.at(0, 0)
+    
 
     method tirarEspecial() {
         self.validarEspecial()
@@ -170,17 +152,43 @@ object especial {
     method murioZombie() {
         zombiesAsesinados += 1
     }
-
+    
     method validarEspecial() {
         if (zombiesAsesinados < 6) self.error("")
-    } 
+    }
+    
+    method image() {
+      "Special-" + self.especialListo().toString() + ".png"
+    }
+
+    method especialListo() {
+        return if (zombiesAsesinados < 6) {
+            0
+        }
+        else {1}
+    }
+    
 }
 
+object municionActual {
 
-object cadencia {
+    method position() {return game.at(6, game.height() - 1 )}
+
+    method text() {return juego.jugador().arma().cargador().toString()}
+
+    method colisionPj() {}
+
+    method textColor() {return "FFFFFF"}
+
+}
+
+object cadenciaHud {
+    
+    method image()  {
+        return juego.jugador().toString() + "-cadencia-" + juego.jugador().arma().estado().toString() + ".png"
+    }
+
     method position() {
         return game.at(5, game.height() - 1 )
     }
-
-    method image() = "noel-cadencia-disparar.png"
 }
