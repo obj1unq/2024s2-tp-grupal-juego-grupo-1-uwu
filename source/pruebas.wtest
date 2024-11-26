@@ -68,6 +68,10 @@ describe "desvariados" {
     
   }
 
+  test "sin energía" {
+    
+  }
+
   test "sin oro para comprar" {
     
   }
