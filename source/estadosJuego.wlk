@@ -86,6 +86,7 @@ object enTienda inherits EstadoJuego() {
     override method continuar() {
         juego.estado(cargando)
         nivelManager.terminarTienda()
+        mercadoVisible.ostTienda().stop()
     }
 
     override method mejorarVida() {

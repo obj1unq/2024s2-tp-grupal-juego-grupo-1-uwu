@@ -79,12 +79,18 @@ object suelo {
 }
 
 object mercadoVisible{
+
+    const property ostTienda = game.sound("sonido-tienda.mp3")
+    
     method dibujar(){
+
+        
         game.addVisual(mejoraDeArma)
         game.addVisual(mejoraDeEnergia)
         game.addVisual(mejoraDeVida)
         game.addVisual(tienda)
         game.sound("Welcome!.mp3").play()
+        ostTienda.play()
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros
