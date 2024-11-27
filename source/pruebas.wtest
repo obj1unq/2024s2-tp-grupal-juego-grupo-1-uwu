@@ -21,7 +21,7 @@ import etapas.etapa4.*
 
 describe "desvariados" {
   const cura = new Cura(vidaDada=20, image="", position=game.at(0, 1))
-  const municion = new Bala(image="", position=game.at(0,2))
+  const municion = new Balas(image="", position=game.at(0,2))
 
   method initialize() {
     juego.estado(jugando)
@@ -54,11 +54,19 @@ describe "desvariados" {
   }
 
   test "hay munición" {
-    
+    assert.that(managerItems.drops().isEmpty())
+    managerItems.spawnearMunicion(tablero.posicionRandom())
+
+    assert.notThat(managerItems.drops().isEmpty())
   }
 
   test "obtener munición" {
-    
+    assert.equals(12, pistola.cargador())
+    noel.ataque(arriba)
+    assert.equals(11, pistola.cargador())
+
+    municion.colisionPj()
+    assert.equals(12, pistola.cargador())
   }
 
   test "especial no está listo" {
