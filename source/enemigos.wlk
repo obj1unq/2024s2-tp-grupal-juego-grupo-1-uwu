@@ -161,7 +161,7 @@ class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo
 
     override method atacarAgro() {
         ultimaDir = self.dirAgroPegado()
-        managerZombie.quitarZ(self)
+        managerZombie.zombies().remove(self)
         self.animacionAtaque() 
         game.schedule(1250,{managerCrater.explosionEnCon(position,dmg)}) 
         game.schedule(1500,{managerZombie.agregarZ(self)})

@@ -119,12 +119,10 @@ object managerMonedas {
 object managerZombie {
     const property zombies = #{}
     const property spawnPoints = #{game.at(3,0),game.at(15,0),game.at(3,13),game.at(15,13)} 
-    var property zombiesDelNivel = 0
     var property zombiesSpawneados = 0
 
     method spawnCycle(cant) {
         game.onTick(3000,"spawnCycle",{self.spawneoRandom(cant)})
-        zombiesDelNivel = cant
     }
 
     method terminarSpawnCycle() {
@@ -137,7 +135,7 @@ object managerZombie {
     }
 
     method condicionSpawneoRandom(cant) {
-        return (zombies.size() < 4 and (cant > zombiesSpawneados))
+        return (zombies.size() < 3 and (cant > zombiesSpawneados))
     }
 
     method spawneoRandom(cant) {
