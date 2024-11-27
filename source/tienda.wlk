@@ -8,7 +8,7 @@ object tienda{
     
     var property oro = 221 
     const property ost = game.sound("sonido-tienda.mp3")
-    const property image = "tienda-nueva.png" 
+    const property image = "nueva-tienda.png" 
     var property position = game.at(0,0)
 
     method oroActual() {
