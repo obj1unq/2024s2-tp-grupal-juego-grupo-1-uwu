@@ -22,7 +22,7 @@ import etapas.etapa4.*
 describe "desvariados" {
   const cura = new Cura(vidaDada = 20, image = "", position = game.at(0, 1))
   const municion = new Balas(image = "", position = game.at(0, 2))
-  const zombie = new ZombieComun(image = "zombieComun-arriba.png", position = game.at(5, 4))
+  const zombie = new ZombieComun(position = game.at(5, 4))
   
   method initialize() {
     juego.estado(jugando)
@@ -92,14 +92,16 @@ describe "desvariados" {
   }
   
   test "zombie ataca" {
+    assert.equals(60, puntosDeVida.vida())
     game.addVisual(zombie)
-    managerZombie.agregarZ(zombie)
-    zombie.atacarAgro()
+    zombie.atacarAgro() //Por defecto es noel cuando no se seleccionó el pj
 
+    assert.equals(50, puntosDeVida.vida())
   }
   
   test "zombie muere" {
-    
+    game.addVisual(zombie)
+    managerZombie.agregarZ(zombie)
   }
   
   test "sin energía" {
