@@ -43,7 +43,7 @@ object puntosDeVida {
     
     var vida = 60
     var property vidaMax = 60 
-    var property image =  "barravida-60.png"
+    var property image = "barravida-60.png"
 
     var property position = game.at(0, 14)
 
@@ -56,7 +56,7 @@ object puntosDeVida {
     }
     
 
-        method subirMaximo(){
+    method subirMaximo() {
         vidaMax += 20
         vida += 20 
         self.actualizar()
@@ -83,6 +83,10 @@ object puntosDeVida {
 
     method actualizar(){
         self.image("barravida-" + vida.toString() + ".png")
+    }
+
+    method vida() {
+      return vida
     }
 }
 
