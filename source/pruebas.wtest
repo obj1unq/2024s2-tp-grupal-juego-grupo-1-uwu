@@ -25,7 +25,8 @@ describe "desvariados" {
   const zombie = new ZombieComun(vida = 1, position = game.at(5, 4))
   
   method initialize() {
-    juego.estado(jugando)
+    game.width(20)
+    game.height(15)
     game.addVisual(noel)
   }
   
@@ -95,7 +96,7 @@ describe "desvariados" {
     assert.equals(60, puntosDeVida.vida())
     game.addVisual(zombie)
     zombie.atacarAgro() //Por defecto es noel cuando no se seleccionó el pj
-
+    
     assert.equals(50, puntosDeVida.vida())
   }
   
@@ -104,23 +105,37 @@ describe "desvariados" {
     managerZombie.agregarZ(zombie)
     assert.notThat(managerZombie.zombies().isEmpty())
     zombie.herir(1)
-
+    
     assert.that(managerZombie.zombies().isEmpty())
   }
   
   test "gasto de energía" {
+    assert.equals(10, barraDeEnergia.energia())
+    noel.mover(abajo)
     
+    assert.equals(9, barraDeEnergia.energia())
+    
+    barraDeEnergia.energia(0)
+    
+    assert.throwsException({ barraDeEnergia.validarEnergia() })
   }
   
   test "sin oro para comprar" {
-    
+    tienda.oro(0) // Para probar la tienda este valor se va a modificar
+    // Cuando oro vuelva a ser 0 por defecto, lo borro
+    assert.equals(0, tienda.oro())
+    assert.throwsException({ tienda.validarSiAlcanzaOro(1) })
   }
   
   test "mejora de vida" {
-    
+    tienda.oro(500)
   }
   
   test "mejora de arma" {
+    
+  }
+
+  test "mejora de energía" {
     
   }
 }
