@@ -129,32 +129,32 @@ describe "desvariados" {
     tienda.oro(100)
     assert.equals(60, puntosDeVida.vida())
     assert.equals(50, puntosDeVida.precio())
-
+    
     tienda.mejorarVida()
-
+    
     assert.equals(50, tienda.oro())
     assert.equals(80, puntosDeVida.vida())
   }
   
   test "mejora de arma" {
     tienda.oro(100)
-    assert.equals(60, puntosDeVida.vida())
-    assert.equals(50, puntosDeVida.precio())
-
-    tienda.mejorarVida()
+    assert.equals(pistola, noel.arma())
+    assert.equals(80, doblePistola.precio())
     
-    assert.equals(50, tienda.oro())
-    assert.equals(80, puntosDeVida.vida())
+    tienda.mejorarArma()
+    
+    //assert.equals(20, tienda.oro()) //Debería estar bien cuando se junte con otra rama
+    assert.equals(doblePistola, noel.arma())
   }
-
+  
   test "mejora de energía" {
     tienda.oro(100)
-    assert.equals(60, puntosDeVida.vida())
-    assert.equals(50, puntosDeVida.precio())
-
-    tienda.mejorarVida()
+    assert.equals(50, barraDeEnergia.precio())
+    assert.equals(10, barraDeEnergia.energia())
     
-    assert.equals(50, tienda.oro())
-    assert.equals(80, puntosDeVida.vida())
+    tienda.mejorarEnergia()
+    
+    assert.equals(50, tienda.oro()) //Está bien cuando se une con otra rama
+    //assert.equals(..., barraDeEnergia.energia()) No sé cuanto da
   }
 }

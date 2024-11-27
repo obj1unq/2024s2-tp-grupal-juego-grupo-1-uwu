@@ -41,7 +41,7 @@ object tienda{
         self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
-    method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarEnergia() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiEnergiaEstaAlMax()
         self.validarSiAlcanzaOro(barraDeEnergia.precio())
         barraDeEnergia.subirMaximo(3)
@@ -52,7 +52,7 @@ object tienda{
     }
 
     //letra K
-    method mejorarArma(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarArma() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiArmaEstaAlMax()
         self.validarSiAlcanzaOro(juego.jugador().precioSiguienteArma())
         juego.jugador().mejorarArma()
