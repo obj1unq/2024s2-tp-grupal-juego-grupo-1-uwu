@@ -6,7 +6,7 @@ import estadosJuego.*
 
 object tienda{
     
-    var property oro = 221 
+    var property oro = 0
     const property ost = game.sound("sonido-tienda.mp3")
     const property image = "nueva-tienda.png" 
     var property position = game.at(0,0)

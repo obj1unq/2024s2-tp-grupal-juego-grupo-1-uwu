@@ -104,7 +104,7 @@ object managerCuras {
 }
 
 object managerMonedas {
-    const oro = [10, 30, 50]
+    const oro = [25, 35, 55]
     
     method monedas(numero, position) {
         return new Oro(image = "oro" + numero + ".png",

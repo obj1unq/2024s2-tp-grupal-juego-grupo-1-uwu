@@ -12,8 +12,8 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [tienda,niv2,tienda,niv4,tienda,niv6,tienda,niv7]
-    var property actual = niv1
+    const property niveles = [niv2,tienda,niv4,tienda,niv6,tienda,niv7]
+    var property actual = niv2
     var property obstaculos = #{}
 
     var property enemigosTotales = 0

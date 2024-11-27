@@ -23,7 +23,7 @@ object niv7 inherits Nivel(enemigos=9,img="suelo-laboratorio.png",ost=game.sound
     ].reverse() 
     }
 }
-
+/*
 object niv8 inherits Nivel(enemigos=0,img="suelo-laboratorio.png",ost=game.sound("musica-nivel-3.mp3")) {
     //jefe?
     
@@ -47,3 +47,4 @@ object niv8 inherits Nivel(enemigos=0,img="suelo-laboratorio.png",ost=game.sound
     ].reverse() 
     }
 }
+*/
