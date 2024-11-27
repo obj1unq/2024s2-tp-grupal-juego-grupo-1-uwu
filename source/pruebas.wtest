@@ -121,21 +121,40 @@ describe "desvariados" {
   }
   
   test "sin oro para comprar" {
-    tienda.oro(0) // Para probar la tienda este valor se va a modificar
-    // Cuando oro vuelva a ser 0 por defecto, lo borro
     assert.equals(0, tienda.oro())
     assert.throwsException({ tienda.validarSiAlcanzaOro(1) })
   }
   
   test "mejora de vida" {
-    tienda.oro(500)
+    tienda.oro(100)
+    assert.equals(60, puntosDeVida.vida())
+    assert.equals(50, puntosDeVida.precio())
+
+    tienda.mejorarVida()
+
+    assert.equals(50, tienda.oro())
+    assert.equals(80, puntosDeVida.vida())
   }
   
   test "mejora de arma" {
+    tienda.oro(100)
+    assert.equals(60, puntosDeVida.vida())
+    assert.equals(50, puntosDeVida.precio())
+
+    tienda.mejorarVida()
     
+    assert.equals(50, tienda.oro())
+    assert.equals(80, puntosDeVida.vida())
   }
 
   test "mejora de energía" {
+    tienda.oro(100)
+    assert.equals(60, puntosDeVida.vida())
+    assert.equals(50, puntosDeVida.precio())
+
+    tienda.mejorarVida()
     
+    assert.equals(50, tienda.oro())
+    assert.equals(80, puntosDeVida.vida())
   }
 }

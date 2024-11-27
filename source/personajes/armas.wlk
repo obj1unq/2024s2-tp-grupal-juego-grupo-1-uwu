@@ -79,7 +79,7 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
 object doblePistola inherits Arma(cadencia=250,cargador=24) {
 
     override method precio(){
-        return 300
+        return 80
     }
     override method disparar(dir,pos) {
         super(dir,pos)
