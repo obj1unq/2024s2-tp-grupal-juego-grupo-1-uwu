@@ -11,6 +11,7 @@ class Personaje {
     var property position = game.at(5,5)
     //Propiedades   
     var property arma 
+    const property armas
     
     method visualAmmo()
     method imagenInicial()
@@ -21,10 +22,6 @@ class Personaje {
     method sinMunicion()
     method lanzarEspecial() 
 
-    method visualHealth(numero) {
-        return self.cura(numero)
-    }
-    
     // -------------movimiento-------------------------------
     
     method mover(direccion) {
@@ -68,11 +65,31 @@ class Personaje {
         self.sonidoAtaque()
     }
 
-    // -------------items-------------------------------
+    // -------------armas-------------------------------
+
+    method sonidoRecarga(){
+        arma.sonidoRecarga()
+    }
+
+    method mejorarArma(){
+        if(not armas.isEmpty()){
+            arma = armas.first()
+            armas.remove(arma)
+        }
+    }
+
+    method precioSiguienteArma(){
+        return armas.first().precio()
+    }
+
+    // ------------vida--------------------------------
 
     method herir(cantidad) {
         puntosDeVida.herir(cantidad)
     }
 
+    method visualHealth(numero) {
+        return self.cura(numero)
+    }
 }
 

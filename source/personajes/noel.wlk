@@ -4,10 +4,8 @@ import posiciones.*
 import armas.*
 import proyectiles.*
 
-object noel inherits Personaje(arma=pistola) {
+object noel inherits Personaje(arma=pistola,armas=#{doblePistola,escopeta,escopetaPlateada}) {
 
-    const property armas = [doblePistola, escopeta, escopetaPlateada]
-    
     var property ultimaDir = derecha
 
     override method mover(dir) {
@@ -44,8 +42,6 @@ object noel inherits Personaje(arma=pistola) {
         return "noel-" + arma.toString() + "-normal-" + direccion.toString() + ".png"
     }
 
-    method especial(){}
-
     override method sonidoAtaque(){
         game.sound("tiro1.mp3").play()
     }
@@ -54,40 +50,17 @@ object noel inherits Personaje(arma=pistola) {
         game.sound("noel-muerte-sonido.mp3").play()
     }
 
-//------------hud-------------------------------------------
-
-        override method sinMunicion(){
+    override method sinMunicion(){
         game.sound("sin-balas.mp3").play()
     }
 
-    method sonidoRecarga(){
-        arma.sonidoRecarga()
-    }
-
-//---------------------arma--------------------------
-
-    //Es igual en ambos pj, hay que meterlo en personaje
-    method mejorarArma(){
-        if(not armas.isEmpty()){
-            arma = armas.first()
-            armas.remove(arma)
-        }
-    }
-    
-    method precioSiguienteArma(){
-        return armas.first().precio()
-    }
-    
-
 //-------------------especial------------------------
-
 
     override method lanzarEspecial() {
         const baston = new Baston(position=self.ultimaDir().siguientePosicion(position), image="baston-"+self.ultimaDir()+".png")
         game.addVisual(baston)
         baston.nuevoViaje(ultimaDir)
     }
-
 }
 
 
