@@ -74,7 +74,6 @@ object tienda{
     method validarSiAlcanzaOro(precio) {
         if(oro < precio){
             game.sound("not-enough-cash.mp3").play()
-            console.println("no te alcanza el oro")
             self.error("")} //No alcanza el oro
     }
 
@@ -93,7 +92,6 @@ object tienda{
     method validarSiArmaEstaAlMax() {
         if(not juego.jugador().quedanArmasPorMejorar()){
             game.sound("No-puede-comprar.mp3").play()
-            console.println("ya alcanzo el max")
             self.error("")} //No quedan armas por mejorar
     }
 }
