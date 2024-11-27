@@ -143,7 +143,7 @@ describe "desvariados" {
     
     tienda.mejorarArma()
     
-    assert.equals(20, tienda.oro()) //Debería estar bien cuando se junte con otra rama
+    assert.equals(20, tienda.oro())
     assert.equals(doblePistola, noel.arma())
   }
   
@@ -155,6 +155,6 @@ describe "desvariados" {
     tienda.mejorarEnergia()
     
     assert.equals(50, tienda.oro())
-    assert.equals(13, barraDeEnergia.energia())
+    assert.equals(13, barraDeEnergia.energiaMaxima())
   }
 }

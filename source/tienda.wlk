@@ -31,7 +31,7 @@ object tienda{
     }
 
     //Letra J
-    method mejorarVida(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarVida() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiAlcanzaOro(puntosDeVida.precio())
         self.validarSiVidaEstaAlMax()
         game.sound("mejora.mp3").play()
@@ -42,7 +42,7 @@ object tienda{
         self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
-    method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarEnergia() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiAlcanzaOro(barraDeEnergia.precio())
         self.validarSiEnergiaEstaAlMax()
         barraDeEnergia.subirMaximo(3)
@@ -54,7 +54,7 @@ object tienda{
     }
 
     //letra K
-    method mejorarArma(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarArma() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiArmaEstaAlMax()
         self.validarSiAlcanzaOro(juego.jugador().precioSiguienteArma())
         juego.jugador().mejorarArma()
@@ -64,39 +64,39 @@ object tienda{
     }
 
     //Validaciones
-    method validarSiAlcanzaOro(precio){
+    method validarSiAlcanzaOro(precio) {
         if(oro < precio){
             game.sound("not-enough-cash.mp3").play()
             self.error("")} //No alcanza el oro
     }
 
-    method validarSiVidaEstaAlMax(){
+    method validarSiVidaEstaAlMax() {
         if(puntosDeVida.vidaMax() == 100){
             game.sound("No-puede-comprar.mp3").play()
             self.error("")} //La vida esta al maximo
     }
 
-    method validarSiEnergiaEstaAlMax(){
+    method validarSiEnergiaEstaAlMax() {
         if(barraDeEnergia.energiaMaxima() == 20){
             game.sound("No-puede-comprar.mp3").play()
             self.error("")} //La energia esta al maximo
     }
 
-    method validarSiArmaEstaAlMax(){
+    method validarSiArmaEstaAlMax() {
         if(not juego.jugador().quedanArmasPorMejorar()){
             game.sound("No-puede-comprar.mp3").play()
             self.error("")} //No quedan armas por mejorar
     }
 }
 
-class MejoraDeStat{
+class MejoraDeStat {
     var property image
     var property position = game.at(0,0)
 
     method actualizarSiLlegaAlMax()
     method animacionCompra()
 }
-object mejoraDeVida inherits MejoraDeStat(image = "VidaUp.png"){
+object mejoraDeVida inherits MejoraDeStat(image = "VidaUp.png") {
 
     override method actualizarSiLlegaAlMax(){
         if(puntosDeVida.vidaMax()== 100){
@@ -110,7 +110,7 @@ object mejoraDeVida inherits MejoraDeStat(image = "VidaUp.png"){
     }
 }
 
-object mejoraDeEnergia inherits MejoraDeStat(image = "EnergiaUp.png"){
+object mejoraDeEnergia inherits MejoraDeStat(image = "EnergiaUp.png") {
 
     override method actualizarSiLlegaAlMax(){
         if(barraDeEnergia.energiaMaxima() == 20){
@@ -129,7 +129,7 @@ object mejoraDeArma {
     
     var property position = game.at(0,0)
 
-    method image(){
+    method image() {
         if(juego.jugador().armas().isEmpty()){
             return juego.jugador().arma() + "-agotado.png"
         }else {
