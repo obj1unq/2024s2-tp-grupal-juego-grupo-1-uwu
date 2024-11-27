@@ -35,7 +35,7 @@ object managerItems {
     var balasEnTablero = 0
 
     method restarBalasDeTablero() {
-        balasEnTablero -= 1
+        balasEnTablero = balasEnTablero - 1
     }
 
     method darleTodoAlPersonaje() {
@@ -45,7 +45,6 @@ object managerItems {
     // Oro = 50% / Municion = 35% / Vida = 10% / Nada = 5% 
     method generarDrop(posicion) {
         const numero = 0.randomUpTo(100).round()
-
         if (numero <= 50) { 
             self.spawnearOro(0.randomUpTo(3).round().max(1), posicion)
         } else if (numero > 50 and numero <= 85) {
@@ -85,7 +84,7 @@ object managerItems {
     }
 
     method siNoHayBalasSoltarle() {
-        if (balasEnTablero == 0) {
+        if (balasEnTablero <= 0) {
             self.spawnearMunicion(game.at(10,7))
         }
     }
@@ -105,7 +104,7 @@ object managerCuras {
 }
 
 object managerMonedas {
-    const oro = [10, 30, 50]
+    const oro = [25, 35, 55]
     
     method monedas(numero, position) {
         return new Oro(image = "oro" + numero + ".png",
@@ -120,12 +119,10 @@ object managerMonedas {
 object managerZombie {
     const property zombies = #{}
     const property spawnPoints = #{game.at(3,0),game.at(15,0),game.at(3,13),game.at(15,13)} 
-    var property zombiesDelNivel = 0
     var property zombiesSpawneados = 0
 
     method spawnCycle(cant) {
         game.onTick(3000,"spawnCycle",{self.spawneoRandom(cant)})
-        zombiesDelNivel = cant
     }
 
     method terminarSpawnCycle() {
@@ -138,12 +135,12 @@ object managerZombie {
     }
 
     method condicionSpawneoRandom(cant) {
-        return (zombies.size() < 4 and (cant > zombiesSpawneados))
+        return (zombies.size() < 3 and (cant > zombiesSpawneados))
     }
 
     method spawneoRandom(cant) {
         if (self.condicionSpawneoRandom(cant)) { 
-        const zombieNuevo = 1.randomUpTo(4).round()
+        const zombieNuevo = 1.randomUpTo(3).round()
         if(zombieNuevo == 1) {
             self.spawnearZ(new ZombieComun(position=self.posicionDeSpawneoRandom()))
         }
@@ -222,3 +219,5 @@ object generadorZombie {
         return game.at(game.width() -3, game.height() -3)
     }
 }
+
+// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)

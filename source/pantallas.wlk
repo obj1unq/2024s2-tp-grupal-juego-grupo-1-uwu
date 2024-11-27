@@ -2,6 +2,7 @@ import nivelManager.*
 import juego.*
 import wollok.game.*
 import stats.*
+import tienda.*
 
 object pantalla {
     method position() = game.at(0,0)
@@ -33,15 +34,23 @@ object pantalla {
     }
 
     method limpiar() {
+        image = "Cargando-3.png"
         game.allVisuals().forEach({v => game.removeVisual(v)})
         game.addVisual(self)
-        image = "Cargando-3.png"
         self.abandonarCargando()
     }
 
     method abandonarCargando() {
         nivelManager.iniciarSigNivel()
         game.removeVisual(self)
+    }
+
+    method derrota() {
+        nivelManager.limpieza()
+        game.allVisuals().forEach({v => game.removeVisual(v)})
+        image = "pantalla-derrota.png"
+        game.addVisual(self)
+        game.schedule(2000,{game.stop()})
     }
 
 }
@@ -74,5 +83,26 @@ object suelo {
     method visualizarCon(img) {
         image = img 
         game.addVisual(self)
+    }
+}
+
+object mercadoVisible{
+    var contador = 0
+    
+    
+    method dibujar(){
+        if (contador==0) {
+            contador += 1
+            mejoraDeArma.image(juego.jugador().sigArma().toString() + ".png")
+        }
+        game.addVisual(mejoraDeArma)
+        game.addVisual(mejoraDeEnergia)
+        game.addVisual(mejoraDeVida)
+        game.addVisual(tienda)
+        billetera.visualizarCantOro()
+        game.sound("Welcome!.mp3").play()
+        // game.addVisual(self) Numeros
+        // game.addVisual(self) Numeros
+        // game.addVisual(self) Numeros
     }
 }

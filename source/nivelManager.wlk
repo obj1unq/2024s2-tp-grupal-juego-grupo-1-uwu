@@ -12,8 +12,8 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [niv1,niv2,tienda,niv3,niv4,tienda,niv5,niv6,tienda,niv7,niv8]
-
+    const property niveles = [niv2,tienda,niv4,tienda,niv6,tienda,niv7]
+    var property actual = niv2
     var property obstaculos = #{}
 
     var property enemigosTotales = 0
@@ -28,34 +28,42 @@ object nivelManager {
     }
 
     method iniciarSigNivel() {
+        juego.jugador().arma().maxearCargador()
+        juego.jugador().position(game.at(10, 7))
         self.validarSigNivel()
-        const actual = niveles.first()
+        actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
     }
 
     method validarSigNivel() {
         if (niveles.isEmpty()) {
-            self.terminarJuego()
+            self.ganarJuego()
             self.error("")
         }
     }
 
-    method terminarJuego() {
+    method ganarJuego() {
         game.allVisuals().forEach({v => game.removeVisual(v)})
         pantalla.fin()
     }
 
-    method terminarNivel() {
-        obstaculos.clear() 
+    method limpieza() {
+        obstaculos.clear()
+        actual.ost().stop() 
         managerZombie.terminarPersecucion()
         managerZombie.terminarSpawnCycle()
+    }
+
+    method terminarNivel() {
         managerItems.darleTodoAlPersonaje()
+        self.limpieza()
         pantalla.animacionCargando()
     }
 
     method terminarTienda() {
-
+        tienda.ost().stop()
+        pantalla.animacionCargando()
     }
 
     method murioZombie() {
@@ -94,10 +102,12 @@ class Nivel {
     const img
     const enemigos
     method tablero() 
+    const property ost 
+
 
     method inicializar() {
+        ost.play()
         suelo.visualizarCon(img)
-        hudVisible.dibujar()
         juego.estado(jugando)
         managerZombie.persecucion()
         nivelManager.enemigosTotales(enemigos)
@@ -108,6 +118,7 @@ class Nivel {
                 self.tablero().get(y).get(x).dibujarEn(game.at(x,y))
             })
         })
+        hudVisible.dibujar()
     }
 }
 
@@ -122,6 +133,28 @@ object c {
         game.addVisual(cajaNueva)
         nivelManager.obstaculos().add(cajaNueva)
     }
+}
+
+object p {
+    method dibujarEn(pos) {
+        const pared = new Pared(position=pos)
+        game.addVisual(pared)
+    }
+}
+
+object m {
+    method dibujarEn(pos) {
+        const pared = new ParedMusgo(position=pos)
+        game.addVisual(pared)
+    }
+}
+
+class Pared {
+    var property image = "Ladrillo1.png"
+    var property position 
+}
+
+class ParedMusgo inherits Pared(image="Ladrillo2.png") {
 }
 
 class Caja {

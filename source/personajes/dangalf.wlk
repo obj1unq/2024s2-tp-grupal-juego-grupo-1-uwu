@@ -4,7 +4,8 @@ import posiciones.*
 import armas.*
 import personaje.*
 
-object dangalf inherits Personaje(arma=dosManos,armas=#{tresManos,cuatroManos}) {
+object dangalf inherits Personaje(arma=dosManoss, armas=[tresManoss,cuatroManoss]) {
+
 //-------------items------------------------------------------
 
     override method cura(numero){
@@ -16,6 +17,8 @@ object dangalf inherits Personaje(arma=dosManos,armas=#{tresManos,cuatroManos}) 
     }
 
 //-----------ataque-movimiento--------------------------------
+
+    
 
     override method imagenInicial(){
         return "dangalf-" + arma.toString() + "-normal-abajo.png"
@@ -39,8 +42,14 @@ object dangalf inherits Personaje(arma=dosManos,armas=#{tresManos,cuatroManos}) 
         game.sound("wizard-death.mp3").play()
     }
 
+//------------hud-------------------------------------------
+    
     override method sinMunicion(){
         game.sound("mago-sin-municion.mp3").play()
+    }
+
+    method sonidoRecarga(){
+        arma.sonidoRecarga()
     }
 
 //-----------especial---------------------------------------
@@ -57,4 +66,5 @@ object dangalf inherits Personaje(arma=dosManos,armas=#{tresManos,cuatroManos}) 
         game.addVisual(rayo)
         rayo.nuevoViaje(direccion)
     }
+
 }

@@ -1,6 +1,7 @@
 import extras.*
 import wollok.game.*
 import juego.*
+import pantallas.*
 
 //---------------------------------Timer---------------------------------------
 object timer {
@@ -35,7 +36,6 @@ object puntosDeVida {
   var property vidaMax = 60
   var property image = "barravida-60.png"
   var property position = game.at(0, 14)
-  var property precio = 50
   
   method curarse(cura) {
     game.sound("cura-sonido.mp3").play()
@@ -61,9 +61,7 @@ object puntosDeVida {
   
   method muerte() {
     juego.jugador().sonidoMuerte()
-    game.clear() // pantalla muerte
-    
-    game.schedule(1000, { game.stop() })
+    pantalla.derrota()
   }
   
   method actualizar() {
@@ -87,7 +85,6 @@ object barraDeEnergia {
   var property image = ("energia-" + energia.toString()) + ".png"
   var property energia = 10
   var property energiaMaxima = 10
-  var property precio = 50
   
   method position() = game.at(13, 14)
   
@@ -105,6 +102,10 @@ object barraDeEnergia {
     self.image(("energia-" + energia.toString()) + ".png")
   }
   
+  method recargarMax() {
+    energia = energiaMaxima
+  }
+
   method subirMaximo(num) {
     energiaMaxima = 20.min(energiaMaxima + num)
   }
@@ -112,7 +113,7 @@ object barraDeEnergia {
 
 object especial {
   var property zombiesAsesinados = 0
-  var property position = game.at(0, 0)
+  var property position = game.at(4, 14)
   
   method tirarEspecial() {
     self.validarEspecial()
@@ -128,7 +129,7 @@ object especial {
     if (zombiesAsesinados < 6) self.error("")
   }
   
-  method image() = ("Special-" + self.especialListo().toString()) + ".png"
+  method image() = ("especial-" + self.especialListo().toString()) + ".png"
   
   method especialListo() = if (zombiesAsesinados < 6) 0 else 1
 }

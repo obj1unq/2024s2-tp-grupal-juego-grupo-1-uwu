@@ -14,10 +14,6 @@ import posiciones.*
 import proyectiles.*
 import stats.*
 import tienda.*
-import etapas.etapa1.*
-import etapas.etapa2.*
-import etapas.etapa3.*
-import etapas.etapa4.*
 
 describe "desvariados" {
   const cura = new Cura(vidaDada = 20, image = "", position = game.at(0, 1))
@@ -128,7 +124,6 @@ describe "desvariados" {
   test "mejora de vida" {
     tienda.oro(100)
     assert.equals(60, puntosDeVida.vida())
-    assert.equals(50, puntosDeVida.precio())
     
     tienda.mejorarVida()
     
@@ -139,22 +134,20 @@ describe "desvariados" {
   test "mejora de arma" {
     tienda.oro(100)
     assert.equals(pistola, noel.arma())
-    assert.equals(80, doblePistola.precio())
     
     tienda.mejorarArma()
     
-    //assert.equals(20, tienda.oro()) //Debería estar bien cuando se junte con otra rama
-    assert.equals(doblePistola, noel.arma())
+    assert.equals(20, tienda.oro())
+    assert.equals(doblePistolas, noel.arma())
   }
   
   test "mejora de energía" {
     tienda.oro(100)
-    assert.equals(50, barraDeEnergia.precio())
     assert.equals(10, barraDeEnergia.energia())
     
     tienda.mejorarEnergia()
     
-    assert.equals(50, tienda.oro()) //Está bien cuando se une con otra rama
-    //assert.equals(..., barraDeEnergia.energia()) No sé cuanto da
+    assert.equals(50, tienda.oro())
+    assert.equals(13, barraDeEnergia.energiaMaxima())
   }
 }

@@ -87,4 +87,17 @@ object enTienda inherits EstadoJuego() {
         juego.estado(cargando)
         nivelManager.terminarTienda()
     }
+
+    override method mejorarVida() {
+        tienda.mejorarVida()
+    }
+
+    override method mejorarArma() {
+        tienda.mejorarArma()
+    }
+
+    override method mejorarEnergia() {
+        tienda.mejorarEnergia()
+    }
+
 }

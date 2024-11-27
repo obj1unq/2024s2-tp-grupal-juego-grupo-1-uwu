@@ -20,13 +20,15 @@ class Zombie {
 
     method herir(danio) {
         vida = 0.max(vida - danio)
-        self.sonidoHerida()
         self.fijarseMuerte()
     }
     
     method fijarseMuerte() {
         if (vida == 0) {
            self.morir() 
+        }
+        else {
+            self.sonidoHerida()
         }
     }
 
@@ -121,11 +123,11 @@ class Zombie {
 class ZombieComun inherits Zombie(vida = 100, dmg = 10, image = "zombieComun-abajo.png", velocidad=2){ 
 
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("zombie-herido.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play()
+        game.sound("zombie-muerto.mp3").play()
     }
 
     override method imagenMovimiento() {
@@ -136,11 +138,11 @@ class ZombieComun inherits Zombie(vida = 100, dmg = 10, image = "zombieComun-aba
 class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.png",velocidad=1){
 
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("perro-heridoNuevo.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play()
+        game.sound("perro-muerto.mp3").play()
     }
 
     override method imagenMovimiento() {
@@ -148,7 +150,7 @@ class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.p
     }
 }
 
-class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo.png", velocidad=3) {
+class ZombieTanque inherits Zombie(vida = 150, dmg = 75, image = "tanque-1-abajo.png", velocidad=3) {
     
     var estado = 1
     var ultimaDir = abajo
@@ -159,7 +161,7 @@ class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo
 
     override method atacarAgro() {
         ultimaDir = self.dirAgroPegado()
-        managerZombie.quitarZ(self)
+        managerZombie.zombies().remove(self)
         self.animacionAtaque() 
         game.schedule(1250,{managerCrater.explosionEnCon(position,dmg)}) 
         game.schedule(1500,{managerZombie.agregarZ(self)})
@@ -188,11 +190,11 @@ class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo
     // sonido -----------------------------------------
     
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("tank-herido.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play() // hay q ponerle otros sonidos
+        game.sound("tank-muerte.mp3").play() // hay q ponerle otros sonidos
     }
 
     // imagen -----------------------------------------
@@ -206,6 +208,7 @@ class ZombieThrower inherits Zombie(vida = 20, dmg = 10, image = "expectorador-1
     var contador = 0
     var estado = 1
     var positionAtaque = game.at(0, 0)
+
 
     override method perseguirAJugador() {
         if(!self.agroEstaAbajo() and !self.estaAlFinalIzquierdo() and contador.even()) {
@@ -226,6 +229,7 @@ class ZombieThrower inherits Zombie(vida = 20, dmg = 10, image = "expectorador-1
     method atacarAPersonaje() {
         positionAtaque = self.agro().position()
         self.atacarAgro()
+        game.sound("sonido-escupitajo.mp3").play()
     }
 
     method moverse(dir) {
