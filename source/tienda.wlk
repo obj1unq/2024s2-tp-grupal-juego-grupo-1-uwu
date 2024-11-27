@@ -104,31 +104,31 @@ class MejoraDeStat {
     method animacionCompra()
 }
 
-object mejoraDeVida inherits MejoraDeStat(image = "VidaUp.png") {
+object mejoraDeVida inherits MejoraDeStat(image = "VidaUpp.png") {
 
     override method actualizarSiLlegaAlMax(){
         if(puntosDeVida.vidaMax()== 100){
-            game.schedule(500,{image = "VidaUp-agotado.png"}) 
+            game.schedule(500,{image = "VidaUpp-agotado.png"}) 
         }
     }
 
     override method animacionCompra(){
-        image = "VidaUp-compra.png"
-        game.schedule(500,{image = "VidaUp.png" }) 
+        image = "VidaUpp-compra.png"
+        game.schedule(500,{image = "VidaUpp.png" }) 
     }
 }
 
-object mejoraDeEnergia inherits MejoraDeStat(image = "EnergiaUp.png") {
+object mejoraDeEnergia inherits MejoraDeStat(image = "EnergiaUpp.png") {
 
     override method actualizarSiLlegaAlMax(){
         if(barraDeEnergia.energiaMaxima() == 20){
-            game.schedule(500,{image = "EnergiaUp-agotado.png"}) 
+            game.schedule(500,{image = "EnergiaUpp-agotado.png"}) 
         }
     }
 
     override method animacionCompra(){
-        image = "EnergiaUp-compra.png"
-        game.schedule(500,{image = "EnergiaUp.png" }) 
+        image = "EnergiaUpp-compra.png"
+        game.schedule(500,{image = "EnergiaUpp.png" }) 
     }
 }
 

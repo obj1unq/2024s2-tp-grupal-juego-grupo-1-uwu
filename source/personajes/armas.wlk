@@ -71,7 +71,7 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
     }
 }
 
-object doblePistola inherits Arma(cadencia=250,cargador=24) {
+object doblePistolas inherits Arma(cadencia=250,cargador=24) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -93,7 +93,7 @@ object doblePistola inherits Arma(cadencia=250,cargador=24) {
     }
 }
 
-object esco inherits Arma(cadencia=900,cargador=6) {
+object escop inherits Arma(cadencia=900,cargador=6) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -115,7 +115,7 @@ object esco inherits Arma(cadencia=900,cargador=6) {
     }
 }
 
-object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
+object escopetaPlateadas inherits Arma(cadencia=450,cargador=12) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -137,7 +137,7 @@ object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
     }
 }
 
-object dosManos inherits Arma(cadencia=800,cargador=12) {
+object dosManoss inherits Arma(cadencia=800,cargador=12) {
 
 
     override method disparar(dir,pos) {
@@ -164,7 +164,7 @@ object dosManos inherits Arma(cadencia=800,cargador=12) {
     }
 }
 
-object tresManos inherits Arma(cadencia=900,cargador=12) {
+object tresManoss inherits Arma(cadencia=900,cargador=12) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -191,7 +191,7 @@ object tresManos inherits Arma(cadencia=900,cargador=12) {
 
 }
 
-object cuatroManos inherits Arma(cadencia=700,cargador=12) {
+object cuatroManoss inherits Arma(cadencia=700,cargador=12) {
 
     override method disparar(dir,pos) {
         super(dir,pos)
