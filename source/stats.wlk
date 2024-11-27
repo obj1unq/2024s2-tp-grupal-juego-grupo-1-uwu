@@ -47,7 +47,7 @@ object puntosDeVida {
 
     var property position = game.at(0, 14)
 
-    var property precio = 300
+    var property precio = 50
 
     method curarse(cura){
         game.sound("cura-sonido.mp3").play()
@@ -109,7 +109,7 @@ object barraDeEnergia {
     var property energia = 10
     var property energiaMaxima = 10
     
-    var property precio = 300
+    var property precio = 50
     
     method position() {
             return game.at(13, 14)

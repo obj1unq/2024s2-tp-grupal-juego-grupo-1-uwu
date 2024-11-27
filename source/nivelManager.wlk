@@ -12,7 +12,7 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [mercado,niv1,niv2,mercado,niv3,niv4,mercado,niv5,niv6,mercado,niv7,niv8]
+    const property niveles = [mercado,niv1,mercado,niv3,mercado,niv5,mercado,niv8]
 
     var property obstaculos = #{}
 

@@ -4,7 +4,7 @@ import stats.*
 
 object tienda{
     
-    var property oro = 500 //Delegar oro a hud
+    var property oro = 0 //Delegar oro a hud
     
     var property image = "Tienda.png" 
     var property position = game.at(0,0)
@@ -32,19 +32,21 @@ object tienda{
 
     //Letra J
     method mejorarVida(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
-        self.validarSiVidaEstaAlMax()
         self.validarSiAlcanzaOro(puntosDeVida.precio())
+        self.validarSiVidaEstaAlMax()
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
         puntosDeVida.subirMaximo()
+        mejoraDeVida.animacionCompra()
         mejoraDeVida.actualizarSiLlegaAlMax()
         self.restarOro(puntosDeVida.precio())  
     }
     //Letra L
     method mejorarEnergia(){ //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
-        self.validarSiEnergiaEstaAlMax()
         self.validarSiAlcanzaOro(barraDeEnergia.precio())
+        self.validarSiEnergiaEstaAlMax()
         barraDeEnergia.subirMaximo(3)
+        mejoraDeEnergia.animacionCompra()
         mejoraDeEnergia.actualizarSiLlegaAlMax()
         game.sound("mejora.mp3").play()
         game.sound("thank-you.mp3").play()
@@ -56,7 +58,6 @@ object tienda{
         self.validarSiArmaEstaAlMax()
         self.validarSiAlcanzaOro(juego.jugador().precioSiguienteArma())
         juego.jugador().mejorarArma()
-        //Cambiar imgen si llego al maximo
         game.sound("mejora.mp3").play()
         game.sound("good-choice.mp3").play()
         self.restarOro(barraDeEnergia.precio())   
@@ -82,33 +83,44 @@ object tienda{
     }
 
     method validarSiArmaEstaAlMax(){
-        if(juego.jugador().armas().isEmpty()){
+        if(not juego.jugador().quedanArmasPorMejorar()){
             game.sound("No-puede-comprar.mp3").play()
             self.error("")} //No quedan armas por mejorar
     }
 }
 
-object mejoraDeVida {
-
-    var property image = "VidaUp.png" 
+class MejoraDeStat{
+    var property image
     var property position = game.at(0,0)
 
-    method actualizarSiLlegaAlMax(){
+    method actualizarSiLlegaAlMax()
+    method animacionCompra()
+}
+object mejoraDeVida inherits MejoraDeStat(image = "VidaUp.png"){
+
+    override method actualizarSiLlegaAlMax(){
         if(puntosDeVida.vidaMax()== 100){
-            image = "VidaUp-agotado.png"
+            game.schedule(1001,{image = "VidaUp-agotado.png"}) 
         }
+    }
+
+    override method animacionCompra(){
+        image = "VidaUp-compra.png"
+        game.schedule(1000,{image = "VidaUp.png" }) 
     }
 }
 
-object mejoraDeEnergia {
+object mejoraDeEnergia inherits MejoraDeStat(image = "EnergiaUp.png"){
 
-    var property image = "EnergiaUp.png" 
-    var property position = game.at(0,0)
-
-    method actualizarSiLlegaAlMax(){
+    override method actualizarSiLlegaAlMax(){
         if(barraDeEnergia.energiaMaxima() == 20){
-            image = "EnergiaUp-agotado.png"
+            game.schedule(1001,{image = "EnergiaUp-agotado.png"}) 
         }
+    }
+
+    override method animacionCompra(){
+        image = "EnergiaUp-compra.png"
+        game.schedule(1000,{image = "EnergiaUp.png" }) 
     }
 }
 

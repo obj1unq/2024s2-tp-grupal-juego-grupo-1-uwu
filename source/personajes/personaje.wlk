@@ -7,6 +7,7 @@ import managers.*
 
 class Personaje { 
     //Imagen y posicion
+    const property armas
     var property image = self.imagenInicial()
     var property position = game.at(5,5)
     //Propiedades   
@@ -72,6 +73,22 @@ class Personaje {
 
     method herir(cantidad) {
         puntosDeVida.herir(cantidad)
+    }
+
+    // -------------armas-------------------------------
+
+    method quedanArmasPorMejorar(){
+        return armas.isEmpty()
+    }
+    method mejorarArma(){
+        if(not self.quedanArmasPorMejorar()){
+            arma = armas.first()
+            armas.remove(arma)
+        }
+    }
+
+    method precioSiguienteArma(){
+        return armas.first().precio()
     }
 
 }

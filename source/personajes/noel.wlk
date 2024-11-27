@@ -4,10 +4,8 @@ import posiciones.*
 import armas.*
 import proyectiles.*
 
-object noel inherits Personaje(arma=pistola) {
-
-    const property armas = [doblePistola, escopeta, escopetaPlateada]
-    
+object noel inherits Personaje(arma=pistola, armas = [doblePistola, escopeta, escopetaPlateada]) {
+   
     var property ultimaDir = derecha
 
     override method mover(dir) {
@@ -63,21 +61,6 @@ object noel inherits Personaje(arma=pistola) {
     method sonidoRecarga(){
         arma.sonidoRecarga()
     }
-
-//---------------------arma--------------------------
-
-    //Es igual en ambos pj, hay que meterlo en personaje
-    method mejorarArma(){
-        if(not armas.isEmpty()){
-            arma = armas.first()
-            armas.remove(arma)
-        }
-    }
-    
-    method precioSiguienteArma(){
-        return armas.first().precio()
-    }
-    
 
 //-------------------especial------------------------
 

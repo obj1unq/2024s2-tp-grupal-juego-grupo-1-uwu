@@ -79,7 +79,7 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
 object doblePistola inherits Arma(cadencia=250,cargador=24) {
 
     override method precio(){
-        return 300
+        return 80
     }
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -104,7 +104,7 @@ object doblePistola inherits Arma(cadencia=250,cargador=24) {
 object escopeta inherits Arma(cadencia=900,cargador=6) {
 
     override method precio(){
-        return 500
+        return 80
     }
 
     override method disparar(dir,pos) {
@@ -130,7 +130,7 @@ object escopeta inherits Arma(cadencia=900,cargador=6) {
 object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
 
     override method precio(){
-        return 800
+        return 80
     }
 
     override method disparar(dir,pos) {
@@ -186,7 +186,7 @@ object dosManos inherits Arma(cadencia=800,cargador=12) {
 object tresManos inherits Arma(cadencia=900,cargador=12) {
 
     override method precio(){
-        return 500
+        return 80
     }
 
     override method disparar(dir,pos) {
@@ -217,7 +217,7 @@ object tresManos inherits Arma(cadencia=900,cargador=12) {
 object cuatroManos inherits Arma(cadencia=700,cargador=12) {
     
     override method precio(){
-        return 900
+        return 80
     }
 
     override method disparar(dir,pos) {
