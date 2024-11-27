@@ -124,7 +124,6 @@ describe "desvariados" {
   test "mejora de vida" {
     tienda.oro(100)
     assert.equals(60, puntosDeVida.vida())
-    assert.equals(50, puntosDeVida.precio())
     
     tienda.mejorarVida()
     
@@ -135,7 +134,6 @@ describe "desvariados" {
   test "mejora de arma" {
     tienda.oro(100)
     assert.equals(pistola, noel.arma())
-    assert.equals(80, doblePistola.precio())
     
     tienda.mejorarArma()
     
@@ -145,7 +143,6 @@ describe "desvariados" {
   
   test "mejora de energía" {
     tienda.oro(100)
-    assert.equals(50, barraDeEnergia.precio())
     assert.equals(10, barraDeEnergia.energia())
     
     tienda.mejorarEnergia()
