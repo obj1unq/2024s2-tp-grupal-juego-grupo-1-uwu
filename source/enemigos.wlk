@@ -121,11 +121,11 @@ class Zombie {
 class ZombieComun inherits Zombie(vida = 100, dmg = 10, image = "zombieComun-abajo.png", velocidad=2){ 
 
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("zombie-herido.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play()
+        game.sound("zombie-muerto.mp3").play()
     }
 
     override method imagenMovimiento() {
@@ -136,11 +136,11 @@ class ZombieComun inherits Zombie(vida = 100, dmg = 10, image = "zombieComun-aba
 class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.png",velocidad=1){
 
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("perro-herido.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play()
+        game.sound("perro-muerto.mp3").play()
     }
 
     override method imagenMovimiento() {
@@ -188,11 +188,11 @@ class ZombieTanque inherits Zombie(vida = 150, dmg = 50, image = "tanque-1-abajo
     // sonido -----------------------------------------
     
     override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
+        game.sound("tank-herido.mp3").play()
     }
 
     override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play() // hay q ponerle otros sonidos
+        game.sound("tank-muerte.mp3").play() // hay q ponerle otros sonidos
     }
 
     // imagen -----------------------------------------
@@ -226,6 +226,7 @@ class ZombieThrower inherits Zombie(vida = 20, dmg = 10, image = "expectorador-1
     method atacarAPersonaje() {
         positionAtaque = self.agro().position()
         self.atacarAgro()
+        game.sound("sonido-escupitajo.mp3").play()
     }
 
     method moverse(dir) {
