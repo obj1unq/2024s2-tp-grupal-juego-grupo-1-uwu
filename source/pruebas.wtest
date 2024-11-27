@@ -22,6 +22,7 @@ import etapas.etapa4.*
 describe "desvariados" {
   const cura = new Cura(vidaDada=20, image="", position=game.at(0, 1))
   const municion = new Balas(image="", position=game.at(0,2))
+  //zombie
 
   method initialize() {
     juego.estado(jugando)
@@ -74,8 +75,13 @@ describe "desvariados" {
     assert.throwsException({ especial.validarEspecial() })
   }
 
-  test "especial está listo" {
-    
+  test "especial está listo y disparar" {
+    especial.zombiesAsesinados(6)
+
+    assert.doesNotThrowException({ especial.validarEspecial() })
+
+    especial.tirarEspecial()
+    assert.throwsException({ especial.validarEspecial() })
   }
 
   test "hay zombie" {
