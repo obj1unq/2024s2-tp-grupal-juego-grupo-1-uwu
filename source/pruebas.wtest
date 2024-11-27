@@ -155,6 +155,6 @@ describe "desvariados" {
     tienda.mejorarEnergia()
     
     assert.equals(50, tienda.oro())
-    assert.equals(10, barraDeEnergia.energia())
+    assert.equals(13, barraDeEnergia.energia())
   }
 }
