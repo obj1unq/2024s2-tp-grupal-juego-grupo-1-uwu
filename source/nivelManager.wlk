@@ -12,7 +12,7 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [tienda,niv2,tienda,niv4,tienda,niv6,tienda,niv7]
+    const property niveles = [niv2,tienda,niv4,tienda,niv6,tienda,niv7]
     var property actual = niv1
     var property obstaculos = #{}
 
@@ -102,7 +102,6 @@ class Nivel {
     method inicializar() {
         ost.play()
         suelo.visualizarCon(img)
-        hudVisible.dibujar()
         juego.estado(jugando)
         managerZombie.persecucion()
         nivelManager.enemigosTotales(enemigos)
@@ -113,6 +112,7 @@ class Nivel {
                 self.tablero().get(y).get(x).dibujarEn(game.at(x,y))
             })
         })
+        hudVisible.dibujar()
     }
 }
 
@@ -127,6 +127,28 @@ object c {
         game.addVisual(cajaNueva)
         nivelManager.obstaculos().add(cajaNueva)
     }
+}
+
+object p {
+    method dibujarEn(pos) {
+        const pared = new Pared(position=pos)
+        game.addVisual(pared)
+    }
+}
+
+object m {
+    method dibujarEn(pos) {
+        const pared = new ParedMusgo(position=pos)
+        game.addVisual(pared)
+    }
+}
+
+class Pared {
+    var property image = "Ladrillo1.png"
+    var property position 
+}
+
+class ParedMusgo inherits Pared(image="Ladrillo2.png") {
 }
 
 class Caja {

@@ -6,7 +6,7 @@ import estadosJuego.*
 
 object tienda{
     
-    var property oro = 999 //Delegar oro a hud
+    var property oro = 0 //Delegar oro a hud
     const property ost = game.sound("sonido-tienda.mp3")
     var property image = "Tienda.png" 
     var property position = game.at(0,0)
@@ -45,6 +45,7 @@ object tienda{
         mejoraDeVida.actualizarSiLlegaAlMax()
         self.restarOro(50)  
     }
+
     //Letra L
     method mejorarEnergia() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
         self.validarSiAlcanzaOro(50)
