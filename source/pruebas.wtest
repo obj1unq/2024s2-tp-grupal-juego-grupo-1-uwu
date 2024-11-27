@@ -27,12 +27,13 @@ describe "desvariados" {
     juego.estado(jugando)
     game.addVisual(noel)
   }
-
+/*
   test "hay cura" {
-    //managerItems.spawnearCura(1, noel.position())
+    managerItems.spawnearCura(1, noel.position())
 
-    //assert.that(not managerItems.drops.isEmpty())
+    assert.that(not managerItems.drops.isEmpty())
   }
+  */
 
   test "curación" {
     
