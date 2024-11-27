@@ -1,6 +1,7 @@
 import extras.*
 import wollok.game.*
 import juego.*
+import pantallas.*
 
 //---------------------------------Timer---------------------------------------
 object timer {
@@ -60,9 +61,7 @@ object puntosDeVida {
   
   method muerte() {
     juego.jugador().sonidoMuerte()
-    game.clear() // pantalla muerte
-    
-    game.schedule(1000, { game.stop() })
+    pantalla.derrota()
   }
   
   method actualizar() {

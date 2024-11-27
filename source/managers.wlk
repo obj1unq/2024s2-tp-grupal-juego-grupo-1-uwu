@@ -35,7 +35,7 @@ object managerItems {
     var balasEnTablero = 0
 
     method restarBalasDeTablero() {
-        balasEnTablero -= 1
+        balasEnTablero = balasEnTablero - 1
     }
 
     method darleTodoAlPersonaje() {
@@ -84,7 +84,7 @@ object managerItems {
     }
 
     method siNoHayBalasSoltarle() {
-        if (balasEnTablero == 0) {
+        if (balasEnTablero <= 0) {
             self.spawnearMunicion(game.at(10,7))
         }
     }

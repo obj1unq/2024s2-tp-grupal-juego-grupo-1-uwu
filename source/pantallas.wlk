@@ -34,15 +34,23 @@ object pantalla {
     }
 
     method limpiar() {
+        image = "Cargando-3.png"
         game.allVisuals().forEach({v => game.removeVisual(v)})
         game.addVisual(self)
-        image = "Cargando-3.png"
         self.abandonarCargando()
     }
 
     method abandonarCargando() {
         nivelManager.iniciarSigNivel()
         game.removeVisual(self)
+    }
+
+    method derrota() {
+        nivelManager.limpieza()
+        game.allVisuals().forEach({v => game.removeVisual(v)})
+        image = "pantalla-derrota.png"
+        game.addVisual(self)
+        game.schedule(2000,{game.stop()})
     }
 
 }
@@ -91,6 +99,7 @@ object mercadoVisible{
         game.addVisual(mejoraDeEnergia)
         game.addVisual(mejoraDeVida)
         game.addVisual(tienda)
+        billetera.visualizarCantOro()
         game.sound("Welcome!.mp3").play()
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros

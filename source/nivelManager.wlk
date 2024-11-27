@@ -36,22 +36,26 @@ object nivelManager {
 
     method validarSigNivel() {
         if (niveles.isEmpty()) {
-            self.terminarJuego()
+            self.ganarJuego()
             self.error("")
         }
     }
 
-    method terminarJuego() {
+    method ganarJuego() {
         game.allVisuals().forEach({v => game.removeVisual(v)})
         pantalla.fin()
     }
 
-    method terminarNivel() {
+    method limpieza() {
         obstaculos.clear()
         actual.ost().stop() 
         managerZombie.terminarPersecucion()
         managerZombie.terminarSpawnCycle()
         managerItems.darleTodoAlPersonaje()
+    }
+
+    method terminarNivel() {
+        self.limpieza()
         pantalla.animacionCargando()
     }
 

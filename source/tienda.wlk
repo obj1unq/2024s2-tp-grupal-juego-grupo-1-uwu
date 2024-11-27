@@ -6,9 +6,9 @@ import estadosJuego.*
 
 object tienda{
     
-    var property oro = 0 //Delegar oro a hud
+    var property oro = 221 
     const property ost = game.sound("sonido-tienda.mp3")
-    var property image = "Tienda.png" 
+    const property image = "tienda-nueva.png" 
     var property position = game.at(0,0)
 
     method oroActual() {
@@ -151,11 +151,13 @@ object mejoraDeArma {
     }
 }
 
-class Numero {
-    method valor()
+object billetera {
+    method valor() {
+        return tienda.oro()
+    }
     var property position = game.at(0,0)
 
-    method agregarAlJuego() {
+    method visualizarCantOro() {
         game.addVisual(new Unidad(num=self))
         game.addVisual(new Decena(num=self))
         game.addVisual(new Centena(num=self))
@@ -171,13 +173,46 @@ class Digito {
 }
 
 class Unidad inherits Digito() {
-    override method image() {}
+    override method image() {
+        return "oro-der-" + self.digito() + ".png"
+    }
+
+    override method extraer(string) {
+        return if(string.size() == 3) {
+            string.charAt(2)
+        }
+        else if(string.size() == 2) {
+            string.charAt(1)
+        }
+        else {string.charAt(0)}
+    }
 }   
 
 class Decena inherits Digito() {
-    override method image() {}
+    override method image() {
+        return "oro-med-" + self.digito() + ".png"
+    }
+
+    override method extraer(string) {
+        return if(string.size() == 3) {
+            string.charAt(1)
+        }
+        else if(string.size() == 2) {
+            string.charAt(0)
+        }
+        else {"0"}
+    }
 }
 
 class Centena inherits Digito() { 
-    override method image() {}
+    override method image() {
+        return "oro-izq-" + self.digito() + ".png"
+    }
+
+    override method extraer(string) {
+        return if(string.size() == 3) {
+            string.charAt(0)
+        }
+        else {"0"}
+    }
 }
