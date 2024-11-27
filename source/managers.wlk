@@ -67,21 +67,21 @@ object managerItems {
 
     method spawnearCura(numero, posicion) {
         const nuevaCura = managerCuras.cura(numero, posicion)
-        drops.add(nuevaCura)
         game.addVisual(nuevaCura)
+        drops.add(nuevaCura)
     }
 
     method spawnearOro(numero, posicion) {
         const oroNuevo = managerMonedas.monedas(numero, posicion)
-        drops.add(oroNuevo)
         game.addVisual(oroNuevo)
+        drops.add(oroNuevo)
     }
 
     method spawnearMunicion(posicion) {
         balasEnTablero += 1
         const nuevaMunicion = new Balas(position = posicion)
-        drops.add(nuevaMunicion)
         game.addVisual(nuevaMunicion)
+        drops.add(nuevaMunicion)
     }
 
     method siNoHayBalasSoltarle() {
@@ -222,5 +222,3 @@ object generadorZombie {
         return game.at(game.width() -3, game.height() -3)
     }
 }
-
-// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)

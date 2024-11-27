@@ -38,7 +38,7 @@ describe "desvariados" {
 
   test "curación" {
     assert.equals(60, puntosDeVida.vida())
-    
+
     noel.herir(10)
     assert.equals(50, puntosDeVida.vida())
 
@@ -48,6 +48,9 @@ describe "desvariados" {
 
   test "sin munición para disparar" {
     
+
+    pistola.cargador(0)
+    assert.throwsException({ pistola.validarAtaque() })
   }
 
   test "hay munición" {
