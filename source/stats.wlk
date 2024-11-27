@@ -84,6 +84,10 @@ object puntosDeVida {
     method actualizar(){
         self.image("barravida-" + vida.toString() + ".png")
     }
+
+    method vida() {
+      return vida
+    }
 }
 
 //----------------------------------------------MUNICION-----------------------------
