@@ -2,7 +2,7 @@ import wollok.game.*
 import nivelManager.*
 
 
-object niv7 inherits Nivel(enemigos=9,img="suelo-laboratorio.png",ost=game.sound("musica-nivel-3.mp3")) {
+object niv7 inherits Nivel(enemigos=13,img="suelo-laboratorio.png",ost=game.sound("musica-nivel-3.mp3")) {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],

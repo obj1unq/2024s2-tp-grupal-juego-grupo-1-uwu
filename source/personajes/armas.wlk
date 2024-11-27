@@ -43,6 +43,10 @@ class Arma {
         self.cargador((cargador + cant).min(self.municionMaxima()))
     }
 
+    method maxearCargador() {
+      cargador = self.municionMaxima()
+    }
+
     method hudMunicion()
     method sonidoRecarga()
     method municionMaxima()

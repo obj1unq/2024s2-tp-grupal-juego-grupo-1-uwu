@@ -28,6 +28,8 @@ object nivelManager {
     }
 
     method iniciarSigNivel() {
+        juego.jugador().arma().maxearCargador()
+        juego.jugador().position(game.at(10, 7))
         self.validarSigNivel()
         actual = niveles.first()
         actual.inicializar()
@@ -51,10 +53,10 @@ object nivelManager {
         actual.ost().stop() 
         managerZombie.terminarPersecucion()
         managerZombie.terminarSpawnCycle()
-        managerItems.darleTodoAlPersonaje()
     }
 
     method terminarNivel() {
+        managerItems.darleTodoAlPersonaje()
         self.limpieza()
         pantalla.animacionCargando()
     }

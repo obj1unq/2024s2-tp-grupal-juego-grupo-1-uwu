@@ -138,7 +138,7 @@ describe "desvariados" {
     tienda.mejorarArma()
     
     assert.equals(20, tienda.oro())
-    assert.equals(doblePistola, noel.arma())
+    assert.equals(doblePistolas, noel.arma())
   }
   
   test "mejora de energía" {

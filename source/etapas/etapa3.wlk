@@ -25,7 +25,7 @@ object niv5 inherits Nivel(enemigos=6,img="suelo-castllo.png",ost=game.sound("mu
 }
 */
 
-object niv6 inherits Nivel(enemigos=7,img="suelo-castllo.png",ost=game.sound("musica-nivel-1.mp3")) {
+object niv6 inherits Nivel(enemigos=10,img="suelo-castllo.png",ost=game.sound("musica-nivel-1.mp3")) {
     override method tablero() {
     return
     [[_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_],
