@@ -42,15 +42,15 @@ object managerItems {
         drops.forEach({d => d.colisionPj()})
     }
 
-    // Oro = 25% / Municion = 40% / Vida = 20% / Nada = 15% 
+    // Oro = 50% / Municion = 35% / Vida = 10% / Nada = 5% 
     method generarDrop(posicion) {
         const numero = 0.randomUpTo(100).round()
 
-        if (numero <= 25) { 
+        if (numero <= 50) { 
             self.spawnearOro(0.randomUpTo(3).round().max(1), posicion)
-        } else if (numero > 25 and numero <= 50) {
+        } else if (numero > 50 and numero <= 85) {
             self.spawnearMunicion(posicion)
-        } else if (numero > 50 and numero <= 75) {
+        } else if (numero > 85 and numero <= 95) {
             self.spawnearCura(0.randomUpTo(3).round().max(1) , posicion)
         } 
     }
@@ -222,5 +222,3 @@ object generadorZombie {
         return game.at(game.width() -3, game.height() -3)
     }
 }
-
-// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)
