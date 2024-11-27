@@ -47,7 +47,7 @@ describe "desvariados" {
   }
 
   test "sin munición para disparar" {
-    
+    assert.doesNotThrowException({ pistola.validarAtaque() })
 
     pistola.cargador(0)
     assert.throwsException({ pistola.validarAtaque() })
