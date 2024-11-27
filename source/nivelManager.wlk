@@ -56,7 +56,6 @@ object nivelManager {
 
     method terminarTienda() {
         pantalla.animacionCargando()
-        self.iniciarSigNivel()
     }
 
     method murioZombie() {
