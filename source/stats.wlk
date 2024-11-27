@@ -103,6 +103,10 @@ object barraDeEnergia {
     self.image(("energia-" + energia.toString()) + ".png")
   }
   
+  method recargarMax() {
+    energia = energiaMaxima
+  }
+
   method subirMaximo(num) {
     energiaMaxima = 20.min(energiaMaxima + num)
   }

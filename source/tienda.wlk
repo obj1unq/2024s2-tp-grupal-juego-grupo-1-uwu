@@ -50,6 +50,7 @@ object tienda{
         self.validarSiAlcanzaOro(50)
         self.validarSiEnergiaEstaAlMax()
         barraDeEnergia.subirMaximo(3)
+        barraDeEnergia.recargarMax()
         mejoraDeEnergia.animacionCompra()
         mejoraDeEnergia.actualizarSiLlegaAlMax()
         game.sound("mejora.mp3").play()
