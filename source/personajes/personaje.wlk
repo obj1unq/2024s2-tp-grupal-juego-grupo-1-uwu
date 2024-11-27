@@ -77,18 +77,18 @@ class Personaje {
 
     // -------------armas-------------------------------
 
-    method quedanArmasPorMejorar(){
-        return armas.isEmpty()
-    }
-    method mejorarArma(){
-        if(not self.quedanArmasPorMejorar()){
-            arma = armas.first()
-            armas.remove(arma)
+    method sigArma() {
+        return if(self.quedanArmasPorMejorar()) {
+           armas.first()
         }
     }
 
-    method precioSiguienteArma(){
-        return armas.first().precio()
+    method quedanArmasPorMejorar(){
+        return !armas.isEmpty()
+    }
+    method mejorarArma(){
+        arma = self.sigArma()
+        armas.remove(arma)
     }
 
 }

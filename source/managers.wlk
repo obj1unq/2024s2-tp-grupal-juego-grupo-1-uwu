@@ -142,7 +142,7 @@ object managerZombie {
 
     method spawneoRandom(cant) {
         if (self.condicionSpawneoRandom(cant)) { 
-        const zombieNuevo = 1.randomUpTo(4).round()
+        const zombieNuevo = 1.randomUpTo(3).round()
         if(zombieNuevo == 1) {
             self.spawnearZ(new ZombieComun(position=self.posicionDeSpawneoRandom()))
         }

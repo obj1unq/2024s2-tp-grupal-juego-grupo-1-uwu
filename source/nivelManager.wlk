@@ -12,8 +12,8 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [mercado,niv1,mercado,niv3,mercado,niv5,mercado,niv8]
-
+    const property niveles = [tienda,niv2,tienda,niv4,tienda,niv6,tienda,niv7]
+    var property actual = niv1
     var property obstaculos = #{}
 
     var property enemigosTotales = 0
@@ -29,7 +29,7 @@ object nivelManager {
 
     method iniciarSigNivel() {
         self.validarSigNivel()
-        const actual = niveles.first()
+        actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
     }
@@ -47,7 +47,8 @@ object nivelManager {
     }
 
     method terminarNivel() {
-        obstaculos.clear() 
+        obstaculos.clear()
+        actual.ost().stop() 
         managerZombie.terminarPersecucion()
         managerZombie.terminarSpawnCycle()
         managerItems.darleTodoAlPersonaje()
@@ -55,6 +56,7 @@ object nivelManager {
     }
 
     method terminarTienda() {
+        tienda.ost().stop()
         pantalla.animacionCargando()
     }
 
@@ -94,8 +96,11 @@ class Nivel {
     const img
     const enemigos
     method tablero() 
+    const property ost 
+
 
     method inicializar() {
+        ost.play()
         suelo.visualizarCon(img)
         hudVisible.dibujar()
         juego.estado(jugando)
@@ -127,15 +132,6 @@ object c {
 class Caja {
     var property image = "caja2.png"
     var property position
-}
-
-object mercado{
-
-    method inicializar(){
-        mercadoVisible.dibujar()
-        juego.estado(enTienda)
-    }
-
 }
 
 

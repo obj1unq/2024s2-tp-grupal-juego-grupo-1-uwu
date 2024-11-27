@@ -72,6 +72,9 @@ class BalaEscopeta inherits Proyectil(danio= 75,velocidadViaje=180) {
     }
 }
 
+class BalaEscopetaMejorada inherits BalaEscopeta(danio=100) {
+    
+}
 
 class BolaDeFuego inherits Proyectil(danio=40, velocidadViaje=220) {
 

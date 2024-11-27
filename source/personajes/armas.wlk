@@ -9,8 +9,6 @@ class Arma {
     const cadencia
     var property estado = disparar
 
-    method precio()
-    
     method quitarMunicion() {
         cargador -= 1
         if (cargador == 0) { 
@@ -53,9 +51,6 @@ class Arma {
 
 object pistola inherits Arma(cadencia=500,cargador=12) {
 
-    override method precio(){
-        return 0
-    }
     override method disparar(dir,pos) {
         super(dir,pos)
         const balaNueva = new Bala(image="balaP-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
@@ -78,9 +73,6 @@ object pistola inherits Arma(cadencia=500,cargador=12) {
 
 object doblePistola inherits Arma(cadencia=250,cargador=24) {
 
-    override method precio(){
-        return 80
-    }
     override method disparar(dir,pos) {
         super(dir,pos)
         const balaNueva = new Bala(image="balaP-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
@@ -102,10 +94,6 @@ object doblePistola inherits Arma(cadencia=250,cargador=24) {
 }
 
 object escopeta inherits Arma(cadencia=900,cargador=6) {
-
-    override method precio(){
-        return 80
-    }
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -129,13 +117,9 @@ object escopeta inherits Arma(cadencia=900,cargador=6) {
 
 object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
 
-    override method precio(){
-        return 80
-    }
-
     override method disparar(dir,pos) {
         super(dir,pos)
-        const balaNueva = new BalaEscopeta(image="balaEscopeta-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
+        const balaNueva = new BalaEscopetaMejorada(image="balaEscopeta-" + dir.toString() + ".png", position=dir.siguientePosicion(pos))
         game.addVisual(balaNueva)
         balaNueva.nuevoViaje(dir)
     }
@@ -155,9 +139,6 @@ object escopetaPlateada inherits Arma(cadencia=450,cargador=12) {
 
 object dosManos inherits Arma(cadencia=800,cargador=12) {
 
-    override method precio(){
-        return 0
-    }
 
     override method disparar(dir,pos) {
         super(dir,pos)
@@ -185,10 +166,6 @@ object dosManos inherits Arma(cadencia=800,cargador=12) {
 
 object tresManos inherits Arma(cadencia=900,cargador=12) {
 
-    override method precio(){
-        return 80
-    }
-
     override method disparar(dir,pos) {
         super(dir,pos)
         self.hechizo(dir,pos)
@@ -215,10 +192,6 @@ object tresManos inherits Arma(cadencia=900,cargador=12) {
 }
 
 object cuatroManos inherits Arma(cadencia=700,cargador=12) {
-    
-    override method precio(){
-        return 80
-    }
 
     override method disparar(dir,pos) {
         super(dir,pos)

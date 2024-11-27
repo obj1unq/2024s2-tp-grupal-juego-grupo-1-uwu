@@ -35,7 +35,6 @@ object puntosDeVida {
   var property vidaMax = 60
   var property image = "barravida-60.png"
   var property position = game.at(0, 14)
-  var property precio = 50
   
   method curarse(cura) {
     game.sound("cura-sonido.mp3").play()
@@ -87,7 +86,6 @@ object barraDeEnergia {
   var property image = ("energia-" + energia.toString()) + ".png"
   var property energia = 10
   var property energiaMaxima = 10
-  var property precio = 50
   
   method position() = game.at(13, 14)
   

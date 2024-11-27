@@ -79,18 +79,19 @@ object suelo {
 }
 
 object mercadoVisible{
-
-    const property ostTienda = game.sound("sonido-tienda.mp3")
+    var contador = 0
+    
     
     method dibujar(){
-
-        
+        if (contador==0) {
+            contador += 1
+            mejoraDeArma.image(juego.jugador().sigArma().toString() + ".png")
+        }
         game.addVisual(mejoraDeArma)
         game.addVisual(mejoraDeEnergia)
         game.addVisual(mejoraDeVida)
         game.addVisual(tienda)
         game.sound("Welcome!.mp3").play()
-        ostTienda.play()
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros
         // game.addVisual(self) Numeros

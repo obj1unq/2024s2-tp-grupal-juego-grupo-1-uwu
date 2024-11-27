@@ -20,13 +20,15 @@ class Zombie {
 
     method herir(danio) {
         vida = 0.max(vida - danio)
-        self.sonidoHerida()
         self.fijarseMuerte()
     }
     
     method fijarseMuerte() {
         if (vida == 0) {
            self.morir() 
+        }
+        else {
+            self.sonidoHerida()
         }
     }
 
@@ -136,7 +138,7 @@ class ZombieComun inherits Zombie(vida = 100, dmg = 10, image = "zombieComun-aba
 class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.png",velocidad=1){
 
     override method sonidoHerida(){
-        game.sound("perro-herido.mp3").play()
+        game.sound("perro-heridoNuevo.mp3").play()
     }
 
     override method sonidoMuerte(){
@@ -206,6 +208,7 @@ class ZombieThrower inherits Zombie(vida = 20, dmg = 10, image = "expectorador-1
     var contador = 0
     var estado = 1
     var positionAtaque = game.at(0, 0)
+
 
     override method perseguirAJugador() {
         if(!self.agroEstaAbajo() and !self.estaAlFinalIzquierdo() and contador.even()) {
