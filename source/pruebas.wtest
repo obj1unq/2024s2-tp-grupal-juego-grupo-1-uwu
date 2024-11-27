@@ -70,7 +70,8 @@ describe "desvariados" {
   }
 
   test "especial no está listo" {
-    
+    assert.equals(0, especial.zombiesAsesinados())
+    assert.throwsException({ especial.validarEspecial() })
   }
 
   test "especial está listo" {
