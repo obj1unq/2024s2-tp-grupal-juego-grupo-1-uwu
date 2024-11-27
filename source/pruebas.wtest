@@ -14,10 +14,6 @@ import posiciones.*
 import proyectiles.*
 import stats.*
 import tienda.*
-import etapas.etapa1.*
-import etapas.etapa2.*
-import etapas.etapa3.*
-import etapas.etapa4.*
 
 describe "desvariados" {
   const cura = new Cura(vidaDada = 20, image = "", position = game.at(0, 1))
