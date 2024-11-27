@@ -22,7 +22,7 @@ import etapas.etapa4.*
 describe "desvariados" {
   const cura = new Cura(vidaDada = 20, image = "", position = game.at(0, 1))
   const municion = new Balas(image = "", position = game.at(0, 2))
-  const zombie = new ZombieComun(position = game.at(5, 4))
+  const zombie = new ZombieComun(vida = 1, position = game.at(5, 4))
   
   method initialize() {
     juego.estado(jugando)
@@ -102,9 +102,13 @@ describe "desvariados" {
   test "zombie muere" {
     game.addVisual(zombie)
     managerZombie.agregarZ(zombie)
+    assert.notThat(managerZombie.zombies().isEmpty())
+    zombie.herir(1)
+
+    assert.that(managerZombie.zombies().isEmpty())
   }
   
-  test "sin energía" {
+  test "gasto de energía" {
     
   }
   
