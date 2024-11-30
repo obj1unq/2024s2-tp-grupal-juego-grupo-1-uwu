@@ -148,6 +148,7 @@
         Programación con Objetos 1 </br>
         </br>
         Wollok: v0.2.7 </br>
+        Queremos mantener el repositorio público
         </br>
       </h3>
     </summary>
