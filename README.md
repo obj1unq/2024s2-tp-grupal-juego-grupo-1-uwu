@@ -3,7 +3,7 @@
 </p>
 
 
-<!-- ## Capturas -->
+
 <h1 align="center"> Sobre el juego </h1> 
 
 <h2 align="center"> 
@@ -38,8 +38,21 @@
 <h2 align="center"> 
   Durante los niveles, el jugador tendrá que preocuparse por no quedarse sin balas o energía de movimiento cerca de alguno de 
   los 3 tipos distintos de zombies que puede encontrarse. </br>
-  🧟 🧟‍♂️ 🧟
+  ⚡ 🔫 💚 
 </h2>
+
+</br>
+
+<h1 align="center"> Los Zombies!!🧟 </h1> 
+
+<img align="left" width="200" src="assets/zombieComunReadMe.png"> 
+
+## El Zombie comun
+
+
+
+<!--
+dasfasfga
 
 </br>
 
@@ -47,7 +60,21 @@
 
 - Curso/Facultad
 - Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado 
+-->
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+
+
 
   -----
 
