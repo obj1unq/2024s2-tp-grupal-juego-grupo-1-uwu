@@ -1,16 +1,21 @@
-![](assets/MenuReadMe.png)
+<p align="center"> 
+  <img src="assets/MenuReadMe.png">
+</p>
 
 -----
 
-## Equipo de desarrollo
+<h1 align="center"> Equipo de desarrollo </h1>
 
-<div align="justify">
-Acuña, Alan </br>
-Bogarín, Leandro </br>
-Fuentes, Joaquín </br>
-Mártire, Santiago </br>
-</div>
-
+<h2 align="center">
+  Acuña, Alan </br>
+  </br>
+  Bogarín, Leandro </br>
+  </br>
+  Fuentes, Joaquín </br>
+  </br>
+  Mártire, Santiago </br>
+  </br>
+</h2>
 
 ## Capturas
 
