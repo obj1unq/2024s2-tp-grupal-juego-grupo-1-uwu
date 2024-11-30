@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+!(assets/MenuReadMe.png)
 
 ## Equipo de desarrollo
 
