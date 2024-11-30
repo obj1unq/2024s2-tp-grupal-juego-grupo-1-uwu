@@ -95,8 +95,6 @@
 ### Ningún investigador quiso saber cómo se dio esta combinación macabra; es más fácil asumir que alguien no supo dibujar un simple perro y terminó viéndose así. Persigue al jugador a una velocidad muy rápida, pero es muy débil a cualquier tipo de ataque.
 
 </br>
-</br>
-</br>
 
 
 ## Zombie tanque
