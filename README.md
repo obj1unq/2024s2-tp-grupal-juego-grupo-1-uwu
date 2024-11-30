@@ -1,5 +1,7 @@
 ![](assets/MenuReadMe.png)
 
+-----
+
 ## Equipo de desarrollo
 
 - Acuña, Alan
