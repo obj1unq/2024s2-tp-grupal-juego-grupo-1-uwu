@@ -22,6 +22,17 @@
   durante su matanza.
 </h2>
 
+<p align="center"> 
+  <img src="assets/tiendaReadMe.png">
+</p>
+
+<h2 align="justify"> 
+  Durante los niveles, el jugador tendrá que preocuparse por no quedarse sin balas o energía de movimiento cerca de alguno de 
+  los 3 tipos distintos de zombies que puede encontrarse.
+</h2>
+
+
+
 ## Otros
 
 - Curso/Facultad
