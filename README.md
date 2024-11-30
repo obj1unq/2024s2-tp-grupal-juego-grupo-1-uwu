@@ -16,6 +16,12 @@
   <img src="assets/Seleccion-de--Personaje.png">
 </p>
 
+<h3 align="justify"> 
+  A través del juego, al finalizar cada nivel, el jugador tendrá la oportunidad de mejorar su arma, su energía y sus puntos
+  de vida en la tienda para facilitar sus encuentros con varios enemigos. Para lo cual, necesitará del oro que fue consiguiendo
+  durante su matanza.
+</h3>
+
 ## Otros
 
 - Curso/Facultad
