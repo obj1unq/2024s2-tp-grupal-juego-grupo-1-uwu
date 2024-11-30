@@ -5,10 +5,10 @@
 ## Equipo de desarrollo
 
 <p align="center"> 
-- Acuña, Alan
-- Bogarín, Leandro
-- Fuentes, Joaquín
-- Mártire, Santiago
+- Acuña, Alan </br>
+- Bogarín, Leandro </br>
+- Fuentes, Joaquín </br>
+- Mártire, Santiago</br>
 </p>
 
 ## Capturas
