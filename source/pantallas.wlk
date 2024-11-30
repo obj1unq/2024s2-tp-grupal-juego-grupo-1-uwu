@@ -11,6 +11,7 @@ object pantalla {
     method fin() {
         game.addVisual(self)
         image = "pantalla-victoria.png"
+        game.sound("sonido-victoria.mp3")
     }
 
     method seleccionPj() {
@@ -46,6 +47,7 @@ object pantalla {
     }
 
     method derrota() {
+        game.sound("sonido-derrota.mp3").play()
         nivelManager.limpieza()
         game.allVisuals().forEach({v => game.removeVisual(v)})
         image = "pantalla-derrota.png"

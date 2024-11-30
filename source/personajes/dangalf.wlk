@@ -42,6 +42,10 @@ object dangalf inherits Personaje(arma=dosManoss, armas=[tresManoss,cuatroManoss
         game.sound("wizard-death.mp3").play()
     }
 
+    override method sonidoHerida(){
+        game.sound("sonido-muerte-noel.mp3").play()
+    }
+
 //------------hud-------------------------------------------
     
     override method sinMunicion(){

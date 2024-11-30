@@ -21,6 +21,7 @@ class Personaje {
     method cura(num)
     method sinMunicion()
     method lanzarEspecial() 
+    method sonidoHerida()
 
     method visualHealth(numero) {
         return self.cura(numero)
@@ -73,7 +74,7 @@ class Personaje {
 
     method herir(cantidad) {
         puntosDeVida.herir(cantidad)
-        //self.sonidoHerida()
+        self.sonidoHerida()
     }
 
     // -------------armas-------------------------------

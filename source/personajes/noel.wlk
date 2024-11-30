@@ -52,6 +52,11 @@ object noel inherits Personaje(arma=pistola, armas = [doblePistolas,escop,escope
     method sonidoMuerte(){
         game.sound("noel-muerte-sonido.mp3").play()
     }
+    
+
+    override method sonidoHerida(){
+        game.sound("sonido-muerte-noel.mp3").play()
+    }
 
 //------------hud-------------------------------------------
 
