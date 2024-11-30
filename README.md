@@ -1,4 +1,4 @@
-![](2024s2-tp-grupal-juego-grupo-1-uwu/assets/MenuReadMe.png)
+![](assets/MenuReadMe.png)
 
 ## Equipo de desarrollo
 
