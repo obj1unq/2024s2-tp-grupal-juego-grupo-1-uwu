@@ -45,9 +45,13 @@
 
 <h1 align="center"> Los Zombies!!🧟 </h1> 
 
+
+
+## Zombie común
+
 <img align="left" width="200" src="assets/zombieComunReadMe.png"> 
 
-## El Zombie comun
+### El zombie común es tan raro como su nombre lo indica, pero eso no le saca lo zombie. Persigue al jugador a una velocidad intermedia y puede soportar una cantidad "común" de daño.
 
 
 
