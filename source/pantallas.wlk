@@ -11,7 +11,7 @@ object pantalla {
     method fin() {
         game.addVisual(self)
         image = "pantalla-victoria.png"
-        game.sound("sonido-victoria.mp3")
+        game.sound("sonido-victoria.mp3").play()
     }
 
     method seleccionPj() {
