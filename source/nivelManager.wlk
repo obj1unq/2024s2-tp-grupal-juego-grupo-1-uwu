@@ -1,3 +1,4 @@
+import sonidos.*
 import pantallas.*
 import wollok.game.*
 import estadosJuego.*
@@ -28,9 +29,9 @@ object nivelManager {
     }
 
     method iniciarSigNivel() {
+        self.validarSigNivel()
         juego.jugador().arma().maxearCargador()
         juego.jugador().position(game.at(10, 7))
-        self.validarSigNivel()
         actual = niveles.first()
         actual.inicializar()
         niveles.remove(actual)
@@ -38,14 +39,10 @@ object nivelManager {
 
     method validarSigNivel() {
         if (niveles.isEmpty()) {
-            self.ganarJuego()
+            pantalla.fin()
+            juego.estado(cargando)
             self.error("")
         }
-    }
-
-    method ganarJuego() {
-        game.allVisuals().forEach({v => game.removeVisual(v)})
-        pantalla.fin()
     }
 
     method limpieza() {

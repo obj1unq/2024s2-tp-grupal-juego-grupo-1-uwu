@@ -84,8 +84,8 @@ object jugando inherits EstadoJuego() {
 object enTienda inherits EstadoJuego() {
 
     override method continuar() {
-        juego.estado(cargando)
         nivelManager.terminarTienda()
+        juego.estado(cargando)
     }
 
     override method mejorarVida() {

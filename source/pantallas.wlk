@@ -3,15 +3,15 @@ import juego.*
 import wollok.game.*
 import stats.*
 import tienda.*
+import sonidos.*
+import estadosJuego.*
 
 object pantalla {
     method position() = game.at(0,0)
     var property image = "Menu.png"
 
     method fin() {
-        game.addVisual(self)
         image = "pantalla-victoria.png"
-        game.sound("sonido-victoria.mp3").play()
     }
 
     method seleccionPj() {
@@ -28,6 +28,7 @@ object pantalla {
     }
 
     method animacionCargando() {
+        juego.estado(cargando)
         game.addVisual(self)
         image = "Cargando-1.png"
         game.schedule(400, {image="Cargando-2.png"})
