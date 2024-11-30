@@ -9,7 +9,7 @@ Acuña, Alan </br>
 Bogarín, Leandro </br>
 Fuentes, Joaquín </br>
 Mártire, Santiago</br>
-</p>
+## </p>
 
 ## Capturas
 
