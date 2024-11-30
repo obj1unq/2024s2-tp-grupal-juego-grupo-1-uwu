@@ -109,6 +109,45 @@
 </br>
 </br>
 </br>
+</br>
+ 
+
+<h1 align="center"> Equipo de desarrollo </h1>
+
+<div align="center" id="toc">
+  <ul style="list-style: none">
+    <summary>
+      <h2 align="center">
+        Acuña, Alan </br>
+        </br>
+        Bogarín, Leandro </br>
+        </br>
+        Fuentes, Joaquín </br>
+        </br>
+        Mártire, Santiago </br>
+        </br>
+      </h2>
+    </summary>
+  </ul>
+</div>
+
+<div align="left" id="toc">
+  <ul style="list-style: none">
+    <summary>
+      <h2 align="left">
+        Facultad: Universidad Nacional de Quilmes </br>
+        </br>
+        Curso: Programación con Objetos 1 </br>
+        </br>
+        Wollok: v0.3.6 </br>
+        </br>
+      </h2>
+    </summary>
+  </ul>
+</div>
+
+
+
 
 <!--
 dasfasfga
@@ -121,21 +160,4 @@ dasfasfga
 - Versión de wollok
 - Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado 
 -->
-
-
-</br>
- 
-
-<h1 align="center"> Equipo de desarrollo </h1>
-
-<h2 align="center">
-  Acuña, Alan </br>
-  </br>
-  Bogarín, Leandro </br>
-  </br>
-  Fuentes, Joaquín </br>
-  </br>
-  Mártire, Santiago </br>
-  </br>
-</h2>
 
