@@ -131,17 +131,22 @@
   </ul>
 </div>
 
-<img width="600" length="400" src="assets/logo-unq.png"> 
 
-<div align="left" id="toc">
+</br>
+
+<p align="center"> 
+<img width="500" length="2000" src="assets/logounqreadme.png"> 
+</p>
+
+<div align="center" id="toc">
   <ul style="list-style: none">
     <summary>
-      <h2 align="left">
-        Curso: Programación con Objetos 1 </br>
+      <h3 align="center">
+        Programación con Objetos 1 </br>
         </br>
         Wollok: v0.3.6 </br>
         </br>
-      </h2>
+      </h3>
     </summary>
   </ul>
 </div>
