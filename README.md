@@ -3,6 +3,9 @@
 </p>
 
 
+  https://github.com/user-attachments/assets/09ee1441-1b60-49e4-a08e-b7c6344ea532
+
+
 
 <h1 align="center"> Sobre el juego </h1> 
 
@@ -142,7 +145,7 @@
       <h3 align="center">
         Programación con Objetos 1 </br>
         </br>
-        Wollok: v0.3.6 </br>
+        Wollok: v0.2.7 </br>
         </br>
       </h3>
     </summary>
