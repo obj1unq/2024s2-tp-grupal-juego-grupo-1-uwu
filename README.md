@@ -4,7 +4,7 @@
 
 ## Equipo de desarrollo
 
-<div dir="rtl">
+<div dir="justify">
 Acuña, Alan </br>
 Bogarín, Leandro </br>
 Fuentes, Joaquín </br>
