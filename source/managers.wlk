@@ -7,15 +7,6 @@ import enemigos.*
 import stats.*
 import nivelManager.*
 
-object managerAcido {
-    
-    method acidoEnCon(pos, dmg) {
-        const acidoNuevo = new Acido(position = pos)
-        game.addVisual(acidoNuevo)
-        acidoNuevo.daniar(dmg)
-    }
-}
-
 object managerCrater {
 
     method explosionEnCon(pos,dmg) {
@@ -121,6 +112,34 @@ object managerZombie {
     const property spawnPoints = #{game.at(3,0),game.at(15,0),game.at(3,13),game.at(15,13)} 
     var property zombiesSpawneados = 0
 
+
+// Zombies del tablero ---------------------------------------------------------
+
+
+      method posTieneZombie(pos) {
+        return (zombies.any({zom => zom.position() == pos}))
+    }
+
+    method agregarZ(zombie) {
+        zombies.add(zombie)
+    }
+
+    method quitarZ(zombie) {
+        zombies.remove(zombie)
+        especial.murioZombie()
+        nivelManager.murioZombie()
+    }
+
+    method spawnearZ(zombie) {
+        zombies.add(zombie)
+        game.addVisual(zombie)
+        zombiesSpawneados += 1
+    }
+
+
+// SpawnCycle-------------------------------------------------------------------
+
+
     method spawnCycle(cant) {
         game.onTick(3000,"spawnCycle",{self.spawneoRandom(cant)})
     }
@@ -140,6 +159,11 @@ object managerZombie {
 
     method spawneoRandom(cant) {
         if (self.condicionSpawneoRandom(cant)) { 
+            self.realizarSpawneoRandom()
+        }
+    }
+
+    method realizarSpawneoRandom() {
         const zombieNuevo = 1.randomUpTo(3).round()
         if(zombieNuevo == 1) {
             self.spawnearZ(new ZombieComun(position=self.posicionDeSpawneoRandom()))
@@ -147,12 +171,14 @@ object managerZombie {
         else if(zombieNuevo == 2) {
             self.spawnearZ(new ZombiePerro(position=self.posicionDeSpawneoRandom()))
         }
-        else if(zombieNuevo == 3) {
+        else {
             self.spawnearZ(new ZombieTanque(position=self.posicionDeSpawneoRandom()))
         }
-        else {self.spawnearZ(new ZombieThrower(position=self.posicionDeSpawneoRandom()))}
     }
-    }
+
+
+// Persecución ---------------------------------------------------------------------
+
 
     method persecucion() {
         game.onTick(650,"persecucionGame",{zombies.forEach({z => z.perseguirAJugador()})})
@@ -162,62 +188,4 @@ object managerZombie {
         game.removeTickEvent("persecucionGame")
     }
 
-    method agregarZ(zombie) {
-        zombies.add(zombie)
-    }
-
-    method quitarZ(zombie) {
-        zombies.remove(zombie)
-        especial.murioZombie()
-        nivelManager.murioZombie()
-    }
-
-    method spawnearZ(zombie) {
-        zombies.add(zombie)
-        game.addVisual(zombie)
-        zombiesSpawneados += 1
-    }
-
-      method posTieneZombie(pos) {
-        return (zombies.any({zom => zom.position() == pos}))
-    }
-
-
-/*
-    method activarODesactivarGeneracionAleatoria() {
-        if(contador.even()) {
-            contador += 1
-            game.onTick(3000, "generarZombiesRandom", {self.generarZombieAleatorio(randomizadorZombies.posicionAleatoria())})
-        } else {
-            contador += 1
-            game.removeTickEvent("generarZombiesRandom")
-        }
-    }
-*/
-
 }
-
-object generadorZombie {
-
-    method zombieComun(posicion) {
-        return new ZombieComun(position = posicion)
-    }
-
-    method zombiePerro(posicion) {
-        return new ZombiePerro(position = posicion)
-    }
-    
-    method zombieThrower(posicion) {
-        return new ZombieThrower(position = posicion)
-    }
-        
-    method zombieTanque(posicion) {
-        return new ZombieTanque(position = posicion)
-    }
-
-    method posicionInicial() {
-        return game.at(game.width() -3, game.height() -3)
-    }
-}
-
-// testear probabilidad zombies(funciona, pero laguea una banda LPM jsjs)

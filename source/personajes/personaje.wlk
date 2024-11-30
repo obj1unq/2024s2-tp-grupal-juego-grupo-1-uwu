@@ -73,6 +73,7 @@ class Personaje {
 
     method herir(cantidad) {
         puntosDeVida.herir(cantidad)
+        //self.sonidoHerida()
     }
 
     // -------------armas-------------------------------

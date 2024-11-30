@@ -12,19 +12,12 @@ import tienda.*
 import estadosJuego.*
 import pantallas.*
 
-object menu {
-    /*
-    var property image =
-    var property position = game.at 
-    */
-}
 
 object juego {
 
     var property estado = estadoMenu 
     var property jugador = noel
     var property musicaActual = musicaMenu
-
 
     method elegirNoel() {
         jugador = noel

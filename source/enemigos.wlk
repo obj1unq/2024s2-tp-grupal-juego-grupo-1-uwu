@@ -14,6 +14,10 @@ class Zombie {
     var contadorMovimiento = 1
     const velocidad
 
+    method sonidoHerida()
+    method sonidoMuerte()
+    method imagenMovimiento()
+
     method agro() {
         return juego.jugador()
     }
@@ -36,9 +40,6 @@ class Zombie {
         self.imagenHacia(self.dirAgroPegado())
         self.agro().herir(dmg)
     }
-
-    method sonidoHerida()
-    method sonidoMuerte()
 
     // Persecucion -------------------------------------
 
@@ -76,7 +77,12 @@ class Zombie {
     method sigPosFavorable() {
         const disponibles = tablero.verticalesDe(position).filter({pos => not(managerZombie.posTieneZombie(pos))})
         const dispYSinCajas = disponibles.filter({pos => not(nivelManager.hayCajaEn(pos))})
-        return dispYSinCajas.min({pos => pos.distance(self.agro().position())})
+        if (!dispYSinCajas.isEmpty()) {
+            return dispYSinCajas.min({pos => pos.distance(self.agro().position())})
+        }
+        else {
+            self.error("")
+        }
     }
 
     method dirAgroPegado() {
@@ -108,15 +114,11 @@ class Zombie {
         image = self.imagenMovimiento() + dir.toString() + ".png"
     }
 
-    method imagenMovimiento()
-
     method morir() {
         self.sonidoMuerte()
         game.removeVisual(self)
         managerZombie.quitarZ(self)
-        //nivelManager.incrementarEnemigos() //-- niveles
         managerItems.generarDrop(position)
-        //managerItems.spawnearMunicionEn(self.position())
     }
 }
 
@@ -194,103 +196,12 @@ class ZombieTanque inherits Zombie(vida = 150, dmg = 75, image = "tanque-1-abajo
     }
 
     override method sonidoMuerte(){
-        game.sound("tank-muerte.mp3").play() // hay q ponerle otros sonidos
+        game.sound("tank-muerte.mp3").play() 
     }
 
     // imagen -----------------------------------------
 
     override method imagenMovimiento() {
         return "tanque-" + estado.toString() + "-"
-    }
-}
-
-class ZombieThrower inherits Zombie(vida = 20, dmg = 10, image = "expectorador-1-abajo.png",velocidad=2){  
-    var contador = 0
-    var estado = 1
-    var positionAtaque = game.at(0, 0)
-
-
-    override method perseguirAJugador() {
-        if(!self.agroEstaAbajo() and !self.estaAlFinalIzquierdo() and contador.even()) {
-            self.moverse(izquierda)
-        } else if(!self.agroEstaAbajo() and !self.estaAlFinalDerecho() and !contador.even()) {
-            self.moverse(derecha)
-        } else if (!self.agroEstaAbajo() and self.estaAlFinalDerecho()){
-            contador += 1
-            self.moverse(izquierda)
-        } else if (!self.agroEstaAbajo() and self.estaAlFinalIzquierdo()){
-            contador += 1
-            self.moverse(derecha)
-        } else {
-            self.atacarAPersonaje() 
-        }
-    }
-
-    method atacarAPersonaje() {
-        positionAtaque = self.agro().position()
-        self.atacarAgro()
-        game.sound("sonido-escupitajo.mp3").play()
-    }
-
-    method moverse(dir) {
-        position = dir.siguientePosicion(position)
-        self.imagenHacia(dir)
-    }
-
-    // movimiento ------------------------------------
-
-    method estaAlFinal() {
-        return  self.estaAlFinalIzquierdo() or self.estaAlFinalDerecho()
-    }
-
-    method estaAlFinalDerecho() {
-        return position.x() == game.width() - 1
-    }
-
-    method estaAlFinalIzquierdo() {
-        return position.x() == 0
-    }
-
-    method agroEstaAbajo() {
-        return self.agro().position().x() == self.position().x()
-    }
-
-    // ataque ------------------------------
-    override method atacarAgro() {
-        managerZombie.quitarZ(self)
-        self.animacionAtaque()
-        game.schedule(1250,{managerAcido.acidoEnCon(positionAtaque, dmg)})
-        game.schedule(1500,{managerZombie.agregarZ(self)})    
-    }
-
-    method animacionAtaque() {
-        estado = 2
-        self.imagenHacia(self.direccionAtaque())
-        game.schedule(600,{estado += 1})
-        game.schedule(650,{self.imagenHacia(self.direccionAtaque())})
-        game.schedule(1200,{estado += 1})
-        game.schedule(1200,{self.imagenHacia(self.direccionAtaque())})
-        game.schedule(1250,{estado = 1})
-        game.schedule(1450,{self.imagenHacia(self.direccionAtaque())})
-    }
-
-    method direccionAtaque() {
-        return if(position.x() == 0) arriba else abajo
-    }
-
-    // sonido -----------------------------------------
-
-    override method sonidoHerida(){
-        game.sound("zombie-1.mp3").play()
-    }
-
-    override method sonidoMuerte(){
-        game.sound("zombie-2.mp3").play()
-    }
-
-    // imagen -----------------------------------------
-
-    override method imagenMovimiento() {
-        return "expectorador-" + estado.toString() + "-"
     }
 }

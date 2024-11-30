@@ -101,8 +101,5 @@ object mercadoVisible{
         game.addVisual(tienda)
         billetera.visualizarCantOro()
         game.sound("Welcome!.mp3").play()
-        // game.addVisual(self) Numeros
-        // game.addVisual(self) Numeros
-        // game.addVisual(self) Numeros
     }
 }

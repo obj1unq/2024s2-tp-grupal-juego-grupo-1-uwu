@@ -24,12 +24,21 @@ object timer {
     }
   }
 }
+
 //----------------------------------------------HUD-----------------------------
 
 object barra {
   var property image = "blacklong.png"
   var property position = game.at(0, 14)
-} //----------------------------------BARRA DE VIDA-----------------------------
+} 
+
+object cadenciaHud {
+  method image() = ((juego.jugador().toString() + "-cadencia-") + juego.jugador().arma().estado().toString()) + ".png"
+  
+  method position() = game.at(5, game.height() - 1)
+}
+
+//----------------------------------BARRA DE VIDA-----------------------------
 
 object puntosDeVida {
   var vida = 60
@@ -79,6 +88,19 @@ object hudBalas {
   
   method image() = (juego.jugador().arma().hudMunicion() + juego.jugador().arma().cargador()) + ".png"
 }
+
+object municionActual {
+  method position() = game.at(6, game.height() - 1)
+  
+  method text() = juego.jugador().arma().cargador().toString()
+  
+  method colisionPj() {
+    
+  }
+  
+  method textColor() = "FFFFFF"
+}
+
 //----------------------------------------------energia-----------------------------
 
 object barraDeEnergia {
@@ -111,6 +133,8 @@ object barraDeEnergia {
   }
 }
 
+// --------------------ESPECIAL------------------------------------------
+
 object especial {
   var property zombiesAsesinados = 0
   var property position = game.at(4, 14)
@@ -134,20 +158,3 @@ object especial {
   method especialListo() = if (zombiesAsesinados < 6) 0 else 1
 }
 
-object municionActual {
-  method position() = game.at(6, game.height() - 1)
-  
-  method text() = juego.jugador().arma().cargador().toString()
-  
-  method colisionPj() {
-    
-  }
-  
-  method textColor() = "FFFFFF"
-}
-
-object cadenciaHud {
-  method image() = ((juego.jugador().toString() + "-cadencia-") + juego.jugador().arma().estado().toString()) + ".png"
-  
-  method position() = game.at(5, game.height() - 1)
-}

@@ -116,33 +116,6 @@ class Crater {
 
 }
 
-
-class Acido {
-    
-    var property image = "charco.png"
-    const property position
-
-    method daniar(dmg) {
-        game.onTick(500, self.identidad(), {self.colisiones().forEach({c => c.herir(dmg)})})
-        game.schedule(3550, {game.removeTickEvent(self.identidad())})
-        game.schedule(4000,{game.removeVisual(self)})
-    }
-
-    method colisiones() {
-        const colisiones = managerZombie.zombies().filter({z => z.position() == position})
-        if (juego.jugador().position() == position) {
-            colisiones.add(juego.jugador())
-        }
-        return colisiones
-    }
-
-    method identidad() {
-        return self.identity().toString()
-    }
-
-}
-
-
 class BolaEnergia inherits Proyectil(danio = 100, image="rayoGrande.png",velocidadViaje=150) {
 
     override method disparoHacia(direccion) {
@@ -160,8 +133,6 @@ class BolaEnergia inherits Proyectil(danio = 100, image="rayoGrande.png",velocid
         super(dir)
     } 
 }
-
-
 
 
 class Baston inherits Proyectil(danio = 160, velocidadViaje=170) {

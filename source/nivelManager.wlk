@@ -12,7 +12,7 @@ import etapas.etapa4.*
 import personajes.personaje.*
 
 object nivelManager {
-    const property niveles = [niv2,tienda,niv4,tienda,niv6,tienda,niv7]
+    const property niveles = [niv1,tienda,niv2,tienda,niv3,tienda,niv4]
     var property actual = niv2
     var property obstaculos = #{}
 
@@ -73,22 +73,6 @@ object nivelManager {
             enemigosAsesinados = 0
         }
     }
-
-/*
-    method incrementarEnemigos() {
-        enemigosDerrotados += 1
-        self.revisarNivel()
-    }
-
-    method revisarNivel() {
-        if (enemigosDerrotados >= enemigosPorNivel) {
-            enemigosDerrotados = 0
-            nivelActual += 1
-            self.cambiarNivel()
-            enemigosPorNivel += 5
-        }
-    }
-*/
 
 }
 

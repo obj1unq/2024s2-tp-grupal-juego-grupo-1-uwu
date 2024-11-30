@@ -35,7 +35,7 @@ object tienda{
     }
 
     //Letra J
-    method mejorarVida() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarVida() { //Si Ya esta mejorado al maximo muestra fuera de stock en la tienda
         self.validarSiAlcanzaOro(50)
         self.validarSiVidaEstaAlMax()
         game.sound("mejora.mp3").play()
@@ -47,7 +47,7 @@ object tienda{
     }
 
     //Letra L
-    method mejorarEnergia() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarEnergia() { //Si Ya esta mejorado al maximo muestra fuera de stock en la tienda
         self.validarSiAlcanzaOro(50)
         self.validarSiEnergiaEstaAlMax()
         barraDeEnergia.subirMaximo(3)
@@ -60,7 +60,7 @@ object tienda{
     }
 
     //letra K
-    method mejorarArma() { //Si Ya esta mejorado al maximo deberia poner fuer de stock en la tienda
+    method mejorarArma() { //Si Ya esta mejorado al maximo muestra poner fuera de stock en la tienda
         self.validarSiArmaEstaAlMax()
         self.validarSiAlcanzaOro(80)
         juego.jugador().mejorarArma()

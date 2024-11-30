@@ -588,3 +588,4 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":121,"timestamp":"2024-11-27T18:56:24.817Z"}
 {"level":"info","message":"⌛ Validating source/desvariados.wpgm","timeElapsed":168,"timestamp":"2024-11-27T18:56:24.986Z"}
 {"level":"info","message":"⌛ Validating source/desvariados.wpgm","timeElapsed":162,"timestamp":"2024-11-27T18:58:24.901Z"}
+{"failures":[],"level":"info","message":"🧪 Test runner executed on c:\\Users\\Joaco\\Desktop\\2024s2-tp-grupal-juego-grupo-1-uwu","result":{"failed":0,"ok":15},"timeElapsed":1597,"timestamp":"2024-11-30T02:18:51.137Z"}
