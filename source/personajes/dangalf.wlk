@@ -59,6 +59,7 @@ object dangalf inherits Personaje(arma=dosManoss, armas=[tresManoss,cuatroManoss
 //-----------especial---------------------------------------
 
     override method lanzarEspecial() {
+        self.sonidoEspecial()
         self.dispararEspecialHacia(abajo)
         self.dispararEspecialHacia(arriba)
         self.dispararEspecialHacia(derecha)
@@ -71,4 +72,7 @@ object dangalf inherits Personaje(arma=dosManoss, armas=[tresManoss,cuatroManoss
         rayo.nuevoViaje(direccion)
     }
 
+    override method sonidoEspecial() {
+      game.sound("dangalf-Especial.mp3").play()
+    }
 }

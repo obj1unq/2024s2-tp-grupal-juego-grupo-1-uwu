@@ -75,8 +75,12 @@ object noel inherits Personaje(arma=pistola, armas = [doblePistolas,escop,escope
         const baston = new Baston(position=self.ultimaDir().siguientePosicion(position), image="baston-"+self.ultimaDir()+".png")
         game.addVisual(baston)
         baston.nuevoViaje(ultimaDir)
+        self.sonidoEspecial()
     }
 
+    override method sonidoEspecial() {
+      game.sound("noel-Especial.mp3").play()
+    }
 }
 
 

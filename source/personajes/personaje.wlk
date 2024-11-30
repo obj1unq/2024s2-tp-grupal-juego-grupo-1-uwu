@@ -22,6 +22,7 @@ class Personaje {
     method sinMunicion()
     method lanzarEspecial() 
     method sonidoHerida()
+    method sonidoEspecial()
 
     method visualHealth(numero) {
         return self.cura(numero)
