@@ -131,12 +131,12 @@
   </ul>
 </div>
 
+<img width="600" length="400" src="assets/logo-unq.png"> 
+
 <div align="left" id="toc">
   <ul style="list-style: none">
     <summary>
       <h2 align="left">
-        Facultad: Universidad Nacional de Quilmes </br>
-        </br>
         Curso: Programación con Objetos 1 </br>
         </br>
         Wollok: v0.3.6 </br>
