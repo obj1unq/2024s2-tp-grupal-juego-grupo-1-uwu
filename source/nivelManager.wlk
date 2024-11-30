@@ -74,25 +74,9 @@ object nivelManager {
         }
     }
 
-/*
-    method incrementarEnemigos() {
-        enemigosDerrotados += 1
-        self.revisarNivel()
-    }
-
-    method revisarNivel() {
-        if (enemigosDerrotados >= enemigosPorNivel) {
-            enemigosDerrotados = 0
-            nivelActual += 1
-            self.cambiarNivel()
-            enemigosPorNivel += 5
-        }
-    }
-*/
-
 }
 
-//Idea: Entre cada nivel aparece la tienda para poder mejorar el Arma/Salud/Energia
+//Entre cada nivel aparece la tienda para poder mejorar el Arma/Salud/Energia
 //El primer nivel debe ser una pantalla donde presete el juego
 //Luego una pantalla donde este el menu y se seleccione el personaje
 
