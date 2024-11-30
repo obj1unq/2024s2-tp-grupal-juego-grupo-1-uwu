@@ -661,3 +661,10 @@
 {"level":"info","message":"⌛ Validating source/personajes/armas.wlk","timeElapsed":181,"timestamp":"2024-11-30T01:58:56.655Z"}
 {"level":"info","message":"⌛ Validating source/pantallas.wlk","timeElapsed":151,"timestamp":"2024-11-30T01:58:56.806Z"}
 {"level":"info","message":"⌛ Validating source/nivelManager.wlk","timeElapsed":155,"timestamp":"2024-11-30T01:58:56.962Z"}
+{"level":"info","message":"⌛ Validating source/managers.wlk","timeElapsed":192,"timestamp":"2024-11-30T01:58:57.154Z"}
+{"level":"info","message":"⌛ Validating source/juego.wlk","timeElapsed":215,"timestamp":"2024-11-30T01:58:57.372Z"}
+{"level":"info","message":"⌛ Validating source/extras.wlk","timeElapsed":200,"timestamp":"2024-11-30T01:58:57.573Z"}
+{"level":"info","message":"⌛ Validating source/etapas/etapa4.wlk","timeElapsed":225,"timestamp":"2024-11-30T01:58:57.798Z"}
+{"level":"info","message":"⌛ Validating source/etapas/etapa3.wlk","timeElapsed":371,"timestamp":"2024-11-30T01:58:58.169Z"}
+{"level":"info","message":"⌛ Validating source/etapas/etapa2.wlk","timeElapsed":299,"timestamp":"2024-11-30T01:58:58.469Z"}
+{"level":"info","message":"⌛ Validating source/etapas/etapa1.wlk","timeElapsed":185,"timestamp":"2024-11-30T01:58:58.654Z"}
