@@ -6,21 +6,21 @@
 <!-- ## Capturas -->
 <h1 align="center"> Sobre el juego </h1> 
 
-<h3 align="justify"> 
+<h2 align="justify"> 
   En Desvariados, el jugador podrá elegir entre controlar a Noel o Dangalf para derrotar zombies en 4 (o más :eyes:)
   niveles progresivamente más duraderos. Ambos manejan un rango de armas distintas, además de habilidades especiales, las 
   cuales pueden activar luego de asesinar a 6 zombies. 
-</h3>
+</h2>
 
 <p align="center"> 
   <img src="assets/Seleccion-de--Personaje.png">
 </p>
 
-<h3 align="justify"> 
+<h2 align="justify"> 
   A través del juego, al finalizar cada nivel, el jugador tendrá la oportunidad de mejorar su arma, su energía y sus puntos
   de vida en la tienda para facilitar sus encuentros con varios enemigos. Para lo cual, necesitará del oro que fue consiguiendo
   durante su matanza.
-</h3>
+</h2>
 
 ## Otros
 
