@@ -152,7 +152,7 @@ class ZombiePerro inherits Zombie(vida = 75, dmg = 20, image = "perronio-abajo.p
     }
 }
 
-class ZombieTanque inherits Zombie(vida = 150, dmg = 75, image = "tanque-1-abajo.png", velocidad=3) {
+class ZombieTanque inherits Zombie(vida = 150, dmg = 80, image = "tanque-1-abajo.png", velocidad=3) {
     
     var estado = 1
     var ultimaDir = abajo
